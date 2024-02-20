@@ -1,7 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/l10n/l10n.dart';
-import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/painting.dart';
 
@@ -26,23 +24,5 @@ class EnvironmentHackaton extends FlameGame {
   Color backgroundColor() => const Color(0xFF2A48DF);
 
   @override
-  Future<void> onLoad() async {
-    final world = World(
-      children: [
-        Unicorn(position: size / 2),
-        CounterComponent(
-          position: (size / 2)
-            ..sub(
-              Vector2(0, 16),
-            ),
-        ),
-      ],
-    );
-
-    final camera = CameraComponent(world: world);
-    await addAll([world, camera]);
-
-    camera.viewfinder.position = size / 2;
-    camera.viewfinder.zoom = 8;
-  }
+  Future<void> onLoad() async {}
 }
