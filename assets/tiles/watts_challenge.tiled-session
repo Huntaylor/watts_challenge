@@ -16,7 +16,8 @@
             }
         },
         "house_1.tmx#house_layout": {
-            "scaleInDock": 4
+            "scaleInDock": 4,
+            "scaleInEditor": 1
         }
     },
     "last.imagePath": "C:/Users/tiger/OneDrive/Documents/GitHub/Flutter_Flame/environment_hackaton/assets/tiles",
