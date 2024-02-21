@@ -11,8 +11,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 326.5,
-                "y": 421
+                "x": 325.5,
+                "y": 419
             }
         },
         "house_1.tmx#house_layout": {
@@ -20,7 +20,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/tiger/OneDrive/Documents/GitHub/Flutter_Flame/environment_hackaton/assets/tiles",
+    "last.imagePath": "C:/Users/tiger/OneDrive/Documents/GitHub/Flutter_Flame/environment_hackaton/assets/images",
     "map.height": 40,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="45">
  <tileset firstgid="1" name="house_layout" tilewidth="16" tileheight="16" tilecount="36" columns="4">
-  <image source="tilemap_layout.png" width="64" height="144"/>
+  <image source="../images/tilemap_layout.png" width="64" height="144"/>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="60" height="40">
+ <tileset firstgid="37" name="tilemap_layout" tilewidth="16" tileheight="16" tilecount="36" columns="4">
+  <image source="../images/tilemap_layout.png" width="64" height="144"/>
+ </tileset>
+ <layer id="1" name="Background" width="60" height="40">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -47,4 +50,44 @@
 16,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,22,27,24,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,18,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="2" name="Collisions">
+  <object id="2" name="Wall" x="192" y="464" width="16" height="80"/>
+  <object id="4" name="Wall" x="0" y="208" width="16" height="432"/>
+  <object id="5" name="Wall" x="16" y="464" width="80" height="32"/>
+  <object id="6" name="Wall" x="16" y="384" width="16" height="32"/>
+  <object id="8" name="Wall" x="128" y="464" width="64" height="32"/>
+  <object id="9" name="Wall" x="208" y="464" width="32" height="32"/>
+  <object id="11" name="Wall" x="240" y="464" width="16" height="128"/>
+  <object id="13" name="Wall" x="16" y="608" width="768" height="32"/>
+  <object id="14" name="Wall" x="192" y="576" width="16" height="32"/>
+  <object id="15" name="Wall" x="304" y="464" width="16" height="128"/>
+  <object id="16" name="Wall" x="416" y="464" width="16" height="128"/>
+  <object id="17" name="Wall" x="416" y="208" width="16" height="208"/>
+  <object id="18" name="Wall" x="640" y="208" width="16" height="192"/>
+  <object id="19" name="Wall" x="768" y="208" width="16" height="400"/>
+  <object id="20" name="Wall" x="496" y="208" width="16" height="64"/>
+  <object id="21" name="Wall" x="224" y="208" width="16" height="64"/>
+  <object id="22" name="Wall" x="224" y="352" width="16" height="32"/>
+  <object id="23" name="Wall" x="64" y="384" width="352" height="32"/>
+  <object id="25" name="Wall" x="224" y="272" width="32" height="32"/>
+  <object id="28" name="Wall" x="288" y="272" width="128" height="32"/>
+  <object id="29" name="Wall" x="480" y="272" width="32" height="32"/>
+  <object id="30" name="Wall" x="432" y="272" width="16" height="32"/>
+  <object id="31" name="Wall" x="16" y="208" width="208" height="32"/>
+  <object id="32" name="Wall" x="240" y="208" width="176" height="32"/>
+  <object id="33" name="Wall" x="432" y="208" width="64" height="32"/>
+  <object id="34" name="Wall" x="512" y="208" width="128" height="32"/>
+  <object id="35" name="Wall" x="656" y="208" width="112" height="32"/>
+  <object id="36" name="Wall" x="688" y="336" width="16" height="64"/>
+  <object id="37" name="Wall" x="704" y="336" width="64" height="32"/>
+  <object id="38" name="Wall" x="688" y="432" width="32" height="32"/>
+  <object id="40" name="Wall" x="624" y="432" width="32" height="32"/>
+  <object id="41" name="Wall" x="704" y="464" width="64" height="32"/>
+  <object id="42" name="Wall" x="432" y="464" width="208" height="32"/>
+  <object id="43" name="Wall" x="320" y="464" width="32" height="32"/>
+  <object id="44" name="Wall" x="384" y="464" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="3" name="Spawnpoints">
+  <object id="1" name="Player" type="Player" x="274" y="560" width="14" height="18"/>
+ </objectgroup>
 </map>
