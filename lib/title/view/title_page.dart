@@ -1,4 +1,3 @@
-import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +36,8 @@ class TitleView extends StatelessWidget {
         height: 64,
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement<void, void>(GamePage.route());
+            // Navigator.of(context).pushReplacement<void, void>
+            // (GamePage.route());
           },
           child: Center(child: Text(l10n.titleButtonStart)),
         ),
