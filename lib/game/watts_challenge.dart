@@ -28,16 +28,14 @@ class WattsChallenge extends FlameGame {
   Future<void> onLoad() async {
     await images.loadAllImages();
 
-    _loadLevel();
+    await _loadLevel();
   }
 
-  void _loadLevel() {
+  Future<void> _loadLevel() async {
     level = Level(
       levelName: 'house_1.tmx',
       player: player,
-    )..debugMode = true;
-
-    print(player.x);
+    )..priority = 1;
 
     final finder = Viewfinder();
     // final playerOffset = Offset(player.x + .1, player.y);
@@ -60,7 +58,7 @@ class WattsChallenge extends FlameGame {
       horizontalOnly: true,
       player,
     );
-    addAll(
+    await addAll(
       [camera, level],
     );
   }

@@ -45,32 +45,39 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   void _loadAllAnimations() {
     forwardAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.walkingForward.path,
+      // animationPath: Assets.images.player.walkingForward.path,
+      animationPath: 'player/walkingForward.png',
       amount: 4,
     );
 
     forwardReallyAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.reallyForward.path,
+      // animationPath: Assets.images.player.reallyForward.path,
+      animationPath: 'player/reallyForward.png',
       amount: 4,
     );
     backAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.walkingBack.path,
+      // animationPath: Assets.images.player.walkingBack.path,
+      animationPath: 'player/walkingBack.png',
       amount: 4,
     );
     leftAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.walkingLeft.path,
+      // animationPath: Assets.images.player.walkingLeft.path,
+      animationPath: 'player/walkingLeft.png',
       amount: 4,
     );
     rightAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.walkingRight.path,
+      // animationPath: Assets.images.player.walkingRight.path,
+      animationPath: 'player/walkingRight.png',
       amount: 4,
     );
     idleAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.idle.path,
+      // animationPath: Assets.images.player.idle.path,
+      animationPath: 'player/idle.png',
       amount: 2,
     );
     idleReallyAnimation = _spriteAnimation(
-      animationPath: Assets.images.player.reallyIdle.path,
+      // animationPath: Assets.images.player.reallyIdle.path,
+      animationPath: 'player/reallyIdle.png',
       amount: 2,
     );
 

@@ -13,6 +13,39 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   $AssetsImagesPlayerGen get player => const $AssetsImagesPlayerGen();
+
+  /// File path: assets/images/tilemap_layout.png
+  AssetGenImage get tilemapLayout =>
+      const AssetGenImage('assets/images/tilemap_layout.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [tilemapLayout];
+}
+
+class $AssetsTilesGen {
+  const $AssetsTilesGen();
+
+  /// File path: assets/tiles/house_1.tmx
+  String get house1 => 'assets/tiles/house_1.tmx';
+
+  /// File path: assets/tiles/tilemap_layout.json
+  String get tilemapLayout => 'assets/tiles/tilemap_layout.json';
+
+  /// File path: assets/tiles/watts_challenge.tiled-project
+  String get wattsChallengeTiledProject =>
+      'assets/tiles/watts_challenge.tiled-project';
+
+  /// File path: assets/tiles/watts_challenge.tiled-session
+  String get wattsChallengeTiledSession =>
+      'assets/tiles/watts_challenge.tiled-session';
+
+  /// List of all assets
+  List<String> get values => [
+        house1,
+        tilemapLayout,
+        wattsChallengeTiledProject,
+        wattsChallengeTiledSession
+      ];
 }
 
 class $AssetsImagesPlayerGen {
@@ -67,6 +100,7 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsTilesGen tiles = $AssetsTilesGen();
 }
 
 class AssetGenImage {
