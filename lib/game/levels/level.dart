@@ -11,7 +11,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
     required this.levelName,
     required this.player,
     super.children,
-    super.priority = -5,
+    super.priority,
   });
   final String levelName;
   final Player player;
@@ -19,10 +19,13 @@ class Level extends World with HasGameRef<WattsChallenge> {
 
   @override
   Future<void> onLoad() async {
+    debugMode = true;
     final level = await TiledComponent.load(
       levelName,
       Vector2.all(16),
     );
+
+    add(level);
 
     _addCollisions(level);
     _spawningObjects(level);

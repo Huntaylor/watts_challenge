@@ -3,7 +3,7 @@ import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/painting.dart';
+// import 'package:flutter/painting.dart';
 
 class WattsChallenge extends FlameGame {
   WattsChallenge(
@@ -21,8 +21,8 @@ class WattsChallenge extends FlameGame {
   Player player = Player();
   late Level level;
 
-  @override
-  Color backgroundColor() => const Color.fromARGB(255, 1, 0, 52);
+  // @override
+  // Color backgroundColor() => const Color.fromARGB(255, 1, 0, 52);
 
   @override
   Future<void> onLoad() async {
@@ -35,7 +35,7 @@ class WattsChallenge extends FlameGame {
     level = Level(
       levelName: 'house_1.tmx',
       player: player,
-    )..priority = 1;
+    )..priority = 10;
 
     final finder = Viewfinder();
     // final playerOffset = Offset(player.x + .1, player.y);
