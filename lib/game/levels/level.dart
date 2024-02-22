@@ -19,7 +19,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
 
   @override
   Future<void> onLoad() async {
-    debugMode = true;
+    // debugMode = true;
     final level = await TiledComponent.load(
       levelName,
       Vector2.all(16),

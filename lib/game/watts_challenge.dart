@@ -3,9 +3,10 @@ import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame/input.dart';
 // import 'package:flutter/painting.dart';
 
-class WattsChallenge extends FlameGame {
+class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   WattsChallenge(
       // required this.l10n,
       // required this.effectPlayer,
@@ -37,25 +38,19 @@ class WattsChallenge extends FlameGame {
       player: player,
     )..priority = 10;
 
-    final finder = Viewfinder();
-    // final playerOffset = Offset(player.x + .1, player.y);
-
-    finder.anchor = Anchor.topLeft;
+    final finder = Viewfinder()..anchor = Anchor.center;
 
     camera = CameraComponent.withFixedResolution(
       viewfinder: finder,
       world: level,
-      width: 640,
-      height: 360,
+      width: 320,
+      height: 180,
+      // width: 640,
+      // height: 360,
     );
 
-    // camera.backdrop = BackgroundTile(
-    //   position: Vector2.zero(),
-    // );
-    // finder.zoom = .06;
-
     camera.follow(
-      horizontalOnly: true,
+      snap: true,
       player,
     );
     await addAll(

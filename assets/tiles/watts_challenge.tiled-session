@@ -18,6 +18,9 @@
         "house_1.tmx#house_layout": {
             "scaleInDock": 2,
             "scaleInEditor": 1
+        },
+        "house_1.tmx#tilemap_layout": {
+            "scaleInEditor": 1
         }
     },
     "last.imagePath": "C:/Users/tiger/OneDrive/Documents/GitHub/Flutter_Flame/environment_hackaton/assets/images",

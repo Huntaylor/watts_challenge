@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="45">
- <tileset firstgid="1" name="house_layout" tilewidth="16" tileheight="16" tilecount="36" columns="4">
-  <image source="../images/tilemap_layout.png" width="64" height="144"/>
+ <tileset firstgid="1" name="house_layout" tilewidth="16" tileheight="16" spacing="2" tilecount="40" columns="4">
+  <image source="../images/tilemap_layout.png" width="72" height="162"/>
  </tileset>
- <tileset firstgid="37" name="tilemap_layout" tilewidth="16" tileheight="16" tilecount="36" columns="4">
-  <image source="../images/tilemap_layout.png" width="64" height="144"/>
+ <tileset firstgid="41" name="tilemap_layout" tilewidth="16" tileheight="16" tilecount="40" columns="4">
+  <image source="../images/tilemap_layout.png" width="72" height="162"/>
  </tileset>
  <layer id="1" name="Background" width="60" height="40">
   <data encoding="csv">
@@ -88,6 +88,6 @@
   <object id="44" name="Wall" x="384" y="464" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="3" name="Spawnpoints">
-  <object id="1" name="Player" type="Player" x="274" y="560" width="14" height="18"/>
+  <object id="1" name="Player" type="Player" x="480" y="384" width="14" height="18"/>
  </objectgroup>
 </map>
