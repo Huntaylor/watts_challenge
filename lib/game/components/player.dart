@@ -153,8 +153,8 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
       PlayerState.walkingRight: rightAnimation,
     };
 
-    // Set current animation
-    current = PlayerState.reallyIdle;
+    // Set current animationdw
+    current = PlayerState.idleForward;
   }
 
   SpriteAnimation _spriteAnimation({
