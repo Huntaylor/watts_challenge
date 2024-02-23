@@ -9,11 +9,13 @@ import 'package:flame_tiled/flame_tiled.dart';
 class Level extends World with HasGameRef<WattsChallenge> {
   Level({
     required this.levelName,
+    required this.foregroundLevelName,
     required this.player,
     super.children,
     super.priority,
   });
   final String levelName;
+  final String foregroundLevelName;
   final Player player;
   List<CollisionBlock> collisionBlock = [];
 
@@ -24,8 +26,16 @@ class Level extends World with HasGameRef<WattsChallenge> {
       levelName,
       Vector2.all(16),
     );
+    final foregroundLevel = await TiledComponent.load(
+      foregroundLevelName,
+      Vector2.all(16),
+    )
+      ..priority = level.priority + 10;
 
-    add(level);
+    await addAll([
+      level,
+      foregroundLevel,
+    ]);
 
     _addCollisions(level);
     _spawningObjects(level);

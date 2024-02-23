@@ -35,6 +35,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   Future<void> _loadLevel() async {
     level = Level(
       levelName: 'house_1.tmx',
+      foregroundLevelName: 'house_1.5.tmx',
       player: player,
     )..priority = 10;
 
