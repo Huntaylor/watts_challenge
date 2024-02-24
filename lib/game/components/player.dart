@@ -5,6 +5,7 @@ import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 enum PlayerState {
   idleForward,
@@ -49,10 +50,15 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   late PlayerState playerState;
   late DirectionState directionState;
 
+  late bool isWalkingLeft;
+  late bool isWalkingRight;
+  late bool isWalkingForward;
+  late bool isWalkingBack;
+
   final Vector2 _direction = Vector2.zero();
 
-  final double stepTime = 0.5;
-  final double walkingStepTime = 0.15;
+  double stepTime = 0.5;
+  double walkingStepTime = 0.15;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
   double moveSpeed = 50;
@@ -69,6 +75,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     _loadAllAnimations();
     playerState = PlayerState.idleForward;
     directionState = DirectionState.forward;
+    isWalkingForward = true;
     return super.onLoad();
   }
 
@@ -136,6 +143,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
       // Handle other keys like shiftLeft
       if (event.logicalKey == LogicalKeyboardKey.shiftLeft) {
         moveSpeed = isKeyDown ? 150 : 50;
+        walkingStepTime += isKeyDown ? 0.10 : 0.15;
       }
     }
 
@@ -241,7 +249,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   }
 
   void _checkHorizontalCollisions() {
-    moveSpeed = 100;
+    // moveSpeed = 100;
     for (final block in game.level.collisionBlock) {
       if (checkCollisions(
         player: this,
@@ -258,7 +266,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   }
 
   void _checkVerticalCollisions() {
-    moveSpeed = 100;
+    // moveSpeed = 100;
     for (final block in game.level.collisionBlock) {
       if (checkCollisions(
         player: this,

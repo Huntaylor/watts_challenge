@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "house_1.tmx",
+    "activeFile": "house_1.5.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -11,11 +11,11 @@
             "scaleInDock": 1
         },
         "house_1.5.tmx": {
-            "scale": 1.5,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 339.6666666666667,
-                "y": 474.66666666666663
+                "x": 301.5,
+                "y": 440
             }
         },
         "house_1.5.tmx#house_layout": {
@@ -30,13 +30,14 @@
         },
         "house_1.tmx": {
             "expandedObjectLayers": [
-                2
+                2,
+                3
             ],
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 363.5,
-                "y": 388
+                "x": 480,
+                "y": 320
             }
         },
         "house_1.tmx#house_layout": {
@@ -55,11 +56,13 @@
     "map.tileWidth": 16,
     "map.width": 60,
     "openFiles": [
-        "house_1.tmx"
+        "house_1.tmx",
+        "house_1.5.tmx"
     ],
     "project": "watts_challenge.tiled-project",
     "recentFiles": [
-        "house_1.tmx"
+        "house_1.tmx",
+        "house_1.5.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
