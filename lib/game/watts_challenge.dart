@@ -22,6 +22,17 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   Player player = Player();
   late Level level;
 
+  late Map<String, dynamic> walkingForwardData;
+  late Map<String, dynamic> walkingReallyData;
+  late Map<String, dynamic> walkingBackData;
+  late Map<String, dynamic> walkingLeftData;
+  late Map<String, dynamic> walkingRightData;
+  late Map<String, dynamic> idleForwardData;
+  late Map<String, dynamic> idleReallyData;
+  late Map<String, dynamic> idleBackData;
+  late Map<String, dynamic> idleRightData;
+  late Map<String, dynamic> idleLeftData;
+
   // @override
   // Color backgroundColor() => const Color.fromARGB(255, 1, 0, 52);
 
@@ -34,8 +45,9 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   Future<void> _loadLevel() async {
     level = Level(
+      // levelName: 'house_scaled_up.tmx',
       levelName: 'house_1.tmx',
-      foregroundLevelName: 'house_1.5.tmx',
+      foregroundLevelName: 'house_1_foreground.tmx',
       player: player,
     )..priority = 10;
 
@@ -44,10 +56,12 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
     camera = CameraComponent.withFixedResolution(
       viewfinder: finder,
       world: level,
-      width: 320,
-      height: 180,
+      width: 1280,
+      height: 720,
       // width: 640,
       // height: 360,
+
+      hudComponents: [],
     );
 
     camera.follow(

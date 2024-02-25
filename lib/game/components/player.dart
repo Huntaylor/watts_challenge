@@ -5,7 +5,6 @@ import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 enum PlayerState {
   idleForward,
@@ -33,7 +32,8 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
       : super(
           anchor: Anchor.topLeft,
           priority: 1,
-          size: Vector2(14, 18),
+          // size: Vector2(14, 18),
+          size: Vector2(65, 72),
         );
 
   late final SpriteAnimation forwardAnimation;
@@ -61,7 +61,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   double walkingStepTime = 0.15;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
-  double moveSpeed = 50;
+  double moveSpeed = 200;
   double horizontalMovement = 0;
   double verticalMovement = 0;
 
@@ -142,7 +142,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
       // Handle other keys like shiftLeft
       if (event.logicalKey == LogicalKeyboardKey.shiftLeft) {
-        moveSpeed = isKeyDown ? 150 : 50;
+        moveSpeed = isKeyDown ? 200 : 350;
         walkingStepTime += isKeyDown ? 0.10 : 0.15;
       }
     }
@@ -150,56 +150,75 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     return super.onKeyEvent(event, keysPressed);
   }
 
-  void _loadAllAnimations() {
-    forwardAnimation = _spriteWalkingAnimation(
+  Future<void> _loadAllAnimations() async {
+    forwardAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingForward.path,
-      animationPath: 'player/walkingForward.png',
-      amount: 4,
+      animationPath: 'player/upscaled/walking_forward_upscaled.png',
+      jsonData: await gameRef.assets
+          .readJson('images/player/upscaled/json/walking_forward.json'),
     );
-    forwardReallyAnimation = _spriteWalkingAnimation(
+    forwardReallyAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.reallyForward.path,
-      animationPath: 'player/reallyForward.png',
-      amount: 4,
+      animationPath: 'player/upscaled/really_face_walking_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/walking_really_face.json',
+      ),
     );
-    backAnimation = _spriteWalkingAnimation(
+    backAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingBack.path,
-      animationPath: 'player/walkingBack.png',
-      amount: 4,
+      animationPath: 'player/upscaled/walking_back_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/walking_back.json',
+      ),
     );
-    leftAnimation = _spriteWalkingAnimation(
+    leftAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingLeft.path,
-      animationPath: 'player/walkingLeft.png',
-      amount: 4,
+      animationPath: 'player/upscaled/walking_left_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/walking_left.json',
+      ),
     );
-    rightAnimation = _spriteWalkingAnimation(
+    rightAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingRight.path,
-      animationPath: 'player/walkingRight.png',
-      amount: 4,
+      animationPath: 'player/upscaled/walking_right_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/walking_right.json',
+      ),
     );
-    idleForwardAnimation = _spriteAnimation(
+    idleForwardAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/idle-sheet.png',
-      amount: 2,
+      animationPath: 'player/upscaled/idle_forward_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/idle_forward.json',
+      ),
     );
-    idleReallyAnimation = _spriteAnimation(
+    idleReallyAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.reallyIdle.path,
-      animationPath: 'player/reallyIdle.png',
-      amount: 2,
+      animationPath: 'player/upscaled/idle_really_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/idle_really.json',
+      ),
     );
-    idleBackAnimation = _spriteAnimation(
+    idleBackAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/idle_back.png',
-      amount: 2,
+      animationPath: 'player/upscaled/idle_back_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/idle_back.json',
+      ),
     );
-    idleRightAnimation = _spriteAnimation(
+    idleRightAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/player_idle_right.png',
-      amount: 2,
+      animationPath: 'player/upscaled/right_idle_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/right_idle.json',
+      ),
     );
-    idleLeftAnimation = _spriteAnimation(
+    idleLeftAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.reallyIdle.path,
-      animationPath: 'player/player_idle_left.png',
-      amount: 2,
+      animationPath: 'player/upscaled/left_idle_upscaled.png',
+      jsonData: await gameRef.assets.readJson(
+        'images/player/upscaled/json/left_idle.json',
+      ),
     );
 
     // List of all animations
@@ -220,31 +239,13 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     current = PlayerState.idleForward;
   }
 
-  SpriteAnimation _spriteAnimation({
+  Future<SpriteAnimation> _spriteAnimation({
     required String animationPath,
-    required int amount,
-  }) {
-    return SpriteAnimation.fromFrameData(
+    required Map<String, dynamic> jsonData,
+  }) async {
+    return SpriteAnimation.fromAsepriteData(
       game.images.fromCache(animationPath),
-      SpriteAnimationData.sequenced(
-        amount: amount,
-        stepTime: stepTime,
-        textureSize: size,
-      ),
-    );
-  }
-
-  SpriteAnimation _spriteWalkingAnimation({
-    required String animationPath,
-    required int amount,
-  }) {
-    return SpriteAnimation.fromFrameData(
-      game.images.fromCache(animationPath),
-      SpriteAnimationData.sequenced(
-        amount: amount,
-        stepTime: walkingStepTime,
-        textureSize: size,
-      ),
+      jsonData,
     );
   }
 
