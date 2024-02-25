@@ -40,6 +40,11 @@ dev_dependencies:
 
 scripts: derry.yaml
 
+fonts:
+  - family: Pixel
+    fonts:
+      - asset: fonts/PublicPixel-z84yD.ttf
+
 flutter:
   uses-material-design: true
   generate: true
@@ -48,4 +53,5 @@ flutter:
     - assets/audio/
     - assets/images/
     - assets/images/player/
+    - assets/images/player/upscaled/
     - assets/tiles/

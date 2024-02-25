@@ -1,5 +1,6 @@
 // import 'package:environment_hackaton/bootstrap.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/game/view/game_view.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
@@ -15,14 +16,11 @@ Future<void> main() async {
   await Flame.device.fullScreen();
 
   await Flame.device.setLandscape();
-
-  // runApp(
-  //   const App(),
-  // );
-
-  final game = WattsChallenge();
   runApp(
-    //Bypasses the reset, debug mode will allow hot reset to reset the game
-    GameWidget(game: kDebugMode ? WattsChallenge() : game),
+    kDebugMode
+        ? GameWidget(
+            game: WattsChallenge(),
+          )
+        : const MyGame(),
   );
 }

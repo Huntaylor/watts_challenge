@@ -10,12 +10,15 @@
         "": {
             "scaleInDock": 1
         },
+        "#tilemap_full_layout_64": {
+            "scaleInDock": 0.33
+        },
         "house_1.5.tmx": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 301.5,
-                "y": 440
+                "x": 300.5,
+                "y": 438
             }
         },
         "house_1.5.tmx#house_layout": {
@@ -33,16 +36,22 @@
                 2,
                 3
             ],
-            "scale": 1,
-            "selectedLayer": 1,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 480,
-                "y": 320
+                "x": 327,
+                "y": 410.66666666666663
             }
         },
         "house_1.tmx#house_layout": {
             "scaleInDock": 2,
             "scaleInEditor": 1
+        },
+        "house_1.tmx#tilemap_full_layout_64": {
+            "scaleInDock": 1
+        },
+        "house_1.tmx#tilemap_full_layout_updated": {
+            "scaleInDock": 1
         },
         "house_1.tmx#tilemap_layout": {
             "scaleInDock": 1,
@@ -52,8 +61,8 @@
     "last.imagePath": "C:/Users/tiger/OneDrive/Documents/GitHub/Flutter_Flame/environment_hackaton/assets/images",
     "map.height": 40,
     "map.lastUsedFormat": "tmx",
-    "map.tileHeight": 16,
-    "map.tileWidth": 16,
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
     "map.width": 60,
     "openFiles": [
         "house_1.tmx",
@@ -65,8 +74,9 @@
         "house_1.5.tmx"
     ],
     "tileset.embedInMap": true,
+    "tileset.spacing": 2,
     "tileset.tileSize": {
-        "height": 16,
-        "width": 16
+        "height": 64,
+        "width": 64
     }
 }
