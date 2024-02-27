@@ -56,15 +56,7 @@ flutter:
     - assets/images/player/
     - assets/images/player/upscaled/
     - assets/tiles/
-    - assets/images/player/upscaled/json/walking_forward.json
-    - assets/images/player/upscaled/json/walking_really_face.json
-    - assets/images/player/upscaled/json/walking_back.json
-    - assets/images/player/upscaled/json/walking_left.json
-    - assets/images/player/upscaled/json/walking_right.json
-    - assets/images/player/upscaled/json/idle_forward.json
-    - assets/images/player/upscaled/json/idle_really.json
-    - assets/images/player/upscaled/json/idle_back.json
-    - assets/images/player/upscaled/json/right_idle.json
-    - assets/images/player/upscaled/json/left_idle.json
+    - assets/images/player/upscaled/json/
+
   shaders:
     - shaders/lightbulbs.glsl
