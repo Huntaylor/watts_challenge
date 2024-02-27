@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:environment_hackaton/game/components/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:flame/camera.dart';
@@ -33,6 +35,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   late Map<String, dynamic> idleRightData;
   late Map<String, dynamic> idleLeftData;
 
+  late FragmentProgram fragmentProgram;
+
   //Priorities
   final int levelPriority = 1;
   final int playerPriority = 2;
@@ -44,6 +48,9 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   @override
   Future<void> onLoad() async {
     await images.loadAllImages();
+
+    fragmentProgram =
+        await FragmentProgram.fromAsset('assets/shaders/lightbulbs.glsl');
 
     await _loadLevel();
   }

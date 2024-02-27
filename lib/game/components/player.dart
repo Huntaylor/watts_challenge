@@ -4,6 +4,7 @@ import 'package:environment_hackaton/game/components/utils.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/services.dart';
 
 enum PlayerState {
@@ -27,7 +28,7 @@ enum DirectionState {
 }
 
 class Player extends SpriteAnimationGroupComponent<PlayerState>
-    with HasGameRef<WattsChallenge>, KeyboardHandler {
+    with HasGameRef<WattsChallenge>, KeyboardHandler, EntityMixin {
   Player({super.position, super.current})
       : super(
           anchor: Anchor.topLeft,
@@ -153,71 +154,71 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   Future<void> _loadAllAnimations() async {
     forwardAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingForward.path,
-      animationPath: 'player/upscaled/walking_forward_upscaled.png',
+      animationPath: 'player/walking_forward.png',
       jsonData: await gameRef.assets
-          .readJson('images/player/upscaled/json/walking_forward.json'),
+          .readJson('images/player/json/walking_forward.json'),
     );
     forwardReallyAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.reallyForward.path,
-      animationPath: 'player/upscaled/really_face_walking_upscaled.png',
+      animationPath: 'player/really_face_walking.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/walking_really_face.json',
+        'images/player/json/walking_really_face.json',
       ),
     );
     backAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingBack.path,
-      animationPath: 'player/upscaled/walking_back_upscaled.png',
+      animationPath: 'player/walking_back.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/walking_back.json',
+        'images/player/json/walking_back.json',
       ),
     );
     leftAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingLeft.path,
-      animationPath: 'player/upscaled/walking_left_upscaled.png',
+      animationPath: 'player/walking_left.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/walking_left.json',
+        'images/player/json/walking_left.json',
       ),
     );
     rightAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.walkingRight.path,
-      animationPath: 'player/upscaled/walking_right_upscaled.png',
+      animationPath: 'player/walking_right.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/walking_right.json',
+        'images/player/json/walking_right.json',
       ),
     );
     idleForwardAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/upscaled/idle_forward_upscaled.png',
+      animationPath: 'player/idle_forward.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/idle_forward.json',
+        'images/player/json/idle_forward.json',
       ),
     );
     idleReallyAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.reallyIdle.path,
-      animationPath: 'player/upscaled/idle_really_upscaled.png',
+      animationPath: 'player/idle_really.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/idle_really.json',
+        'images/player/json/idle_really.json',
       ),
     );
     idleBackAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/upscaled/idle_back_upscaled.png',
+      animationPath: 'player/idle_back.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/idle_back.json',
+        'images/player/json/idle_back.json',
       ),
     );
     idleRightAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/upscaled/right_idle_upscaled.png',
+      animationPath: 'player/right_idle.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/right_idle.json',
+        'images/player/json/right_idle.json',
       ),
     );
     idleLeftAnimation = await _spriteAnimation(
       // animationPath: Assets.images.player.reallyIdle.path,
-      animationPath: 'player/upscaled/left_idle_upscaled.png',
+      animationPath: 'player/left_idle.png',
       jsonData: await gameRef.assets.readJson(
-        'images/player/upscaled/json/left_idle.json',
+        'images/player/json/left_idle.json',
       ),
     );
 
