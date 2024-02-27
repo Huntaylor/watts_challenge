@@ -58,8 +58,8 @@
   <object id="18" name="Wall" x="2816" y="1824" width="64" height="128"/>
   <object id="20" name="Wall" x="2496" y="1824" width="64" height="128"/>
   <object id="22" name="Wall" x="3072" y="832" width="64" height="1664"/>
-  <object id="24" name="Wall" x="2752" y="1440" width="64" height="124"/>
-  <object id="25" name="Wall" x="2560" y="800" width="64" height="768"/>
+  <object id="24" name="Wall" x="2752" y="1440" width="64" height="160"/>
+  <object id="25" name="Wall" x="2560" y="800" width="64" height="800"/>
   <object id="26" name="Wall" x="64" y="768" width="3072" height="64"/>
   <object id="29" name="Wall" x="896" y="832" width="64" height="352"/>
   <object id="30" name="Wall" x="1664" y="832" width="64" height="800"/>
