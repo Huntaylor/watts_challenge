@@ -25,13 +25,13 @@ class Level extends World with HasGameRef<WattsChallenge> {
     final level = await TiledComponent.load(
       levelName,
       Vector2.all(64),
-      // Vector2.all(16),
+      priority: game.levelPriority,
     );
     final foregroundLevel = await TiledComponent.load(
       foregroundLevelName,
-      Vector2.all(16),
-    )
-      ..priority = level.priority + 10;
+      Vector2.all(64),
+      priority: game.foregroundLevelPriority,
+    );
 
     await addAll([
       level,

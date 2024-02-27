@@ -142,7 +142,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
       // Handle other keys like shiftLeft
       if (event.logicalKey == LogicalKeyboardKey.shiftLeft) {
-        moveSpeed = isKeyDown ? 200 : 350;
+        moveSpeed = isKeyDown ? 350 : 200;
         walkingStepTime += isKeyDown ? 0.10 : 0.15;
       }
     }

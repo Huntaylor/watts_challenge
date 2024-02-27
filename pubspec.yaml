@@ -11,6 +11,7 @@ dependencies:
   equatable: ^2.0.5
   flame: ^1.16.0
   flame_audio: ^2.1.8
+  flame_behaviors: ^1.1.0
   flame_bloc: ^1.10.10
   flame_tiled: ^1.19.0
   flutter:
@@ -65,3 +66,5 @@ flutter:
     - assets/images/player/upscaled/json/idle_back.json
     - assets/images/player/upscaled/json/right_idle.json
     - assets/images/player/upscaled/json/left_idle.json
+  shaders:
+    - shaders/lightbulbs.glsl

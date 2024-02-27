@@ -35,14 +35,14 @@
         },
         "house_1.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
-            "scale": 0.33,
+            "scale": 0.25,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1286.3636363636363,
-                "y": 1742.4242424242425
+                "x": 1920,
+                "y": 1280
             }
         },
         "house_1.tmx#house_layout": {
@@ -64,11 +64,11 @@
             "scaleInEditor": 1
         },
         "house_1_foreground.tmx": {
-            "scale": 0.33,
+            "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1837.8787878787878,
-                "y": 1381.8181818181818
+                "x": 1920,
+                "y": 1280
             }
         },
         "house_1_foreground.tmx#tilemap_64_patched": {

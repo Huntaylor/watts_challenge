@@ -33,6 +33,11 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   late Map<String, dynamic> idleRightData;
   late Map<String, dynamic> idleLeftData;
 
+  //Priorities
+  final int levelPriority = 1;
+  final int playerPriority = 2;
+  final int foregroundLevelPriority = 3;
+
   // @override
   // Color backgroundColor() => const Color.fromARGB(255, 1, 0, 52);
 
@@ -48,8 +53,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       // levelName: 'house_scaled_up.tmx',
       levelName: 'house_1.tmx',
       foregroundLevelName: 'house_1_foreground.tmx',
-      player: player,
-    )..priority = 10;
+      player: player..priority = playerPriority,
+    );
 
     final finder = Viewfinder()..anchor = Anchor.center;
 
