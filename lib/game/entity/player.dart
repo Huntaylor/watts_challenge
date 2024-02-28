@@ -92,6 +92,52 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     super.update(dt);
   }
 
+  void stopPlayer({required DirectionState state}) {
+    const isMoving = false;
+    _direction
+      ..x = 0
+      ..y = 0;
+    switch (state) {
+      case DirectionState.left:
+        _setAnimation(state, isMoving: isMoving);
+
+      case DirectionState.right:
+        _setAnimation(state, isMoving: isMoving);
+
+      case DirectionState.forward:
+        _setAnimation(state, isMoving: isMoving);
+
+      case DirectionState.back:
+        _setAnimation(state, isMoving: isMoving);
+    }
+  }
+
+  void movePlayer({required DirectionState state}) {
+    const isMoving = true;
+    switch (state) {
+      case DirectionState.left:
+        _setAnimation(state, isMoving: isMoving);
+        _direction
+          ..x = -1
+          ..y = 0;
+      case DirectionState.right:
+        _setAnimation(state, isMoving: isMoving);
+        _direction
+          ..x = 1
+          ..y = 0;
+      case DirectionState.forward:
+        _setAnimation(state, isMoving: isMoving);
+        _direction
+          ..x = 0
+          ..y = 1;
+      case DirectionState.back:
+        _setAnimation(state, isMoving: isMoving);
+        _direction
+          ..x = 0
+          ..y = -1;
+    }
+  }
+
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     final isKeyRepeat = event is KeyRepeatEvent;

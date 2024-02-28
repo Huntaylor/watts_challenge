@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:environment_hackaton/game/components/collision_block.dart';
-import 'package:environment_hackaton/game/components/player.dart';
+import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';

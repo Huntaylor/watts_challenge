@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/player.dart';
+import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
