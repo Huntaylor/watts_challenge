@@ -12,6 +12,7 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesHudGen get hud => const $AssetsImagesHudGen();
   $AssetsImagesPlayerGen get player => const $AssetsImagesPlayerGen();
 
   /// File path: assets/images/tilemap_64.png
@@ -76,6 +77,16 @@ class $AssetsTilesGen {
         wattsChallengeTiledProject,
         wattsChallengeTiledSession
       ];
+}
+
+class $AssetsImagesHudGen {
+  const $AssetsImagesHudGen();
+
+  /// File path: assets/images/hud/dpad.png
+  AssetGenImage get dpad => const AssetGenImage('assets/images/hud/dpad.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [dpad];
 }
 
 class $AssetsImagesPlayerGen {

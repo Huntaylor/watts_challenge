@@ -1,2 +1,4 @@
 bricks:
   flutter_shader: ^1.0.1
+  bloc: ^0.3.0
+  cubit: ^0.2.0
