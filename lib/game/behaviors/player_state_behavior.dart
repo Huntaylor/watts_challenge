@@ -170,7 +170,7 @@ class PlayerStateBehavior extends Behavior<Player>
         game.images.fromCache(animationPath),
         jsonData,
       ),
-      anchor: Anchor.center,
+      anchor: Anchor.topCenter,
       position: centerPosition,
     );
   }

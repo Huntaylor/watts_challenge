@@ -38,7 +38,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   late FragmentProgram fragmentProgram;
 
-  late List<DpadEntity> hudComponents;
+  late List<IndividualDpadEntity> hudComponents;
 
   //Priorities
   final int levelPriority = 1;
@@ -60,43 +60,42 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   Future<void> _loadLevel() async {
     level = Level(
-      // levelName: 'house_scaled_up.tmx',
       levelName: 'house_1.tmx',
       foregroundLevelName: 'house_1_foreground.tmx',
       player: player..priority = playerPriority,
     );
 
-    hudComponents = [
-      DpadEntity(
+    final dpadEntities = [
+      IndividualDpadEntity(
         player: level.player,
         buttonAsset: images.fromCache('hud/dpad_middle.png'),
         buttonDownAsset: images.fromCache('hud/dpad_middle.png'),
         dpadState: DpadPositionState.middle,
       ),
-      DpadEntity(
+      IndividualDpadEntity(
         player: level.player,
         buttonAsset: images.fromCache('hud/dpad_up.png'),
         buttonDownAsset: images.fromCache('hud/dpad_up_pressed.png'),
         dpadState: DpadPositionState.up,
       ),
-      DpadEntity(
+      IndividualDpadEntity(
         player: level.player,
         buttonAsset: images.fromCache('hud/dpad_down.png'),
         buttonDownAsset: images.fromCache('hud/dpad_down_pressed.png'),
         dpadState: DpadPositionState.down,
       ),
-      DpadEntity(
+      IndividualDpadEntity(
         player: level.player,
         buttonAsset: images.fromCache('hud/dpad_right.png'),
         buttonDownAsset: images.fromCache('hud/dpad_right_pressed.png'),
         dpadState: DpadPositionState.right,
-      )..size = Vector2(82, 80),
-      DpadEntity(
+      ),
+      IndividualDpadEntity(
         player: level.player,
         buttonAsset: images.fromCache('hud/dpad_left.png'),
         buttonDownAsset: images.fromCache('hud/dpad_left_pressed.png'),
         dpadState: DpadPositionState.left,
-      )..size = Vector2(82, 80),
+      ),
     ];
 
     final finder = Viewfinder()..anchor = Anchor.center;
@@ -106,7 +105,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       world: level,
       width: 1280,
       height: 720,
-      hudComponents: hudComponents,
+      hudComponents: dpadEntities,
     );
 
     camera.follow(

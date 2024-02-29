@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/behaviors/drag_behavior.dart';
+import 'package:environment_hackaton/game/behaviors/individual_drag_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player_state_behavior.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/game.dart';
@@ -18,8 +18,48 @@ enum DpadPositionState {
   right,
 }
 
-class DpadEntity extends HudButtonComponent with EntityMixin {
+class DpadEntity extends HudMarginComponent {
   DpadEntity({
+    required this.dpadEntities,
+  }) : super(
+        /* 
+          behaviors: [
+            DpadDragBehavior(dpadEntities: dpadEntities),
+          ],
+         */
+        );
+
+  final List<IndividualDpadEntity> dpadEntities;
+
+  // @override
+  // FutureOr<void> onLoad() {
+  //   for (final button in dpadEntities) {
+  //     switch (button.dpadState) {
+  //       case DpadPositionState.middle:
+  //         button.position = middleSpritePosition;
+  //       // ..button!.size = Vector2(82, 82);
+  //       case DpadPositionState.up:
+  //         button.position = topSpritePosition;
+  //       // ..button!.size = Vector2(80, 82);
+  //       case DpadPositionState.down:
+  //         button.position = bottomSpritePosition;
+  //       // ..button!.size = Vector2(80, 82);
+  //       case DpadPositionState.left:
+  //         button.position = leftSpritePosition;
+  //       // ..button!.size = Vector2(82, 80);
+  //       case DpadPositionState.right:
+  //         button.position = rightSpritePosition;
+  //       // ..button!.size = Vector2(82, 80);
+  //     }
+  //   }
+
+  //   addAll(dpadEntities);
+  //   return super.onLoad();
+  // }
+}
+
+class IndividualDpadEntity extends HudButtonComponent with EntityMixin {
+  IndividualDpadEntity({
     required this.player,
     required this.dpadState,
     required this.buttonAsset,
@@ -35,25 +75,20 @@ class DpadEntity extends HudButtonComponent with EntityMixin {
             sprite: Sprite(
               buttonAsset,
             ),
-            size: Vector2(
-              80,
-              82,
-            ),
+            size: size,
           ),
           buttonDown: DpadSprite(
             sprite: Sprite(
               buttonDownAsset,
             ),
-            size: Vector2(
-              80,
-              82,
-            ),
+            size: size,
           ),
         );
 
   final Player player;
 
-  late final DragBehavior stateBehavior = findBehavior<DragBehavior>();
+  late final IndividualDragBehavior stateBehavior =
+      findBehavior<IndividualDragBehavior>();
 
   final Image buttonAsset;
   final Image buttonDownAsset;
@@ -71,7 +106,8 @@ class DpadEntity extends HudButtonComponent with EntityMixin {
 
   @override
   Future<void> onLoad() {
-    //Set up positioning for D-pad Sprites
+    debugMode = true;
+    // Set up positioning for D-pad Sprites
     switch (dpadState) {
       case DpadPositionState.middle:
         position = middleSpritePosition;
@@ -85,7 +121,7 @@ class DpadEntity extends HudButtonComponent with EntityMixin {
         position = rightSpritePosition;
     }
     add(
-      DragBehavior(size: size),
+      IndividualDragBehavior(),
     );
     return super.onLoad();
   }

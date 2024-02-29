@@ -43,6 +43,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   @override
   FutureOr<void> onLoad() {
+    debugMode = true;
     add(PlayerStateBehavior());
     add(PlayerControllerBehavior());
     hitbox = RectangleHitbox(
