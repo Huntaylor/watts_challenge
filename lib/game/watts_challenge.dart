@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:environment_hackaton/game/components/hud_component.dart';
+import 'package:environment_hackaton/game/entity/hud_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:flame/camera.dart';
@@ -38,6 +38,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   late FragmentProgram fragmentProgram;
 
+  late List<DpadEntity> hudComponents;
+
   //Priorities
   final int levelPriority = 1;
   final int playerPriority = 2;
@@ -64,6 +66,39 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       player: player..priority = playerPriority,
     );
 
+    hudComponents = [
+      DpadEntity(
+        player: level.player,
+        buttonAsset: images.fromCache('hud/dpad_middle.png'),
+        buttonDownAsset: images.fromCache('hud/dpad_middle.png'),
+        dpadState: DpadPositionState.middle,
+      ),
+      DpadEntity(
+        player: level.player,
+        buttonAsset: images.fromCache('hud/dpad_up.png'),
+        buttonDownAsset: images.fromCache('hud/dpad_up_pressed.png'),
+        dpadState: DpadPositionState.up,
+      ),
+      DpadEntity(
+        player: level.player,
+        buttonAsset: images.fromCache('hud/dpad_down.png'),
+        buttonDownAsset: images.fromCache('hud/dpad_down_pressed.png'),
+        dpadState: DpadPositionState.down,
+      ),
+      DpadEntity(
+        player: level.player,
+        buttonAsset: images.fromCache('hud/dpad_right.png'),
+        buttonDownAsset: images.fromCache('hud/dpad_right_pressed.png'),
+        dpadState: DpadPositionState.right,
+      )..size = Vector2(82, 80),
+      DpadEntity(
+        player: level.player,
+        buttonAsset: images.fromCache('hud/dpad_left.png'),
+        buttonDownAsset: images.fromCache('hud/dpad_left_pressed.png'),
+        dpadState: DpadPositionState.left,
+      )..size = Vector2(82, 80),
+    ];
+
     final finder = Viewfinder()..anchor = Anchor.center;
 
     camera = CameraComponent.withFixedResolution(
@@ -71,110 +106,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       world: level,
       width: 1280,
       height: 720,
-      // width: 640,
-      // height: 360,
-
-      hudComponents: [
-        DpadComponent(
-          dpadSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_middle.png'),
-            ),
-            size: Vector2.all(82),
-          ),
-          dpadDownSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_middle.png'),
-            ),
-            size: Vector2.all(82),
-          ),
-          dpadState: DpadPositionState.middle,
-        ),
-        DpadComponent(
-          dpadSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_up.png'),
-            ),
-            size: Vector2(
-              82,
-              80,
-            ),
-          ),
-          dpadDownSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_up_pressed.png'),
-            ),
-            size: Vector2(
-              82,
-              80,
-            ),
-          ),
-          dpadState: DpadPositionState.up,
-        ),
-        DpadComponent(
-          dpadSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_down.png'),
-            ),
-            size: Vector2(
-              82,
-              80,
-            ),
-          ),
-          dpadDownSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_down_pressed.png'),
-            ),
-            size: Vector2(
-              82,
-              80,
-            ),
-          ),
-          dpadState: DpadPositionState.down,
-        ),
-        DpadComponent(
-          dpadSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_right.png'),
-            ),
-            size: Vector2(
-              80,
-              82,
-            ),
-          ),
-          dpadDownSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_right_pressed.png'),
-            ),
-            size: Vector2(
-              80,
-              82,
-            ),
-          ),
-          dpadState: DpadPositionState.right,
-        ),
-        DpadComponent(
-          dpadSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_left.png'),
-            ),
-            size: Vector2(
-              80,
-              82,
-            ),
-          ),
-          dpadDownSprite: DpadSprite(
-            sprite: Sprite(
-              images.fromCache('hud/dpad_left_pressed.png'),
-            ),
-            size: Vector2(
-              80,
-              82,
-            ),
-          ),
-          dpadState: DpadPositionState.left,
-        ),
-      ],
+      hudComponents: hudComponents,
     );
 
     camera.follow(
