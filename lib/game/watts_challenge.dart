@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:environment_hackaton/game/components/hud_sprint_button_component.dart';
+import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
@@ -30,8 +30,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   late JoyStickEntity joyStickEntity;
 
-  late CustomHudButtonComponent hudSprintButtonComponent;
-  late CustomHudButtonComponent hudInteractButtonComponent;
+  late CustomHudButtonEntity hudSprintButtonComponent;
+  late CustomHudButtonEntity hudInteractButtonComponent;
 
   //Priorities
   final int levelPriority = 1;
@@ -61,7 +61,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       backgroundImage: images.fromCache('hud/joystick.png'),
     );
 
-    hudSprintButtonComponent = CustomHudButtonComponent(
+    hudSprintButtonComponent = CustomHudButtonEntity(
       player: player,
       buttonAsset: images.fromCache('hud/sprint_button.png'),
       buttonDownAsset: images.fromCache('hud/sprint_button_down.png'),
@@ -69,7 +69,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       position: Vector2(1120, 460),
       buttonType: HudButtonType.sprint,
     );
-    hudInteractButtonComponent = CustomHudButtonComponent(
+    hudInteractButtonComponent = CustomHudButtonEntity(
       player: player,
       buttonAsset: images.fromCache('hud/interact_button.png'),
       buttonDownAsset: images.fromCache('hud/interact_button_down.png'),

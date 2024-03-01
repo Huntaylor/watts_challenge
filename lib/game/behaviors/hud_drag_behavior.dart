@@ -1,11 +1,11 @@
-import 'package:environment_hackaton/game/components/hud_sprint_button_component.dart';
+import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
-class HudDragBehavior extends Behavior<CustomHudButtonComponent>
-    with DragCallbacks, HasGameRef<WattsChallenge>, EntityMixin {
+class HudDragBehavior extends Behavior<CustomHudButtonEntity>
+    with DragCallbacks, HasGameRef<WattsChallenge> {
   HudDragBehavior();
 
   @override

@@ -11,8 +11,8 @@ enum HudButtonType {
   sprint,
 }
 
-class CustomHudButtonComponent extends HudButtonComponent with EntityMixin {
-  CustomHudButtonComponent({
+class CustomHudButtonEntity extends HudButtonComponent with EntityMixin {
+  CustomHudButtonEntity({
     required this.player,
     required this.buttonType,
     required this.buttonAsset,
