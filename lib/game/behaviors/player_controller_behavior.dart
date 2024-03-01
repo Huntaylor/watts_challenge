@@ -90,7 +90,7 @@ class PlayerControllerBehavior extends Behavior<Player>
       }
 
       if (event.logicalKey == LogicalKeyboardKey.shiftLeft) {
-        parent.moveSpeed = isKeyDown ? 350 : 200;
+        isKeyDown ? getSprintState() : getWalkingState();
         // parent.walkingStepTime += isKeyDown ? 0.10 : 0.15;
       }
     }
@@ -123,5 +123,17 @@ class PlayerControllerBehavior extends Behavior<Player>
           ..x = 0
           ..y = -1;
     }
+  }
+
+  void getInteraction({required bool isInteracting}) {
+    print('INTERACTION');
+  }
+
+  void getWalkingState() {
+    parent.moveSpeed = 200;
+  }
+
+  void getSprintState() {
+    parent.moveSpeed = 350;
   }
 }

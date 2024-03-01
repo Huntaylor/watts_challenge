@@ -1,6 +1,7 @@
 import 'dart:ui';
 
-import 'package:environment_hackaton/game/entity/hud_entity.dart';
+import 'package:environment_hackaton/game/components/hud_sprint_button_component.dart';
+import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:flame/camera.dart';
@@ -25,28 +26,17 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   Player player = Player();
   late Level level;
 
-  late Map<String, dynamic> walkingForwardData;
-  late Map<String, dynamic> walkingReallyData;
-  late Map<String, dynamic> walkingBackData;
-  late Map<String, dynamic> walkingLeftData;
-  late Map<String, dynamic> walkingRightData;
-  late Map<String, dynamic> idleForwardData;
-  late Map<String, dynamic> idleReallyData;
-  late Map<String, dynamic> idleBackData;
-  late Map<String, dynamic> idleRightData;
-  late Map<String, dynamic> idleLeftData;
-
   late FragmentProgram fragmentProgram;
 
-  late List<IndividualDpadEntity> hudComponents;
+  late JoyStickEntity joyStickEntity;
+
+  late CustomHudButtonComponent hudSprintButtonComponent;
+  late CustomHudButtonComponent hudInteractButtonComponent;
 
   //Priorities
   final int levelPriority = 1;
   final int playerPriority = 2;
   final int foregroundLevelPriority = 3;
-
-  // @override
-  // Color backgroundColor() => const Color.fromARGB(255, 1, 0, 52);
 
   @override
   Future<void> onLoad() async {
@@ -65,38 +55,28 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       player: player..priority = playerPriority,
     );
 
-    final dpadEntities = [
-      IndividualDpadEntity(
-        player: level.player,
-        buttonAsset: images.fromCache('hud/dpad_middle.png'),
-        buttonDownAsset: images.fromCache('hud/dpad_middle.png'),
-        dpadState: DpadPositionState.middle,
-      ),
-      IndividualDpadEntity(
-        player: level.player,
-        buttonAsset: images.fromCache('hud/dpad_up.png'),
-        buttonDownAsset: images.fromCache('hud/dpad_up_pressed.png'),
-        dpadState: DpadPositionState.up,
-      ),
-      IndividualDpadEntity(
-        player: level.player,
-        buttonAsset: images.fromCache('hud/dpad_down.png'),
-        buttonDownAsset: images.fromCache('hud/dpad_down_pressed.png'),
-        dpadState: DpadPositionState.down,
-      ),
-      IndividualDpadEntity(
-        player: level.player,
-        buttonAsset: images.fromCache('hud/dpad_right.png'),
-        buttonDownAsset: images.fromCache('hud/dpad_right_pressed.png'),
-        dpadState: DpadPositionState.right,
-      ),
-      IndividualDpadEntity(
-        player: level.player,
-        buttonAsset: images.fromCache('hud/dpad_left.png'),
-        buttonDownAsset: images.fromCache('hud/dpad_left_pressed.png'),
-        dpadState: DpadPositionState.left,
-      ),
-    ];
+    joyStickEntity = JoyStickEntity(
+      player: player,
+      knobImage: images.fromCache('hud/knob.png'),
+      backgroundImage: images.fromCache('hud/joystick.png'),
+    );
+
+    hudSprintButtonComponent = CustomHudButtonComponent(
+      player: player,
+      buttonAsset: images.fromCache('hud/sprint_button.png'),
+      buttonDownAsset: images.fromCache('hud/sprint_button_down.png'),
+      size: Vector2.all(162),
+      position: Vector2(1120, 460),
+      buttonType: HudButtonType.sprint,
+    );
+    hudInteractButtonComponent = CustomHudButtonComponent(
+      player: player,
+      buttonAsset: images.fromCache('hud/interact_button.png'),
+      buttonDownAsset: images.fromCache('hud/interact_button_down.png'),
+      size: Vector2(256, 64),
+      position: Vector2(1120, 600),
+      buttonType: HudButtonType.interact,
+    );
 
     final finder = Viewfinder()..anchor = Anchor.center;
 
@@ -105,7 +85,11 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       world: level,
       width: 1280,
       height: 720,
-      hudComponents: dpadEntities,
+      hudComponents: [
+        joyStickEntity,
+        hudSprintButtonComponent,
+        hudInteractButtonComponent,
+      ],
     );
 
     camera.follow(
