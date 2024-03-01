@@ -80,6 +80,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
             );
             player.scale.x = 1;
             add(player);
+          case 'Light_Switch':
           default:
         }
       }

@@ -4,10 +4,12 @@ import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
+import 'package:environment_hackaton/utils/shader.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flutter/material.dart';
 // import 'package:flutter/painting.dart';
 
 class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
@@ -54,6 +56,12 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       foregroundLevelName: 'house_1_foreground.tmx',
       player: player..priority = playerPriority,
     );
+
+    //Shader?
+    final fragment =
+        await FragmentProgram.fromAsset('asset/shaders/lightbulbs.glsl');
+
+    final shader = Shader(Colors.amber, shader: fragment.fragmentShader());
 
     joyStickEntity = JoyStickEntity(
       player: player,

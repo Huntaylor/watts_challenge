@@ -10,8 +10,11 @@ import 'package:flame_behaviors/flame_behaviors.dart';
 
 class Player extends SpriteAnimationGroupComponent<PlayerState>
     with HasGameRef<WattsChallenge>, KeyboardHandler, EntityMixin {
-  Player({super.position, super.current, super.anchor})
-      : super(
+  Player({
+    super.position,
+    super.current,
+    super.anchor,
+  }) : super(
           priority: 1,
           size: Vector2(65, 72),
         );
