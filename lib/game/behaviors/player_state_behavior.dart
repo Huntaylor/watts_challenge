@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
@@ -72,72 +73,61 @@ class PlayerStateBehavior extends Behavior<Player>
 
   Future<void> _loadAllAnimations() async {
     forwardAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.walkingForward.path,
-      animationPath: 'player/walking_forward.png',
-      jsonData: await gameRef.assets
-          .readJson('images/player/json/walking_forward.json'),
+      animationPath: AssetConst.walkingForwardSprite,
+      jsonData: await gameRef.assets.readJson(AssetConst.walkingForwardJson),
     );
     forwardReallyAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.reallyForward.path,
-      animationPath: 'player/really_face_walking.png',
+      animationPath: AssetConst.reallyWalkingSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/walking_really_face.json',
+        AssetConst.reallyWalkingJson,
       ),
     );
     backAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.walkingBack.path,
-      animationPath: 'player/walking_back.png',
+      animationPath: AssetConst.walkingBackSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/walking_back.json',
+        AssetConst.walkingBackJson,
       ),
     );
     leftAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.walkingLeft.path,
-      animationPath: 'player/walking_left.png',
+      animationPath: AssetConst.walkingLeftSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/walking_left.json',
+        AssetConst.walkingLeftJson,
       ),
     );
     rightAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.walkingRight.path,
-      animationPath: 'player/walking_right.png',
+      animationPath: AssetConst.walkingRightSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/walking_right.json',
+        AssetConst.walkingRightJson,
       ),
     );
     idleForwardAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/idle_forward.png',
+      animationPath: AssetConst.idleForwardSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/idle_forward.json',
+        AssetConst.idleForwardJson,
       ),
     );
     idleReallyAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.reallyIdle.path,
-      animationPath: 'player/idle_really.png',
+      animationPath: AssetConst.idleReallySprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/idle_really.json',
+        AssetConst.idleReallyJson,
       ),
     );
     idleBackAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/idle_back.png',
+      animationPath: AssetConst.idleBackSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/idle_back.json',
+        AssetConst.idleBackJson,
       ),
     );
     idleRightAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.idle.path,
-      animationPath: 'player/right_idle.png',
+      animationPath: AssetConst.idleRightSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/right_idle.json',
+        AssetConst.idleRightJson,
       ),
     );
     idleLeftAnimation = await _spriteAnimation(
-      // animationPath: Assets.images.player.reallyIdle.path,
-      animationPath: 'player/left_idle.png',
+      animationPath: AssetConst.idleLeftSprite,
       jsonData: await gameRef.assets.readJson(
-        'images/player/json/left_idle.json',
+        AssetConst.idleLeftJson,
       ),
     );
 

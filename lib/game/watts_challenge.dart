@@ -1,15 +1,12 @@
-import 'dart:ui';
-
 import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
-import 'package:environment_hackaton/utils/shader.dart';
+import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
 // import 'package:flutter/painting.dart';
 
 class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
@@ -28,8 +25,6 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   Player player = Player();
   late Level level;
 
-  late FragmentProgram fragmentProgram;
-
   late JoyStickEntity joyStickEntity;
 
   late CustomHudButtonEntity hudSprintButtonComponent;
@@ -44,43 +39,34 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   Future<void> onLoad() async {
     await images.loadAllImages();
 
-    fragmentProgram =
-        await FragmentProgram.fromAsset('assets/shaders/lightbulbs.glsl');
-
     await _loadLevel();
   }
 
   Future<void> _loadLevel() async {
     level = Level(
-      levelName: 'house_1.tmx',
-      foregroundLevelName: 'house_1_foreground.tmx',
+      levelName: AssetConst.house1,
+      foregroundLevelName: AssetConst.houseForeground,
       player: player..priority = playerPriority,
     );
 
-    //Shader?
-    final fragment =
-        await FragmentProgram.fromAsset('asset/shaders/lightbulbs.glsl');
-
-    final shader = Shader(Colors.amber, shader: fragment.fragmentShader());
-
     joyStickEntity = JoyStickEntity(
       player: player,
-      knobImage: images.fromCache('hud/knob.png'),
-      backgroundImage: images.fromCache('hud/joystick.png'),
+      knobImage: images.fromCache(AssetConst.knob),
+      backgroundImage: images.fromCache(AssetConst.joystick),
     );
 
     hudSprintButtonComponent = CustomHudButtonEntity(
       player: player,
-      buttonAsset: images.fromCache('hud/sprint_button.png'),
-      buttonDownAsset: images.fromCache('hud/sprint_button_down.png'),
+      buttonAsset: images.fromCache(AssetConst.sprintButton),
+      buttonDownAsset: images.fromCache(AssetConst.sprintButtonDown),
       size: Vector2.all(162),
       position: Vector2(1120, 460),
       buttonType: HudButtonType.sprint,
     );
     hudInteractButtonComponent = CustomHudButtonEntity(
       player: player,
-      buttonAsset: images.fromCache('hud/interact_button.png'),
-      buttonDownAsset: images.fromCache('hud/interact_button_down.png'),
+      buttonAsset: images.fromCache(AssetConst.interactButton),
+      buttonDownAsset: images.fromCache(AssetConst.interactButtonDown),
       size: Vector2(256, 64),
       position: Vector2(1120, 600),
       buttonType: HudButtonType.interact,

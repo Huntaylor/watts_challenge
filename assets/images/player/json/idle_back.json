@@ -1,5 +1,5 @@
 { "frames": {
-   "idle_back 0.aseprite": {
+   "Sprite-0002 0.": {
     "frame": { "x": 0, "y": 0, "w": 56, "h": 72 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +7,7 @@
     "sourceSize": { "w": 56, "h": 72 },
     "duration": 250
    },
-   "idle_back 1.aseprite": {
+   "Sprite-0002 1.": {
     "frame": { "x": 56, "y": 0, "w": 56, "h": 72 },
     "rotated": false,
     "trimmed": false,
@@ -18,7 +18,8 @@
  },
  "meta": {
   "app": "https://www.aseprite.org/",
-  "version": "1.3.4-x64",
+  "version": "1.3.5-x64",
+  "image": "idle_back.png",
   "format": "RGBA8888",
   "size": { "w": 112, "h": 72 },
   "scale": "1",

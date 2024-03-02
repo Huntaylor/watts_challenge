@@ -82,11 +82,43 @@ class $AssetsTilesGen {
 class $AssetsImagesHudGen {
   const $AssetsImagesHudGen();
 
-  /// File path: assets/images/hud/dpad.png
-  AssetGenImage get dpad => const AssetGenImage('assets/images/hud/dpad.png');
+  /// File path: assets/images/hud/interact_button.png
+  AssetGenImage get interactButton =>
+      const AssetGenImage('assets/images/hud/interact_button.png');
+
+  /// File path: assets/images/hud/interact_button_down.png
+  AssetGenImage get interactButtonDown =>
+      const AssetGenImage('assets/images/hud/interact_button_down.png');
+
+  /// File path: assets/images/hud/joystick.png
+  AssetGenImage get joystick =>
+      const AssetGenImage('assets/images/hud/joystick.png');
+
+  /// File path: assets/images/hud/jumpButton.png
+  AssetGenImage get jumpButton =>
+      const AssetGenImage('assets/images/hud/jumpButton.png');
+
+  /// File path: assets/images/hud/knob.png
+  AssetGenImage get knob => const AssetGenImage('assets/images/hud/knob.png');
+
+  /// File path: assets/images/hud/sprint_button.png
+  AssetGenImage get sprintButton =>
+      const AssetGenImage('assets/images/hud/sprint_button.png');
+
+  /// File path: assets/images/hud/sprint_button_down.png
+  AssetGenImage get sprintButtonDown =>
+      const AssetGenImage('assets/images/hud/sprint_button_down.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [dpad];
+  List<AssetGenImage> get values => [
+        interactButton,
+        interactButtonDown,
+        joystick,
+        jumpButton,
+        knob,
+        sprintButton,
+        sprintButtonDown
+      ];
 }
 
 class $AssetsImagesPlayerGen {
