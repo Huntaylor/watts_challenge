@@ -35,8 +35,9 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   //Priorities
   final int levelPriority = 1;
-  final int playerPriority = 2;
-  final int foregroundLevelPriority = 3;
+  final int interactablePriority = 2;
+  final int playerPriority = 3;
+  final int foregroundLevelPriority = 4;
 
   @override
   Future<void> onLoad() async {

@@ -32,11 +32,6 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   late PlayerState playerState;
   late DirectionState directionState;
 
-  late bool isWalkingLeft;
-  late bool isWalkingRight;
-  late bool isWalkingForward;
-  late bool isWalkingBack;
-
   final Vector2 direction = Vector2.zero();
 
   double stepTime = 0.5;
@@ -59,7 +54,6 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     add(hitbox);
     playerState = PlayerState.idleForward;
     directionState = DirectionState.down;
-    isWalkingForward = true;
     return super.onLoad();
   }
 

@@ -126,7 +126,10 @@ class AssetConst {
   static String get spawnpoints => 'Spawnpoints';
 
   ///Spawnpoints - Player
-  static String get player => 'Player';
+  static const String player = 'Player';
+
+  ///Spawnpoints - Light Switches
+  static const String lightSwitch = 'Switch';
 
   ///Ground collisions
   static String get ground => 'Ground';

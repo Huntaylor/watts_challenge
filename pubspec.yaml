@@ -63,6 +63,7 @@ flutter:
     - assets/images/
     - assets/images/player/
     - assets/images/hud/
+    - assets/images/interactables/
     - assets/tiles/
     - assets/images/player/json/
 

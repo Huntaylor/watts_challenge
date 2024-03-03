@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:environment_hackaton/game/components/collision_block.dart';
+import 'package:environment_hackaton/game/entity/interactable_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
@@ -44,7 +46,9 @@ class Level extends World with HasGameRef<WattsChallenge> {
   }
 
   void _addCollisions(TiledComponent level) {
-    final collisionsLayer = level.tileMap.getLayer<ObjectGroup>('Collisions');
+    final collisionsLayer = level.tileMap.getLayer<ObjectGroup>(
+      AssetConst.collisions,
+    );
 
     if (collisionsLayer != null) {
       for (final collision in collisionsLayer.objects) {
@@ -68,20 +72,27 @@ class Level extends World with HasGameRef<WattsChallenge> {
   }
 
   void _spawningObjects(TiledComponent level) {
-    final spawnPointLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
+    final spawnPointLayer =
+        level.tileMap.getLayer<ObjectGroup>(AssetConst.spawnpoints);
 
     if (spawnPointLayer != null) {
       for (final spawnPoint in spawnPointLayer.objects) {
         switch (spawnPoint.class_) {
-          case 'Player':
+          case AssetConst.player:
             player.position = Vector2(
               spawnPoint.x,
               spawnPoint.y,
             );
             player.scale.x = 1;
             add(player);
-          case 'Light_Switch':
-          default:
+          case AssetConst.lightSwitch:
+            final lightSwitch = InteractableEntity(
+              onSprite: game.images.fromCache(AssetConst.lightSwitchOn),
+              offSprite: game.images.fromCache(AssetConst.lightSwitchOff),
+              position: spawnPoint.position,
+              size: spawnPoint.size,
+            );
+            add(lightSwitch);
         }
       }
     }

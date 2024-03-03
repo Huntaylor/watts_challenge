@@ -6,23 +6,14 @@ import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
 class PlayerCollisionBehavior extends Behavior<Player>
-    with CollisionCallbacks, HasGameRef<WattsChallenge>, HasCollisionDetection {
+    with CollisionCallbacks, HasGameRef<WattsChallenge> {
   PlayerCollisionBehavior();
 
   @override
   void update(double dt) {
-    debugMode = true;
     super.update(dt);
     _checkHorizontalCollisions();
     _checkVerticalCollisions();
-
-    final result = collisionDetection.raycastAll(
-      parent.position,
-      numberOfRays: 100,
-      maxDistance: 50,
-      ignoreHitboxes: [],
-    );
-    print(result);
   }
 
   void _checkHorizontalCollisions() {
