@@ -1,6 +1,7 @@
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyGame extends StatelessWidget {
   const MyGame({super.key});
@@ -15,7 +16,9 @@ class MyGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       builder: (context, child) => const GameView(),
-      theme: ThemeData(fontFamily: 'Pixel'),
+      theme: ThemeData(
+        textTheme: GoogleFonts.pixelifySansTextTheme(),
+      ),
     );
   }
 }

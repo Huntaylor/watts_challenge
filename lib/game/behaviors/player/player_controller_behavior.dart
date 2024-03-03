@@ -1,4 +1,4 @@
-import 'package:environment_hackaton/game/behaviors/player_state_behavior.dart';
+import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
@@ -18,33 +18,29 @@ class PlayerControllerBehavior extends Behavior<Player>
         if (event.logicalKey == LogicalKeyboardKey.keyA ||
             event.logicalKey == LogicalKeyboardKey.keyD) {
           if (event.logicalKey == LogicalKeyboardKey.keyA) {
-            parent
-              ..directionState = DirectionState.left
-              ..setMovementState(
-                isMoving: false,
-              );
+            parent.directionState = DirectionState.left;
+            setMovementState(
+              isMoving: false,
+            );
           } else {
-            parent
-              ..directionState = DirectionState.right
-              ..setMovementState(
-                isMoving: false,
-              );
+            parent.directionState = DirectionState.right;
+            setMovementState(
+              isMoving: false,
+            );
           }
           parent.direction.x = 0;
         } else if (event.logicalKey == LogicalKeyboardKey.keyW ||
             event.logicalKey == LogicalKeyboardKey.keyS) {
           if (event.logicalKey == LogicalKeyboardKey.keyW) {
-            parent
-              ..directionState = DirectionState.up
-              ..setMovementState(
-                isMoving: false,
-              );
+            parent.directionState = DirectionState.up;
+            setMovementState(
+              isMoving: false,
+            );
           } else {
-            parent
-              ..directionState = DirectionState.down
-              ..setMovementState(
-                isMoving: false,
-              );
+            parent.directionState = DirectionState.down;
+            setMovementState(
+              isMoving: false,
+            );
           }
           parent.direction.y = 0;
         }
@@ -53,17 +49,15 @@ class PlayerControllerBehavior extends Behavior<Player>
         if (event.logicalKey == LogicalKeyboardKey.keyA ||
             event.logicalKey == LogicalKeyboardKey.keyD) {
           if (event.logicalKey == LogicalKeyboardKey.keyA) {
-            parent
-              ..directionState = DirectionState.left
-              ..setMovementState(
-                isMoving: true,
-              );
+            parent.directionState = DirectionState.left;
+            setMovementState(
+              isMoving: true,
+            );
           } else {
-            parent
-              ..directionState = DirectionState.right
-              ..setMovementState(
-                isMoving: true,
-              );
+            parent.directionState = DirectionState.right;
+            setMovementState(
+              isMoving: true,
+            );
           }
           parent.direction
             ..x = event.logicalKey == LogicalKeyboardKey.keyA ? -1 : 1
@@ -71,17 +65,15 @@ class PlayerControllerBehavior extends Behavior<Player>
         } else if (event.logicalKey == LogicalKeyboardKey.keyW ||
             event.logicalKey == LogicalKeyboardKey.keyS) {
           if (event.logicalKey == LogicalKeyboardKey.keyW) {
-            parent
-              ..directionState = DirectionState.up
-              ..setMovementState(
-                isMoving: true,
-              );
+            parent.directionState = DirectionState.up;
+            setMovementState(
+              isMoving: true,
+            );
           } else {
-            parent
-              ..directionState = DirectionState.down
-              ..setMovementState(
-                isMoving: true,
-              );
+            parent.directionState = DirectionState.down;
+            setMovementState(
+              isMoving: true,
+            );
           }
           parent.direction
             ..y = event.logicalKey == LogicalKeyboardKey.keyW ? -1 : 1
@@ -135,5 +127,54 @@ class PlayerControllerBehavior extends Behavior<Player>
 
   void getSprintState() {
     parent.moveSpeed = 350;
+  }
+
+  void setMovementState({
+    required bool isMoving,
+  }) {
+    final PlayerState playerState;
+    switch (parent.directionState) {
+      // The Left direction
+      case DirectionState.left:
+        if (isMoving) {
+          playerState = PlayerState.walkingLeft;
+          movePlayer(state: parent.directionState);
+        } else {
+          stopPlayer();
+          playerState = PlayerState.idleLeft;
+        }
+
+      // The Right direction
+      case DirectionState.right:
+        if (isMoving) {
+          playerState = PlayerState.walkingRight;
+          movePlayer(state: parent.directionState);
+        } else {
+          stopPlayer();
+          playerState = PlayerState.idleRight;
+        }
+
+      // The Forward direction
+      case DirectionState.down:
+        if (isMoving) {
+          movePlayer(state: parent.directionState);
+          playerState = PlayerState.walkingForward;
+        } else {
+          stopPlayer();
+          playerState = PlayerState.idleForward;
+        }
+
+      // The Back direction
+      case DirectionState.up:
+        if (isMoving) {
+          movePlayer(state: parent.directionState);
+          playerState = PlayerState.walkingBack;
+        } else {
+          stopPlayer();
+          playerState = PlayerState.idleBack;
+        }
+    }
+
+    parent.stateBehavior.state = playerState;
   }
 }

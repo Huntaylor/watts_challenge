@@ -1,5 +1,5 @@
 { "frames": {
-   "Sprite-0002 0.": {
+   "idle_back 0.aseprite": {
     "frame": { "x": 0, "y": 0, "w": 56, "h": 72 },
     "rotated": false,
     "trimmed": false,
@@ -7,8 +7,8 @@
     "sourceSize": { "w": 56, "h": 72 },
     "duration": 250
    },
-   "Sprite-0002 1.": {
-    "frame": { "x": 56, "y": 0, "w": 56, "h": 72 },
+   "idle_back 1.aseprite": {
+    "frame": { "x": 57, "y": 0, "w": 56, "h": 72 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 56, "h": 72 },
@@ -21,7 +21,7 @@
   "version": "1.3.5-x64",
   "image": "idle_back.png",
   "format": "RGBA8888",
-  "size": { "w": 112, "h": 72 },
+  "size": { "w": 113, "h": 72 },
   "scale": "1",
   "frameTags": [
   ],

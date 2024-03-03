@@ -1,3 +1,4 @@
+import 'package:environment_hackaton/game/components/hud_text_component.dart';
 import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
@@ -30,6 +31,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   late CustomHudButtonEntity hudSprintButtonComponent;
   late CustomHudButtonEntity hudInteractButtonComponent;
 
+  late HudText hudTimer;
+
   //Priorities
   final int levelPriority = 1;
   final int playerPriority = 2;
@@ -38,6 +41,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
   @override
   Future<void> onLoad() async {
     await images.loadAllImages();
+
+    await _loadHud();
 
     await _loadLevel();
   }
@@ -49,6 +54,31 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       player: player..priority = playerPriority,
     );
 
+    final finder = Viewfinder()..anchor = Anchor.center;
+
+    camera = CameraComponent.withFixedResolution(
+      viewfinder: finder,
+      world: level,
+      width: 1280,
+      height: 720,
+      hudComponents: [
+        joyStickEntity,
+        hudSprintButtonComponent,
+        hudInteractButtonComponent,
+        // hudTimer,
+      ],
+    );
+
+    camera.follow(
+      snap: true,
+      player,
+    );
+    await addAll(
+      [camera, level],
+    );
+  }
+
+  Future<void> _loadHud() async {
     joyStickEntity = JoyStickEntity(
       player: player,
       knobImage: images.fromCache(AssetConst.knob),
@@ -72,26 +102,9 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       buttonType: HudButtonType.interact,
     );
 
-    final finder = Viewfinder()..anchor = Anchor.center;
-
-    camera = CameraComponent.withFixedResolution(
-      viewfinder: finder,
-      world: level,
-      width: 1280,
-      height: 720,
-      hudComponents: [
-        joyStickEntity,
-        hudSprintButtonComponent,
-        hudInteractButtonComponent,
-      ],
-    );
-
-    camera.follow(
-      snap: true,
-      player,
-    );
-    await addAll(
-      [camera, level],
-    );
+    // hudTimer = HudText(
+    //   size: Vector2.all(32),
+    //   position: Vector2(10, 100),
+    // );
   }
 }

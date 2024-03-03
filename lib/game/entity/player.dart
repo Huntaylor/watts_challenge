@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/behaviors/player_controller_behavior.dart';
-import 'package:environment_hackaton/game/behaviors/player_state_behavior.dart';
-import 'package:environment_hackaton/game/components/utils.dart';
+import 'package:environment_hackaton/game/behaviors/player/player_collision_behavior.dart';
+import 'package:environment_hackaton/game/behaviors/player/player_controller_behavior.dart';
+import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -25,6 +25,9 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   late final PlayerControllerBehavior controllerBehavior =
       findBehavior<PlayerControllerBehavior>();
 
+  late final PlayerCollisionBehavior collisionBehavior =
+      findBehavior<PlayerCollisionBehavior>();
+
   late RectangleHitbox hitbox;
   late PlayerState playerState;
   late DirectionState directionState;
@@ -46,9 +49,9 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   @override
   FutureOr<void> onLoad() {
-    debugMode = true;
     add(PlayerStateBehavior());
     add(PlayerControllerBehavior());
+    add(PlayerCollisionBehavior());
     hitbox = RectangleHitbox(
       size: size,
       isSolid: true,
@@ -65,91 +68,6 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     final displacement = direction.normalized() * moveSpeed * dt;
 
     position.add(displacement);
-
-    _checkHorizontalCollisions();
-    _checkVerticalCollisions();
-
     super.update(dt);
-  }
-
-  void _checkHorizontalCollisions() {
-    for (final block in game.level.collisionBlock) {
-      if (checkCollisions(
-        player: this,
-        block: block,
-      )) {
-        if (direction.x > 0) {
-          position.x = block.x - hitbox.x - hitbox.width;
-        }
-        if (direction.x < 0) {
-          position.x = block.x + block.width + hitbox.x;
-        }
-      }
-    }
-  }
-
-  void _checkVerticalCollisions() {
-    for (final block in game.level.collisionBlock) {
-      if (checkCollisions(
-        player: this,
-        block: block,
-      )) {
-        if (direction.y > 0) {
-          position.y = block.y - hitbox.y - hitbox.height;
-        }
-        if (direction.y < 0) {
-          position.y = block.y + block.height + hitbox.y;
-        }
-      }
-    }
-  }
-
-  void setMovementState({
-    required bool isMoving,
-  }) {
-    final PlayerState playerState;
-    switch (directionState) {
-      // The Left direction
-      case DirectionState.left:
-        if (isMoving) {
-          playerState = PlayerState.walkingLeft;
-          controllerBehavior.movePlayer(state: directionState);
-        } else {
-          controllerBehavior.stopPlayer();
-          playerState = PlayerState.idleLeft;
-        }
-
-      // The Right direction
-      case DirectionState.right:
-        if (isMoving) {
-          playerState = PlayerState.walkingRight;
-          controllerBehavior.movePlayer(state: directionState);
-        } else {
-          controllerBehavior.stopPlayer();
-          playerState = PlayerState.idleRight;
-        }
-
-      // The Forward direction
-      case DirectionState.down:
-        if (isMoving) {
-          controllerBehavior.movePlayer(state: directionState);
-          playerState = PlayerState.walkingForward;
-        } else {
-          controllerBehavior.stopPlayer();
-          playerState = PlayerState.idleForward;
-        }
-
-      // The Back direction
-      case DirectionState.up:
-        if (isMoving) {
-          controllerBehavior.movePlayer(state: directionState);
-          playerState = PlayerState.walkingBack;
-        } else {
-          controllerBehavior.stopPlayer();
-          playerState = PlayerState.idleBack;
-        }
-    }
-
-    stateBehavior.state = playerState;
   }
 }

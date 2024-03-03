@@ -1,4 +1,4 @@
-import 'package:environment_hackaton/game/behaviors/player_state_behavior.dart';
+import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -33,7 +33,7 @@ class JoyStickEntity extends JoystickComponent {
 
   @override
   bool onDragEnd(DragEndEvent _) {
-    player.setMovementState(
+    player.controllerBehavior.setMovementState(
       isMoving: false,
     );
     return super.onDragEnd(_);
@@ -41,7 +41,7 @@ class JoyStickEntity extends JoystickComponent {
 
   @override
   bool onDragUpdate(DragUpdateEvent event) {
-    player.setMovementState(
+    player.controllerBehavior.setMovementState(
       isMoving: true,
     );
     switch (direction) {
