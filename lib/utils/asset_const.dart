@@ -139,4 +139,9 @@ class AssetConst {
 
   ///Snowflake collisions
   static String get snowflake => 'Snowflake';
+
+  //?                      -Tiled Object Custom Property Names-
+
+  ///'interactionTime'
+  static String get interactionTime => 'interactionTime';
 }

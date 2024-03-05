@@ -1,10 +1,10 @@
-import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
+import 'package:environment_hackaton/game/entity/custom_hud_button.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
-class HudDragBehavior extends Behavior<CustomHudButtonEntity>
+class HudDragBehavior extends Behavior<CustomHudButton>
     with DragCallbacks, HasGameRef<WattsChallenge> {
   HudDragBehavior();
 
@@ -15,8 +15,10 @@ class HudDragBehavior extends Behavior<CustomHudButtonEntity>
     if (!isWithinButtonBounds(
       details!.start,
     )) {
-      parent.onReleased;
-    } else {}
+      if (parent.onReleased != null) {
+        parent.onReleased?.call();
+      }
+    }
 
     super.onDragUpdate(event);
   }

@@ -1,5 +1,5 @@
 import 'package:environment_hackaton/game/components/hud_text_component.dart';
-import 'package:environment_hackaton/game/entity/hud_sprint_button_entity.dart';
+import 'package:environment_hackaton/game/entity/custom_hud_button.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
@@ -8,9 +8,11 @@ import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+
 // import 'package:flutter/painting.dart';
 
-class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
+class WattsChallenge extends FlameGame
+    with HasKeyboardHandlerComponents, HasCollisionDetection {
   WattsChallenge(
       // required this.l10n,
       // required this.effectPlayer,
@@ -28,8 +30,8 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
 
   late JoyStickEntity joyStickEntity;
 
-  late CustomHudButtonEntity hudSprintButtonComponent;
-  late CustomHudButtonEntity hudInteractButtonComponent;
+  late CustomHudButton hudSprintButtonComponent;
+  late CustomHudButton hudInteractButtonComponent;
 
   late HudText hudTimer;
 
@@ -86,7 +88,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       backgroundImage: images.fromCache(AssetConst.joystick),
     );
 
-    hudSprintButtonComponent = CustomHudButtonEntity(
+    hudSprintButtonComponent = CustomHudButton(
       player: player,
       buttonAsset: images.fromCache(AssetConst.sprintButton),
       buttonDownAsset: images.fromCache(AssetConst.sprintButtonDown),
@@ -94,7 +96,7 @@ class WattsChallenge extends FlameGame with HasKeyboardHandlerComponents {
       position: Vector2(1120, 460),
       buttonType: HudButtonType.sprint,
     );
-    hudInteractButtonComponent = CustomHudButtonEntity(
+    hudInteractButtonComponent = CustomHudButton(
       player: player,
       buttonAsset: images.fromCache(AssetConst.interactButton),
       buttonDownAsset: images.fromCache(AssetConst.interactButtonDown),

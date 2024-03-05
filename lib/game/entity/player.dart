@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// import 'package:environment_hackaton/game/behaviors/player/player_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_controller_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
@@ -19,6 +20,8 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
           size: Vector2(65, 72),
         );
 
+  late RectangleHitbox hitbox;
+
   late final PlayerStateBehavior stateBehavior =
       findBehavior<PlayerStateBehavior>();
 
@@ -28,9 +31,14 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   late final PlayerCollisionBehavior collisionBehavior =
       findBehavior<PlayerCollisionBehavior>();
 
-  late RectangleHitbox hitbox;
+  late final PropagatingCollisionBehavior propagatingCollisionBehavior =
+      findBehavior<PropagatingCollisionBehavior>();
+
   late PlayerState playerState;
   late DirectionState directionState;
+
+  late bool isInteracting;
+  late bool isWithinRange;
 
   final Vector2 direction = Vector2.zero();
 
@@ -44,14 +52,22 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   @override
   FutureOr<void> onLoad() {
-    add(PlayerStateBehavior());
-    add(PlayerControllerBehavior());
-    add(PlayerCollisionBehavior());
-    hitbox = RectangleHitbox(
-      size: size,
-      isSolid: true,
-    );
+    isWithinRange = false;
+    isInteracting = false;
+    hitbox = RectangleHitbox.relative(
+      Vector2.all(1),
+      parentSize: size,
+      anchor: Anchor.topLeft,
+    )..debugMode = true;
     add(hitbox);
+
+    addAll([
+      PlayerStateBehavior(),
+      PlayerControllerBehavior(),
+      PlayerCollisionBehavior(),
+      PropagatingCollisionBehavior(hitbox),
+    ]);
+
     playerState = PlayerState.idleForward;
     directionState = DirectionState.down;
     return super.onLoad();

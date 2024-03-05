@@ -8,5 +8,20 @@ part 'game_state.dart';
 part 'game_cubit.g.dart';
 
 class GameCubit extends Cubit<GameState> {
-  GameCubit() : super(const GameState());
+  GameCubit()
+      : super(
+          const GameState.initial(),
+        );
+
+  void onStartLevel({
+    required int gameTimer,
+    required int elecUsage,
+  }) {
+    emit(
+      GameStartState(
+        gameTimer: gameTimer,
+        elecUsage: elecUsage,
+      ),
+    );
+  }
 }

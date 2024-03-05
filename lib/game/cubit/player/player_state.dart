@@ -16,9 +16,12 @@ class PlayerGameState extends Equatable {
 @CopyWith()
 class PlayerState extends PlayerGameState {
   const PlayerState({
-    required this.sprintState,
+    required this.isInteracting,
   });
-  final PlayerSprint sprintState;
+
+  const PlayerState.initial() : isInteracting = false;
+
+  final bool isInteracting;
 
   @override
   List<Object?> get props => _$props;

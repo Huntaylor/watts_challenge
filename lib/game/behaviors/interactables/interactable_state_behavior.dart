@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/entity/interactable_entity.dart';
+import 'package:environment_hackaton/game/entity/interactable_objects.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/components.dart';
+
 import 'package:flame_behaviors/flame_behaviors.dart';
 
 enum InteractableState {
@@ -10,19 +11,15 @@ enum InteractableState {
   off,
 }
 
-class InteractableBehaviorState extends Behavior<InteractableEntity>
+class InteractableBehaviorState extends Behavior<InteractableObjects>
     with HasGameRef<WattsChallenge> {
-  InteractableState? _interactableState;
-
   late final Sprite onSprite;
   late final Sprite offSprite;
 
-  InteractableState get state => _interactableState ?? InteractableState.on;
-
-  set state(InteractableState state) {
-    if (state != _interactableState) {
-      _interactableState = state;
-    }
+  @override
+  void update(double dt) {
+    _loadObjectState();
+    super.update(dt);
   }
 
   @override
@@ -40,8 +37,14 @@ class InteractableBehaviorState extends Behavior<InteractableEntity>
         InteractableState.on: onSprite,
         InteractableState.off: offSprite,
       }
-      ..current = InteractableState.on;
+      ..current = InteractableState.off;
   }
 
-  void interact() {}
+  void getInteraction() {
+    parent.isOn = !parent.isOn;
+  }
+
+  void _loadObjectState() {
+    parent.current = parent.isOn ? InteractableState.on : InteractableState.off;
+  }
 }

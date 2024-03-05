@@ -2,6 +2,7 @@ import 'package:environment_hackaton/game/behaviors/hud_drag_behavior.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame/input.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
@@ -11,8 +12,8 @@ enum HudButtonType {
   sprint,
 }
 
-class CustomHudButtonEntity extends HudButtonComponent with EntityMixin {
-  CustomHudButtonEntity({
+class CustomHudButton extends HudButtonComponent with EntityMixin {
+  CustomHudButton({
     required this.player,
     required this.buttonType,
     required this.buttonAsset,
@@ -42,34 +43,74 @@ class CustomHudButtonEntity extends HudButtonComponent with EntityMixin {
   final Image buttonAsset;
   final HudButtonType buttonType;
 
+  late OpacityEffect disabledEffect;
+  late OpacityEffect enabledEffect;
+
+  late bool isDisabled;
+
   late final HudDragBehavior dragBehavior = findBehavior<HudDragBehavior>();
 
   @override
   Future<void> onLoad() {
+    disabledEffect = OpacityEffect.to(
+      0.3,
+      EffectController(duration: 0.1),
+    );
+    enabledEffect = OpacityEffect.fadeIn(
+      EffectController(duration: 0.1),
+    );
+    isDisabled = !player.isWithinRange;
+    if (buttonType == HudButtonType.interact) {
+      button!.add(disabledEffect);
+    }
     add(HudDragBehavior());
     return super.onLoad();
   }
 
   @override
-  void Function()? get onPressed {
-    switch (buttonType) {
-      case HudButtonType.interact:
-        player.controllerBehavior.getInteraction(isInteracting: true);
-      case HudButtonType.sprint:
-        player.controllerBehavior.getSprintState();
+  void update(double dt) {
+    isDisabled = !player.isWithinRange;
+
+    if (isDisabled && buttonType == HudButtonType.interact) {
+      disabledEffect.reset();
+      button!.add(disabledEffect);
     }
-    return super.onPressed;
+    if (!isDisabled && buttonType == HudButtonType.interact) {
+      enabledEffect.reset();
+      button!.add(enabledEffect);
+    }
+
+    super.update(dt);
+  }
+
+  @override
+  void Function()? get onPressed {
+    if (isDisabled && buttonType == HudButtonType.interact) {
+      return null;
+    } else {
+      switch (buttonType) {
+        case HudButtonType.interact:
+          player.controllerBehavior.getInteraction(true);
+        case HudButtonType.sprint:
+          player.controllerBehavior.getSprintState();
+      }
+      return super.onPressed;
+    }
   }
 
   @override
   void Function()? get onReleased {
-    switch (buttonType) {
-      case HudButtonType.interact:
-        player.controllerBehavior.getInteraction(isInteracting: false);
-      case HudButtonType.sprint:
-        player.controllerBehavior.getWalkingState();
+    if (isDisabled && buttonType == HudButtonType.interact) {
+      return null;
+    } else {
+      switch (buttonType) {
+        case HudButtonType.interact:
+          player.controllerBehavior.getInteraction(false);
+        case HudButtonType.sprint:
+          player.controllerBehavior.getWalkingState();
+      }
+      return super.onReleased;
     }
-    return super.onReleased;
   }
 }
 

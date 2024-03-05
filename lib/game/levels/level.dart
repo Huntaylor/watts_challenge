@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:environment_hackaton/game/components/collision_block.dart';
-import 'package:environment_hackaton/game/entity/interactable_entity.dart';
+import 'package:environment_hackaton/game/entity/interactable_objects.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
@@ -86,11 +86,14 @@ class Level extends World with HasGameRef<WattsChallenge> {
             player.scale.x = 1;
             add(player);
           case AssetConst.lightSwitch:
-            final lightSwitch = InteractableEntity(
+            final lightSwitch = InteractableObjects(
+              interactionTime: spawnPoint.properties
+                  .getValue(AssetConst.interactionTime) as int,
               onSprite: game.images.fromCache(AssetConst.lightSwitchOn),
               offSprite: game.images.fromCache(AssetConst.lightSwitchOff),
               position: spawnPoint.position,
               size: spawnPoint.size,
+              spawnPointPosition: spawnPoint.position,
             );
             add(lightSwitch);
         }

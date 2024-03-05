@@ -117,8 +117,8 @@ class PlayerControllerBehavior extends Behavior<Player>
     }
   }
 
-  void getInteraction({required bool isInteracting}) {
-    print('INTERACTION');
+  void getInteraction(bool isInteracting) {
+    parent.isInteracting = isInteracting;
   }
 
   void getWalkingState() {

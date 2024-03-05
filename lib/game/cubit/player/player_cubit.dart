@@ -9,8 +9,6 @@ part 'player_cubit.g.dart';
 class PlayerCubit extends Cubit<PlayerGameState> {
   PlayerCubit()
       : super(
-          const PlayerState(
-            sprintState: PlayerSprint.sprintAvailable,
-          ),
+          const PlayerState.initial(),
         );
 }

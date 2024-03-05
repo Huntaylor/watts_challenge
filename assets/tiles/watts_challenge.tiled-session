@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "house_1_foreground.tmx",
+    "activeFile": "house_1.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -35,14 +35,14 @@
         },
         "house_1.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 0.75,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 1189,
-                "y": 2351.333333333333
+                "x": 1370,
+                "y": 1909.333333333333
             }
         },
         "house_1.tmx#house_layout": {
