@@ -11,7 +11,6 @@ import 'package:flame_behaviors/flame_behaviors.dart';
 class InteractableObjects extends SpriteGroupComponent<InteractableState>
     with EntityMixin, HasGameRef<WattsChallenge> {
   InteractableObjects({
-    required this.spawnPointPosition,
     required this.interactionTime,
     required this.onSprite,
     required this.offSprite,
@@ -24,14 +23,14 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
 
   late RectangleHitbox hitbox;
 
-  final Vector2 spawnPointPosition;
-
   final int interactionTime;
 
   final Image onSprite;
   final Image offSprite;
 
   late InteractableState deviceState;
+
+  // late InteractionTimerBar timerBar;
 
   bool isPlayerColliding = false;
 
@@ -48,6 +47,17 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
 
   @override
   FutureOr<void> onLoad() {
+    debugMode = true;
+    // timerBar = InteractionTimerBar(
+    //   anchor: Anchor.center,
+    //   interactionTime: interactionTime,
+    //   priority: gameRef.interactionBarPriority,
+    //   position: Vector2(
+    //     barPosition.x,
+    //     barPosition.y + 15,
+    //   ),
+    // );
+
     isOn = false;
     hitbox = RectangleHitbox.relative(
       Vector2.all(1),

@@ -1,5 +1,10 @@
 import 'package:environment_hackaton/game/components/hud_text_component.dart';
-import 'package:environment_hackaton/game/entity/custom_hud_button.dart';
+import 'package:environment_hackaton/game/components/interaction_time_bar.dart';
+import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
+import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
+import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.dart';
+import 'package:environment_hackaton/game/entity/hud_buttons/interaction_hud_button.dart';
+import 'package:environment_hackaton/game/entity/hud_buttons/sprint_hud_button.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
@@ -8,16 +13,21 @@ import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 
 // import 'package:flutter/painting.dart';
 
 class WattsChallenge extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
-  WattsChallenge(
+  WattsChallenge({
+    required this.gameCubit,
+  }
       // required this.l10n,
       // required this.effectPlayer,
       // required this.textStyle,
       );
+
+  final GameCubit gameCubit;
 
   // final AppLocalizations l10n;
 
@@ -30,6 +40,8 @@ class WattsChallenge extends FlameGame
 
   late JoyStickEntity joyStickEntity;
 
+  late InteractionTimerBar interactionTimerBar;
+
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
 
@@ -40,9 +52,12 @@ class WattsChallenge extends FlameGame
   final int interactablePriority = 2;
   final int playerPriority = 3;
   final int foregroundLevelPriority = 4;
+  final int interactionBarPriority = 5;
 
   @override
   Future<void> onLoad() async {
+    await _addCubits();
+
     await images.loadAllImages();
 
     await _loadHud();
@@ -68,6 +83,7 @@ class WattsChallenge extends FlameGame
         joyStickEntity,
         hudSprintButtonComponent,
         hudInteractButtonComponent,
+        interactionTimerBar,
         // hudTimer,
       ],
     );
@@ -88,26 +104,40 @@ class WattsChallenge extends FlameGame
       backgroundImage: images.fromCache(AssetConst.joystick),
     );
 
-    hudSprintButtonComponent = CustomHudButton(
+    hudSprintButtonComponent = SprintHudButton(
       player: player,
       buttonAsset: images.fromCache(AssetConst.sprintButton),
       buttonDownAsset: images.fromCache(AssetConst.sprintButtonDown),
-      size: Vector2.all(162),
-      position: Vector2(1120, 460),
-      buttonType: HudButtonType.sprint,
     );
-    hudInteractButtonComponent = CustomHudButton(
+    hudInteractButtonComponent = InteractionHudButton(
       player: player,
       buttonAsset: images.fromCache(AssetConst.interactButton),
       buttonDownAsset: images.fromCache(AssetConst.interactButtonDown),
-      size: Vector2(256, 64),
-      position: Vector2(1120, 600),
-      buttonType: HudButtonType.interact,
+    );
+
+    final timeBar = Vector2(640, 325);
+
+    interactionTimerBar = InteractionTimerBar(
+      position: timeBar,
+      interactionTime: 60,
     );
 
     // hudTimer = HudText(
     //   size: Vector2.all(32),
     //   position: Vector2(10, 100),
     // );
+  }
+
+  Future<void> _addCubits() async {
+    await add(
+      FlameMultiBlocProvider(
+        providers: [
+          FlameBlocProvider<PlayerGameCubit, PlayerGameState>(
+            create: PlayerGameCubit.new,
+          ),
+          FlameBlocProvider.value(value: gameCubit),
+        ],
+      ),
+    );
   }
 }

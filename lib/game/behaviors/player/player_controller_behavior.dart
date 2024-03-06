@@ -1,8 +1,16 @@
+import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/services.dart';
+
+enum DirectionState {
+  left,
+  right,
+  down,
+  up,
+}
 
 class PlayerControllerBehavior extends Behavior<Player>
     with KeyboardHandler, HasGameRef {
@@ -117,9 +125,8 @@ class PlayerControllerBehavior extends Behavior<Player>
     }
   }
 
-  void getInteraction(bool isInteracting) {
-    parent.isInteracting = isInteracting;
-  }
+  // ignore: use_setters_to_change_properties
+  void getInteraction({required InteractionState intState}) {}
 
   void getWalkingState() {
     parent.moveSpeed = 200;

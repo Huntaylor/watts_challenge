@@ -8,6 +8,10 @@ enum PlayerSprint {
 class PlayerGameState extends Equatable {
   const PlayerGameState();
 
+  bool get isInitial => this is PlayerState;
+
+  PlayerState get asInitial => this as PlayerState;
+
   @override
   List<Object?> get props => [];
 }

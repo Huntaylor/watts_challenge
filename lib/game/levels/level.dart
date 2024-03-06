@@ -93,7 +93,6 @@ class Level extends World with HasGameRef<WattsChallenge> {
               offSprite: game.images.fromCache(AssetConst.lightSwitchOff),
               position: spawnPoint.position,
               size: spawnPoint.size,
-              spawnPointPosition: spawnPoint.position,
             );
             add(lightSwitch);
         }

@@ -67,11 +67,11 @@ class AssetConst {
 
   //?                      -HUD Files-
 
-  ///'hud/interact_button_down.png'
-  static String get interactButtonDown => 'hud/interact_button_down.png';
+  ///'hud/e_button_down.png'
+  static String get interactButtonDown => 'hud/e_button_down.png';
 
-  ///'hud/interact_button.png'
-  static String get interactButton => 'hud/interact_button.png';
+  ///'hud/e_button.png'
+  static String get interactButton => 'hud/e_button.png';
 
   ///'hud/joystick.png'
   static String get joystick => 'hud/joystick.png';

@@ -40,8 +40,10 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
       ..current = InteractableState.off;
   }
 
-  void getInteraction() {
-    parent.isOn = !parent.isOn;
+  void objectInteraction() {
+    gameRef.interactionTimerBar
+      ..interactionTime = 60
+      ..startInteraction();
   }
 
   void _loadObjectState() {

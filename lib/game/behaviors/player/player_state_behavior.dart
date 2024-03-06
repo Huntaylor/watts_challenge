@@ -19,11 +19,9 @@ enum PlayerState {
   walkingRight,
 }
 
-enum DirectionState {
-  left,
-  right,
-  down,
-  up,
+enum InteractionState {
+  interacting,
+  notInteracting,
 }
 
 class PlayerStateBehavior extends Behavior<Player>

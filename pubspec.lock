@@ -501,6 +501,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      sha256: "170c46e237d6eb0e6e9f0e8b3f56101e14fb64f787016e42edd74c39cf8b176a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.2.0"
+  go_router_paths:
+    dependency: "direct main"
+    description:
+      name: go_router_paths
+      sha256: bd609083175a656c0cbb86de8a1b4d0dc8727abd946a7de3796be71e279f22a2
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   google_fonts:
     dependency: "direct main"
     description:

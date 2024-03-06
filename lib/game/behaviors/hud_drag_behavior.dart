@@ -1,4 +1,4 @@
-import 'package:environment_hackaton/game/entity/custom_hud_button.dart';
+import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';

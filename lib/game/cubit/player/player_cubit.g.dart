@@ -7,7 +7,7 @@ part of 'player_cubit.dart';
 // **************************************************************************
 
 extension _$PlayerStateAutoequal on PlayerState {
-  List<Object?> get _$props => [sprintState];
+  List<Object?> get _$props => [isInteracting];
 }
 
 // **************************************************************************
@@ -15,7 +15,7 @@ extension _$PlayerStateAutoequal on PlayerState {
 // **************************************************************************
 
 abstract class _$PlayerStateCWProxy {
-  PlayerState sprintState(PlayerSprint sprintState);
+  PlayerState isInteracting(bool isInteracting);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -24,7 +24,7 @@ abstract class _$PlayerStateCWProxy {
   /// PlayerState(...).copyWith(id: 12, name: "My name")
   /// ````
   PlayerState call({
-    PlayerSprint? sprintState,
+    bool? isInteracting,
   });
 }
 
@@ -35,8 +35,8 @@ class _$PlayerStateCWProxyImpl implements _$PlayerStateCWProxy {
   final PlayerState _value;
 
   @override
-  PlayerState sprintState(PlayerSprint sprintState) =>
-      this(sprintState: sprintState);
+  PlayerState isInteracting(bool isInteracting) =>
+      this(isInteracting: isInteracting);
 
   @override
 
@@ -47,14 +47,14 @@ class _$PlayerStateCWProxyImpl implements _$PlayerStateCWProxy {
   /// PlayerState(...).copyWith(id: 12, name: "My name")
   /// ````
   PlayerState call({
-    Object? sprintState = const $CopyWithPlaceholder(),
+    Object? isInteracting = const $CopyWithPlaceholder(),
   }) {
     return PlayerState(
-      sprintState:
-          sprintState == const $CopyWithPlaceholder() || sprintState == null
-              ? _value.sprintState
+      isInteracting:
+          isInteracting == const $CopyWithPlaceholder() || isInteracting == null
+              ? _value.isInteracting
               // ignore: cast_nullable_to_non_nullable
-              : sprintState as PlayerSprint,
+              : isInteracting as bool,
     );
   }
 }

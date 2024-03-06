@@ -1,3 +1,4 @@
+import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/entity/interactable_objects.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
@@ -25,8 +26,8 @@ class InteractableCollisionBehavior
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, Player other) {
-    if (other.isInteracting) {
-      parent.interactableBehaviorState.getInteraction();
+    if (other.interactionState == InteractionState.interacting) {
+      parent.interactableBehaviorState.objectInteraction();
     }
     super.onCollision(intersectionPoints, other);
   }

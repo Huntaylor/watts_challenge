@@ -13,6 +13,8 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   $AssetsImagesHudGen get hud => const $AssetsImagesHudGen();
+  $AssetsImagesInteractablesGen get interactables =>
+      const $AssetsImagesInteractablesGen();
   $AssetsImagesPlayerGen get player => const $AssetsImagesPlayerGen();
 
   /// File path: assets/images/tilemap_64.png
@@ -82,6 +84,17 @@ class $AssetsTilesGen {
 class $AssetsImagesHudGen {
   const $AssetsImagesHudGen();
 
+  /// File path: assets/images/hud/e_button.png
+  AssetGenImage get eButton =>
+      const AssetGenImage('assets/images/hud/e_button.png');
+
+  /// File path: assets/images/hud/e_button_down.aseprite
+  String get eButtonDownAseprite => 'assets/images/hud/e_button_down.aseprite';
+
+  /// File path: assets/images/hud/e_button_down.png
+  AssetGenImage get eButtonDownPng =>
+      const AssetGenImage('assets/images/hud/e_button_down.png');
+
   /// File path: assets/images/hud/interact_button.png
   AssetGenImage get interactButton =>
       const AssetGenImage('assets/images/hud/interact_button.png');
@@ -110,7 +123,10 @@ class $AssetsImagesHudGen {
       const AssetGenImage('assets/images/hud/sprint_button_down.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
+        eButton,
+        eButtonDownAseprite,
+        eButtonDownPng,
         interactButton,
         interactButtonDown,
         joystick,
@@ -119,6 +135,21 @@ class $AssetsImagesHudGen {
         sprintButton,
         sprintButtonDown
       ];
+}
+
+class $AssetsImagesInteractablesGen {
+  const $AssetsImagesInteractablesGen();
+
+  /// File path: assets/images/interactables/light_switch_off.png
+  AssetGenImage get lightSwitchOff =>
+      const AssetGenImage('assets/images/interactables/light_switch_off.png');
+
+  /// File path: assets/images/interactables/light_switch_on.png
+  AssetGenImage get lightSwitchOn =>
+      const AssetGenImage('assets/images/interactables/light_switch_on.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [lightSwitchOff, lightSwitchOn];
 }
 
 class $AssetsImagesPlayerGen {
@@ -132,23 +163,23 @@ class $AssetsImagesPlayerGen {
   AssetGenImage get idleForward =>
       const AssetGenImage('assets/images/player/idle_forward.png');
 
+  /// File path: assets/images/player/idle_left.png
+  AssetGenImage get idleLeft =>
+      const AssetGenImage('assets/images/player/idle_left.png');
+
   /// File path: assets/images/player/idle_really.png
   AssetGenImage get idleReally =>
       const AssetGenImage('assets/images/player/idle_really.png');
 
-  $AssetsImagesPlayerJsonGen get json => const $AssetsImagesPlayerJsonGen();
+  /// File path: assets/images/player/idle_right.png
+  AssetGenImage get idleRight =>
+      const AssetGenImage('assets/images/player/idle_right.png');
 
-  /// File path: assets/images/player/left_idle.png
-  AssetGenImage get leftIdle =>
-      const AssetGenImage('assets/images/player/left_idle.png');
+  $AssetsImagesPlayerJsonGen get json => const $AssetsImagesPlayerJsonGen();
 
   /// File path: assets/images/player/really_face_walking.png
   AssetGenImage get reallyFaceWalking =>
       const AssetGenImage('assets/images/player/really_face_walking.png');
-
-  /// File path: assets/images/player/right_idle.png
-  AssetGenImage get rightIdle =>
-      const AssetGenImage('assets/images/player/right_idle.png');
 
   /// File path: assets/images/player/walking_back.png
   AssetGenImage get walkingBack =>
@@ -170,10 +201,10 @@ class $AssetsImagesPlayerGen {
   List<AssetGenImage> get values => [
         idleBack,
         idleForward,
+        idleLeft,
         idleReally,
-        leftIdle,
+        idleRight,
         reallyFaceWalking,
-        rightIdle,
         walkingBack,
         walkingForward,
         walkingLeft,
@@ -190,14 +221,14 @@ class $AssetsImagesPlayerJsonGen {
   /// File path: assets/images/player/json/idle_forward.json
   String get idleForward => 'assets/images/player/json/idle_forward.json';
 
+  /// File path: assets/images/player/json/idle_left.json
+  String get idleLeft => 'assets/images/player/json/idle_left.json';
+
   /// File path: assets/images/player/json/idle_really.json
   String get idleReally => 'assets/images/player/json/idle_really.json';
 
-  /// File path: assets/images/player/json/left_idle.json
-  String get leftIdle => 'assets/images/player/json/left_idle.json';
-
-  /// File path: assets/images/player/json/right_idle.json
-  String get rightIdle => 'assets/images/player/json/right_idle.json';
+  /// File path: assets/images/player/json/idle_right.json
+  String get idleRight => 'assets/images/player/json/idle_right.json';
 
   /// File path: assets/images/player/json/walking_back.json
   String get walkingBack => 'assets/images/player/json/walking_back.json';
@@ -219,9 +250,9 @@ class $AssetsImagesPlayerJsonGen {
   List<String> get values => [
         idleBack,
         idleForward,
+        idleLeft,
         idleReally,
-        leftIdle,
-        rightIdle,
+        idleRight,
         walkingBack,
         walkingForward,
         walkingLeft,

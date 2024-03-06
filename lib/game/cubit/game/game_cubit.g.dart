@@ -6,7 +6,7 @@ part of 'game_cubit.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-extension _$GameStateStateAutoequal on GameStateState {
+extension _$GameStartStateAutoequal on GameStartState {
   List<Object?> get _$props => [
         gameTimer,
         elecUsage,
@@ -17,52 +17,52 @@ extension _$GameStateStateAutoequal on GameStateState {
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$GameStateStateCWProxy {
-  GameStateState gameTimer(Timer gameTimer);
+abstract class _$GameStartStateCWProxy {
+  GameStartState gameTimer(int gameTimer);
 
-  GameStateState elecUsage(int elecUsage);
+  GameStartState elecUsage(int elecUsage);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStateState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// GameStateState(...).copyWith(id: 12, name: "My name")
+  /// GameStartState(...).copyWith(id: 12, name: "My name")
   /// ````
-  GameStateState call({
-    Timer? gameTimer,
+  GameStartState call({
+    int? gameTimer,
     int? elecUsage,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGameStateState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGameStateState.copyWith.fieldName(...)`
-class _$GameStateStateCWProxyImpl implements _$GameStateStateCWProxy {
-  const _$GameStateStateCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGameStartState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGameStartState.copyWith.fieldName(...)`
+class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
+  const _$GameStartStateCWProxyImpl(this._value);
 
-  final GameStateState _value;
-
-  @override
-  GameStateState gameTimer(Timer gameTimer) => this(gameTimer: gameTimer);
+  final GameStartState _value;
 
   @override
-  GameStateState elecUsage(int elecUsage) => this(elecUsage: elecUsage);
+  GameStartState gameTimer(int gameTimer) => this(gameTimer: gameTimer);
+
+  @override
+  GameStartState elecUsage(int elecUsage) => this(elecUsage: elecUsage);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStateState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// GameStateState(...).copyWith(id: 12, name: "My name")
+  /// GameStartState(...).copyWith(id: 12, name: "My name")
   /// ````
-  GameStateState call({
+  GameStartState call({
     Object? gameTimer = const $CopyWithPlaceholder(),
     Object? elecUsage = const $CopyWithPlaceholder(),
   }) {
-    return GameStateState(
+    return GameStartState(
       gameTimer: gameTimer == const $CopyWithPlaceholder() || gameTimer == null
           ? _value.gameTimer
           // ignore: cast_nullable_to_non_nullable
-          : gameTimer as Timer,
+          : gameTimer as int,
       elecUsage: elecUsage == const $CopyWithPlaceholder() || elecUsage == null
           ? _value.elecUsage
           // ignore: cast_nullable_to_non_nullable
@@ -71,8 +71,8 @@ class _$GameStateStateCWProxyImpl implements _$GameStateStateCWProxy {
   }
 }
 
-extension $GameStateStateCopyWith on GameStateState {
-  /// Returns a callable class that can be used as follows: `instanceOfGameStateState.copyWith(...)` or like so:`instanceOfGameStateState.copyWith.fieldName(...)`.
+extension $GameStartStateCopyWith on GameStartState {
+  /// Returns a callable class that can be used as follows: `instanceOfGameStartState.copyWith(...)` or like so:`instanceOfGameStartState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$GameStateStateCWProxy get copyWith => _$GameStateStateCWProxyImpl(this);
+  _$GameStartStateCWProxy get copyWith => _$GameStartStateCWProxyImpl(this);
 }

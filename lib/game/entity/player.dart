@@ -36,8 +36,8 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   late PlayerState playerState;
   late DirectionState directionState;
+  late InteractionState interactionState;
 
-  late bool isInteracting;
   late bool isWithinRange;
 
   final Vector2 direction = Vector2.zero();
@@ -52,24 +52,21 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   @override
   FutureOr<void> onLoad() {
-    isWithinRange = false;
-    isInteracting = false;
+    _getInitialValues();
+
     hitbox = RectangleHitbox.relative(
       Vector2.all(1),
       parentSize: size,
       anchor: Anchor.topLeft,
     )..debugMode = true;
-    add(hitbox);
 
     addAll([
+      hitbox,
       PlayerStateBehavior(),
       PlayerControllerBehavior(),
       PlayerCollisionBehavior(),
       PropagatingCollisionBehavior(hitbox),
     ]);
-
-    playerState = PlayerState.idleForward;
-    directionState = DirectionState.down;
     return super.onLoad();
   }
 
@@ -79,5 +76,12 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
     position.add(displacement);
     super.update(dt);
+  }
+
+  void _getInitialValues() {
+    isWithinRange = false;
+    interactionState = InteractionState.notInteracting;
+    playerState = PlayerState.idleForward;
+    directionState = DirectionState.down;
   }
 }

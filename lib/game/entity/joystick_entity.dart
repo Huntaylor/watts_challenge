@@ -1,4 +1,4 @@
-import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
+import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/entity/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
