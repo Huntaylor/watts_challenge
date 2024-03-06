@@ -3,19 +3,13 @@ import 'dart:async';
 import 'package:environment_hackaton/game/behaviors/player/player_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_controller_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
-import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
-import 'package:flame_bloc/flame_bloc.dart';
 
 class Player extends SpriteAnimationGroupComponent<PlayerState>
-    with
-        HasGameRef<WattsChallenge>,
-        KeyboardHandler,
-        EntityMixin,
-        FlameBlocReader<PlayerGameCubit, PlayerGameState> {
+    with HasGameRef<WattsChallenge>, KeyboardHandler, EntityMixin {
   Player({
     super.position,
     super.current,
@@ -56,7 +50,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   double verticalMovement = 0;
 
   @override
-  Future<void> onLoad() {
+  FutureOr<void> onLoad() {
     _getInitialValues();
 
     hitbox = RectangleHitbox.relative(

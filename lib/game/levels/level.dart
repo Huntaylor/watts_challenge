@@ -93,10 +93,8 @@ class Level extends World with HasGameRef<WattsChallenge> {
               position: spawnPoint.position,
               size: spawnPoint.size,
             );
-            final timeBar = game.interactionTimerBar;
 
-            timeBar.position = spawnPoint.position;
-            addAll([lightSwitch, timeBar]);
+            add(lightSwitch);
         }
       }
     }

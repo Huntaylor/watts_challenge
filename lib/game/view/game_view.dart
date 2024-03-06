@@ -1,9 +1,10 @@
+import 'package:app_ui/app_ui.dart';
+
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/game.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyGame extends StatelessWidget {
   const MyGame({super.key});
@@ -22,7 +23,7 @@ class MyGame extends StatelessWidget {
       child: MaterialApp.router(
         builder: (context, child) => const GameView(),
         theme: ThemeData(
-          textTheme: GoogleFonts.pixelifySansTextTheme(),
+          textTheme: WattsChallengeTheme.standard.textTheme,
         ),
         routerConfig: goRoutes,
       ),
@@ -47,7 +48,6 @@ class GameView extends StatelessWidget {
               playerCubit: playerCubit,
               gameCubit: gameCubit,
             ),
-            // gameFactory: WattsChallenge.new,
             overlayBuilderMap: const {},
           ),
         ],

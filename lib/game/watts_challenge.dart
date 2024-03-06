@@ -6,14 +6,13 @@ import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.d
 import 'package:environment_hackaton/game/entity/hud_buttons/interaction_hud_button.dart';
 import 'package:environment_hackaton/game/entity/hud_buttons/sprint_hud_button.dart';
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flame_bloc/flame_bloc.dart';
 
 // import 'package:flutter/painting.dart';
 
@@ -21,6 +20,7 @@ class WattsChallenge extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
   WattsChallenge({
     required this.gameCubit,
+    required this.playerCubit,
   }
       // required this.l10n,
       // required this.effectPlayer,
@@ -28,7 +28,7 @@ class WattsChallenge extends FlameGame
       );
 
   final GameCubit gameCubit;
-
+  final PlayerGameCubit playerCubit;
   // final AppLocalizations l10n;
 
   // final AudioPlayer effectPlayer;
@@ -47,6 +47,10 @@ class WattsChallenge extends FlameGame
 
   late HudText hudTimer;
 
+  GameState get gameState => gameCubit.state;
+
+  PlayerGameState get playerGameState => playerCubit.state;
+
   //Priorities
   final int levelPriority = 1;
   final int interactablePriority = 2;
@@ -56,8 +60,6 @@ class WattsChallenge extends FlameGame
 
   @override
   Future<void> onLoad() async {
-    await _addCubits();
-
     await images.loadAllImages();
 
     await _loadHud();
@@ -84,7 +86,7 @@ class WattsChallenge extends FlameGame
         hudSprintButtonComponent,
         hudInteractButtonComponent,
         interactionTimerBar,
-        // hudTimer,
+        hudTimer,
       ],
     );
 
@@ -122,22 +124,9 @@ class WattsChallenge extends FlameGame
       interactionTime: 60,
     );
 
-    // hudTimer = HudText(
-    //   size: Vector2.all(32),
-    //   position: Vector2(10, 100),
-    // );
-  }
-
-  Future<void> _addCubits() async {
-    await add(
-      FlameMultiBlocProvider(
-        providers: [
-          FlameBlocProvider<PlayerGameCubit, PlayerGameState>(
-            create: PlayerGameCubit.new,
-          ),
-          FlameBlocProvider.value(value: gameCubit),
-        ],
-      ),
+    hudTimer = HudText(
+      size: Vector2.all(32),
+      position: Vector2(10, 100),
     );
   }
 }

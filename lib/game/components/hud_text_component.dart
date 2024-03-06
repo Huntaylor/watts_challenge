@@ -1,9 +1,12 @@
 import 'dart:async';
 
-import 'package:flame/components.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:app_ui/app_ui.dart';
+import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/app_library.dart';
 
-class HudText extends TextComponent {
+import 'package:flame/components.dart';
+
+class HudText extends TextComponent with HasGameRef<WattsChallenge> {
   HudText({
     required super.size,
     super.position,
@@ -13,12 +16,12 @@ class HudText extends TextComponent {
   late Timer countDown;
   int remainingTime = 30;
   bool timerStarted = false;
+
   @override
   FutureOr<void> onLoad() {
-    textRenderer = TextPaint(
-      style: GoogleFonts.pixelifySans(),
-    );
-    text = remainingTime.toString();
+    // remainingTime = gameRef.gameState.asStarting.gameTimer;
+
+    textRenderer = TextPaint(style: WattsChallengeTextStyle.headline1);
     countDown = Timer(
       1,
       repeat: true,
@@ -28,6 +31,8 @@ class HudText extends TextComponent {
         }
       },
     );
+
+    startTimer();
     return super.onLoad();
   }
 
@@ -38,5 +43,23 @@ class HudText extends TextComponent {
     if (timerStarted && remainingTime > 0) {
       countDown.update(dt);
     }
+    text = remainingTime.toString();
+  }
+
+  void startTimer() {
+    timerStarted = true;
+    countDown.start();
+  }
+
+  void stopTimer() {
+    timerStarted = false;
+    countDown.stop();
+  }
+
+  void resetTimer() {
+    timerStarted = false;
+    countDown.stop();
+    remainingTime = 30; // Set the initial value here
+    text = remainingTime.toString();
   }
 }

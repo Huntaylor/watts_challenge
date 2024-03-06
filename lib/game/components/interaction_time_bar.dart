@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,23 @@ class InteractionTimerBar extends PositionComponent
   double accumulatedTime = 0;
   double fixedDeltaTime = 1 / 60;
 
+  bool isInteracting = false;
+
+  double elapsedTime = 0;
+
+  @override
+  FutureOr<void> onLoad() {
+    debugMode = true;
+    return super.onLoad();
+  }
+
   @override
   void update(double dt) {
-    super.update(dt);
+    if (game.playerCubit.state.asInitial.isInteracting) {
+      isInteracting = true;
+    } else {
+      isInteracting = false;
+    }
     accumulatedTime += dt;
     while (accumulatedTime >= fixedDeltaTime) {
       if (_timer != null && _progress < interactionTime.toDouble()) {
@@ -43,25 +59,42 @@ class InteractionTimerBar extends PositionComponent
     }
   }
 
+  // @override
+  // void update(double dt) {
+  //   super.update(dt);
+  //   accumulatedTime += dt;
+  //   while (accumulatedTime >= fixedDeltaTime) {
+  //     if (_timer != null && _progress < interactionTime.toDouble()) {
+  //       _progress += fixedDeltaTime *
+  //           (interactionTime / 2); // Update progress based on time
+  //       if (_progress >= interactionTime.toDouble()) {
+  //         _progress = interactionTime.toDouble();
+  //         _timer?.stop();
+  //         if (onInteractionComplete != null) {
+  //           onInteractionComplete?.call();
+  //         }
+  //       }
+  //     }
+  //     accumulatedTime -= fixedDeltaTime;
+  //   }
+  // }
+
   @override
   void render(Canvas canvas) {
-    // Draw border rectangle
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.x, size.y),
-      Paint()..color = Colors.grey, // Example border color (you can change it)
+      Paint()..color = Colors.grey,
     );
 
-    // Calculate the ratio of progress to total interaction time
     final progressRatio = _progress / interactionTime.toDouble();
 
-    // Draw filled progress bar up to the calculated ratio
     canvas.drawRect(
       Rect.fromLTWH(
         0,
         0,
         size.x * progressRatio,
         size.y,
-      ), // Use size.x * progressRatio
+      ),
       Paint()..color = Colors.yellowAccent,
     );
 

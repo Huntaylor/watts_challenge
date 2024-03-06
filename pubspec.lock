@@ -17,6 +17,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.4.1"
+  app_ui:
+    dependency: "direct main"
+    description:
+      path: "packages/app_ui"
+      relative: true
+    source: path
+    version: "0.0.1"
   archive:
     dependency: transitive
     description:
@@ -297,6 +304,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  dart_console2:
+    dependency: transitive
+    description:
+      name: dart_console2
+      sha256: "300833ffdd8c465d454cb5007c7f29d28ac8246af5abd922f8c490e1e87c894f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   dart_style:
     dependency: transitive
     description:
@@ -493,6 +508,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
+  get_it:
+    dependency: transitive
+    description:
+      name: get_it
+      sha256: e6017ce7fdeaf218dc51a100344d8cb70134b80e28b760f8bb23c242437bafd7
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.6.7"
   glob:
     dependency: transitive
     description:
@@ -869,6 +892,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  sip_cli:
+    dependency: "direct main"
+    description:
+      name: sip_cli
+      sha256: "8542f21565fc41fa205c8c10a11aa7176140cbdc17d021cdc5ed989a48a79e01"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
+  sip_console:
+    dependency: transitive
+    description:
+      name: sip_console
+      sha256: "3cb886af41d5c1293fe74c7f61e64b9c3cfa4a0933e61ad3a3a5e1d0158fc82a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
+  sip_script_runner:
+    dependency: transitive
+    description:
+      name: sip_script_runner
+      sha256: f6e647e3e466555e46f236df82d79ecceac2a7578d8d04701257ebd808f9c94a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1110,10 +1157,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "464f5674532865248444b4c3daca12bd9bf2d7c47f759ce2617986e7229494a8"
+      sha256: "5a751eddf9db89b3e5f9d50c20ab8612296e4e8db69009788d6c8b060a84191c"
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.0"
+    version: "4.1.4"
   xdg_directories:
     dependency: transitive
     description:

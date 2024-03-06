@@ -1,4 +1,5 @@
 class AssetConst {
+  const AssetConst();
   //?                      -Player Sprite Files-
 
   ///'player/idle_back.png'
