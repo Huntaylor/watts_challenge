@@ -1,6 +1,6 @@
 import 'package:environment_hackaton/game/components/utils.dart';
 import 'package:environment_hackaton/game/entity/interactable_objects.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';

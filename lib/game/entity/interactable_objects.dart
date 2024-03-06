@@ -47,7 +47,6 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
 
   @override
   FutureOr<void> onLoad() {
-    debugMode = true;
     // timerBar = InteractionTimerBar(
     //   anchor: Anchor.center,
     //   interactionTime: interactionTime,

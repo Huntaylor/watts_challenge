@@ -1,5 +1,5 @@
 import 'package:environment_hackaton/game/behaviors/player/player.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/image_composition.dart';

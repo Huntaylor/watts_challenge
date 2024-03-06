@@ -1,6 +1,7 @@
 import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
+import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/services.dart';
@@ -13,7 +14,7 @@ enum DirectionState {
 }
 
 class PlayerControllerBehavior extends Behavior<Player>
-    with KeyboardHandler, HasGameRef {
+    with KeyboardHandler, HasGameRef<WattsChallenge> {
   PlayerControllerBehavior();
 
   @override
@@ -125,8 +126,14 @@ class PlayerControllerBehavior extends Behavior<Player>
     }
   }
 
-  // ignore: use_setters_to_change_properties
-  void getInteraction({required InteractionState intState}) {}
+  void getInteraction({required InteractionState intState}) {
+    switch (intState) {
+      case InteractionState.interacting:
+        parent.bloc.getIntercation(isInteracting: true);
+      case InteractionState.notInteracting:
+        parent.bloc.getIntercation(isInteracting: false);
+    }
+  }
 
   void getWalkingState() {
     parent.moveSpeed = 200;

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
@@ -144,7 +144,7 @@ class PlayerStateBehavior extends Behavior<Player>
     };
 
     // Set current animationdw
-    state = PlayerState.idleForward;
+    state = PlayerState.idleBack;
   }
 
   Future<SpriteAnimationComponent> _spriteAnimation({

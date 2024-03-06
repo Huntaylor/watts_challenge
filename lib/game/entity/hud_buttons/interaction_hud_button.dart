@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
 import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.dart';
 import 'package:flame/components.dart';
@@ -53,6 +55,7 @@ class InteractionHudButton extends CustomHudButton {
 
   @override
   void onTapDown(TapDownEvent event) {
+    super.onTapDown(event);
     if (isDisabled) {
       return;
     } else {
@@ -60,8 +63,6 @@ class InteractionHudButton extends CustomHudButton {
         intState: InteractionState.interacting,
       );
     }
-
-    super.onTapDown(event);
   }
 
   @override
@@ -84,5 +85,13 @@ class InteractionHudButton extends CustomHudButton {
     enabledEffect = OpacityEffect.fadeIn(
       EffectController(duration: 0.07),
     );
+  }
+
+  @override
+  void Function()? get onReleased {
+    player.controllerBehavior.getInteraction(
+      intState: InteractionState.notInteracting,
+    );
+    return super.onReleased;
   }
 }

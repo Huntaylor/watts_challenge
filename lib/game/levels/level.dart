@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:environment_hackaton/game/components/collision_block.dart';
 import 'package:environment_hackaton/game/entity/interactable_objects.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
@@ -23,7 +23,6 @@ class Level extends World with HasGameRef<WattsChallenge> {
 
   @override
   Future<void> onLoad() async {
-    // debugMode = true;
     final level = await TiledComponent.load(
       levelName,
       Vector2.all(64),
@@ -94,7 +93,10 @@ class Level extends World with HasGameRef<WattsChallenge> {
               position: spawnPoint.position,
               size: spawnPoint.size,
             );
-            add(lightSwitch);
+            final timeBar = game.interactionTimerBar;
+
+            timeBar.position = spawnPoint.position;
+            addAll([lightSwitch, timeBar]);
         }
       }
     }

@@ -23,6 +23,19 @@ class HudDragBehavior extends Behavior<CustomHudButton>
     super.onDragUpdate(event);
   }
 
+  @override
+  void onDragEnd(DragEndEvent event) {
+    final details = event.velocity;
+    if (!isWithinButtonBounds(
+      details,
+    )) {
+      if (parent.onReleased != null) {
+        parent.onReleased?.call();
+      }
+    }
+    super.onDragEnd(event);
+  }
+
   bool isWithinButtonBounds(
     Vector2 touchPosition,
   ) {

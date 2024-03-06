@@ -6,7 +6,7 @@ part of 'player_cubit.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-extension _$PlayerStateAutoequal on PlayerState {
+extension _$PlayerInteractionStateAutoequal on PlayerInteractionState {
   List<Object?> get _$props => [isInteracting];
 }
 
@@ -14,42 +14,43 @@ extension _$PlayerStateAutoequal on PlayerState {
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$PlayerStateCWProxy {
-  PlayerState isInteracting(bool isInteracting);
+abstract class _$PlayerInteractionStateCWProxy {
+  PlayerInteractionState isInteracting(bool isInteracting);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerInteractionState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// PlayerState(...).copyWith(id: 12, name: "My name")
+  /// PlayerInteractionState(...).copyWith(id: 12, name: "My name")
   /// ````
-  PlayerState call({
+  PlayerInteractionState call({
     bool? isInteracting,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfPlayerState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfPlayerState.copyWith.fieldName(...)`
-class _$PlayerStateCWProxyImpl implements _$PlayerStateCWProxy {
-  const _$PlayerStateCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfPlayerInteractionState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfPlayerInteractionState.copyWith.fieldName(...)`
+class _$PlayerInteractionStateCWProxyImpl
+    implements _$PlayerInteractionStateCWProxy {
+  const _$PlayerInteractionStateCWProxyImpl(this._value);
 
-  final PlayerState _value;
+  final PlayerInteractionState _value;
 
   @override
-  PlayerState isInteracting(bool isInteracting) =>
+  PlayerInteractionState isInteracting(bool isInteracting) =>
       this(isInteracting: isInteracting);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerInteractionState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// PlayerState(...).copyWith(id: 12, name: "My name")
+  /// PlayerInteractionState(...).copyWith(id: 12, name: "My name")
   /// ````
-  PlayerState call({
+  PlayerInteractionState call({
     Object? isInteracting = const $CopyWithPlaceholder(),
   }) {
-    return PlayerState(
+    return PlayerInteractionState(
       isInteracting:
           isInteracting == const $CopyWithPlaceholder() || isInteracting == null
               ? _value.isInteracting
@@ -59,8 +60,9 @@ class _$PlayerStateCWProxyImpl implements _$PlayerStateCWProxy {
   }
 }
 
-extension $PlayerStateCopyWith on PlayerState {
-  /// Returns a callable class that can be used as follows: `instanceOfPlayerState.copyWith(...)` or like so:`instanceOfPlayerState.copyWith.fieldName(...)`.
+extension $PlayerInteractionStateCopyWith on PlayerInteractionState {
+  /// Returns a callable class that can be used as follows: `instanceOfPlayerInteractionState.copyWith(...)` or like so:`instanceOfPlayerInteractionState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$PlayerStateCWProxy get copyWith => _$PlayerStateCWProxyImpl(this);
+  _$PlayerInteractionStateCWProxy get copyWith =>
+      _$PlayerInteractionStateCWProxyImpl(this);
 }

@@ -1,16 +1,21 @@
 import 'dart:async';
 
-// import 'package:environment_hackaton/game/behaviors/player/player_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_controller_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
+import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 
 class Player extends SpriteAnimationGroupComponent<PlayerState>
-    with HasGameRef<WattsChallenge>, KeyboardHandler, EntityMixin {
+    with
+        HasGameRef<WattsChallenge>,
+        KeyboardHandler,
+        EntityMixin,
+        FlameBlocReader<PlayerGameCubit, PlayerGameState> {
   Player({
     super.position,
     super.current,
@@ -38,7 +43,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   late DirectionState directionState;
   late InteractionState interactionState;
 
-  late bool isWithinRange;
+  bool isWithinRange = false;
 
   final Vector2 direction = Vector2.zero();
 
@@ -51,14 +56,14 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   double verticalMovement = 0;
 
   @override
-  FutureOr<void> onLoad() {
+  Future<void> onLoad() {
     _getInitialValues();
 
     hitbox = RectangleHitbox.relative(
       Vector2.all(1),
       parentSize: size,
       anchor: Anchor.topLeft,
-    )..debugMode = true;
+    );
 
     addAll([
       hitbox,
@@ -79,7 +84,6 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   }
 
   void _getInitialValues() {
-    isWithinRange = false;
     interactionState = InteractionState.notInteracting;
     playerState = PlayerState.idleForward;
     directionState = DirectionState.down;

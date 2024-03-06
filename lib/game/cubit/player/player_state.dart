@@ -8,9 +8,9 @@ enum PlayerSprint {
 class PlayerGameState extends Equatable {
   const PlayerGameState();
 
-  bool get isInitial => this is PlayerState;
+  bool get isInitial => this is PlayerInteractionState;
 
-  PlayerState get asInitial => this as PlayerState;
+  PlayerInteractionState get asInitial => this as PlayerInteractionState;
 
   @override
   List<Object?> get props => [];
@@ -18,12 +18,12 @@ class PlayerGameState extends Equatable {
 
 @autoequal
 @CopyWith()
-class PlayerState extends PlayerGameState {
-  const PlayerState({
+class PlayerInteractionState extends PlayerGameState {
+  const PlayerInteractionState({
     required this.isInteracting,
   });
 
-  const PlayerState.initial() : isInteracting = false;
+  const PlayerInteractionState.initial() : isInteracting = false;
 
   final bool isInteracting;
 

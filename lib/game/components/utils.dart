@@ -1,5 +1,5 @@
 import 'package:environment_hackaton/game/components/collision_block.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 
 bool checkCollisions({required Player player, required CollisionBlock block}) {
   final hitbox = player.hitbox;

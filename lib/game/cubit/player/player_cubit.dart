@@ -9,23 +9,14 @@ part 'player_cubit.g.dart';
 class PlayerGameCubit extends Cubit<PlayerGameState> {
   PlayerGameCubit()
       : super(
-          const PlayerState.initial(),
+          const PlayerInteractionState.initial(),
         );
 
   void getIntercation({required bool isInteracting}) {
-    while (isInteracting) {
-      emit(
-        state.asInitial.copyWith(
-          isInteracting: true,
-        ),
-      );
-    }
-    if (!isInteracting) {
-      emit(
-        state.asInitial.copyWith(
-          isInteracting: false,
-        ),
-      );
-    }
+    emit(
+      state.asInitial.copyWith(
+        isInteracting: isInteracting,
+      ),
+    );
   }
 }

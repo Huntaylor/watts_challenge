@@ -1,20 +1,17 @@
 import 'package:environment_hackaton/game/behaviors/hud_drag_behavior.dart';
-import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
-import 'package:environment_hackaton/game/entity/player.dart';
+import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/components.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame/input.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
-import 'package:flame_bloc/flame_bloc.dart';
 
 enum HudButtonType {
   interact,
   sprint,
 }
 
-class CustomHudButton extends HudButtonComponent
-    with EntityMixin, FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
+class CustomHudButton extends HudButtonComponent with EntityMixin {
   CustomHudButton({
     required this.player,
     required this.buttonType,

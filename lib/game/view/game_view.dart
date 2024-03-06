@@ -1,4 +1,5 @@
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
+import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/game.dart';
@@ -11,8 +12,11 @@ class MyGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<PlayerGameCubit>(
+          create: (_) => PlayerGameCubit(),
+        ),
         BlocProvider<GameCubit>(
-          create: (context) => GameCubit(),
+          create: (_) => GameCubit(),
         ),
       ],
       child: MaterialApp.router(
@@ -31,13 +35,17 @@ class GameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final playerCubit = context.read<PlayerGameCubit>();
+    final gameCubit = context.read<GameCubit>();
+
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
         children: [
           GameWidget<WattsChallenge>.controlled(
             gameFactory: () => WattsChallenge(
-              gameCubit: context.read<GameCubit>(),
+              playerCubit: playerCubit,
+              gameCubit: gameCubit,
             ),
             // gameFactory: WattsChallenge.new,
             overlayBuilderMap: const {},
