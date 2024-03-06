@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:environment_hackaton/game/game.dart';
-import 'package:environment_hackaton/utils/app_library.dart';
-
 import 'package:flame/components.dart';
 
 class HudText extends TextComponent with HasGameRef<WattsChallenge> {

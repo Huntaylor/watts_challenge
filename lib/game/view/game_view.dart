@@ -40,17 +40,19 @@ class GameView extends StatelessWidget {
     final gameCubit = context.read<GameCubit>();
 
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          GameWidget<WattsChallenge>.controlled(
-            gameFactory: () => WattsChallenge(
-              playerCubit: playerCubit,
-              gameCubit: gameCubit,
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            GameWidget<WattsChallenge>.controlled(
+              gameFactory: () => WattsChallenge(
+                playerCubit: playerCubit,
+                gameCubit: gameCubit,
+              ),
+              overlayBuilderMap: const {},
             ),
-            overlayBuilderMap: const {},
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

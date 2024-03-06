@@ -126,14 +126,20 @@ class AssetConst {
   ///Spawnpoints
   static String get spawnpoints => 'Spawnpoints';
 
+  ///Shaders
+  static String get shaders => 'Shaders';
+
   ///Spawnpoints - Player
   static const String player = 'Player';
 
   ///Spawnpoints - Light Switches
   static const String lightSwitch = 'Switch';
 
-  ///Ground collisions
-  static String get ground => 'Ground';
+  ///Shaders Class - LightShaders
+  static const String lightShaders = 'LightShaders';
+
+  ///Shaders - Hallway
+  static String get hallway => 'Hallway';
 
   ///Platform collisions
   static String get platform => 'Platform';
@@ -145,4 +151,9 @@ class AssetConst {
 
   ///'interactionTime'
   static String get interactionTime => 'interactionTime';
+
+  //?                      -Shader Names-
+
+  ///Darkening Shader - 'shaders/darkening_shader.glsl'
+  static String get darkeningShader => 'assets/shaders/darkening_shader.glsl';
 }

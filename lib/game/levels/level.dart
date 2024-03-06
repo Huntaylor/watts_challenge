@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/collision_block.dart';
-import 'package:environment_hackaton/game/entity/interactable_objects.dart';
-import 'package:environment_hackaton/game/entity/player_entity.dart';
+import 'package:environment_hackaton/game/components/components.dart';
+import 'package:environment_hackaton/game/components/shader_component.dart';
+import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
@@ -41,6 +42,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
 
     _addCollisions(level);
     _spawningObjects(level);
+    _addShaders(level);
     return super.onLoad();
   }
 
@@ -95,6 +97,23 @@ class Level extends World with HasGameRef<WattsChallenge> {
             );
 
             add(lightSwitch);
+        }
+      }
+    }
+  }
+
+  void _addShaders(TiledComponent level) {
+    final shadersLayer =
+        level.tileMap.getLayer<ObjectGroup>(AssetConst.shaders);
+
+    if (shadersLayer != null) {
+      for (final lightShaders in shadersLayer.objects) {
+        switch (lightShaders.class_) {
+          case AssetConst.lightShaders:
+            final lightShader = LightShaderEntity(
+              position: lightShaders.position,
+            );
+            add(lightShader);
         }
       }
     }

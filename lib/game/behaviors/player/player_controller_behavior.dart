@@ -127,6 +127,7 @@ class PlayerControllerBehavior extends Behavior<Player>
   }
 
   void getInteraction({required InteractionState intState}) {
+    parent.interactionState = intState;
     switch (intState) {
       case InteractionState.interacting:
         gameRef.playerCubit.getIntercation(isInteracting: true);

@@ -29,6 +29,9 @@ class InteractableCollisionBehavior
     if (other.interactionState == InteractionState.interacting) {
       parent.interactableBehaviorState.objectInteraction();
     }
+    if (other.interactionState == InteractionState.notInteracting) {
+      parent.interactableBehaviorState.stopInteraction();
+    }
     super.onCollision(intersectionPoints, other);
   }
 }

@@ -16,6 +16,8 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
   late final Sprite onSprite;
   late final Sprite offSprite;
 
+  bool hasStarted = false;
+
   @override
   void update(double dt) {
     _loadObjectState();
@@ -41,9 +43,22 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
   }
 
   void objectInteraction() {
-    gameRef.interactionTimerBar
-      ..interactionTime = 60
-      ..startInteraction();
+    if (!hasStarted) {
+      gameRef.interactionTimerBar
+        ..interactionTime = parent.interactionTime
+        ..startInteraction();
+      hasStarted = true;
+    }
+  }
+
+  void stopInteraction() {
+    if (hasStarted) {
+      print('stop');
+      gameRef.interactionTimerBar
+        ..interactionTime = parent.interactionTime
+        ..cancelInteraction();
+      hasStarted = false;
+    }
   }
 
   void _loadObjectState() {

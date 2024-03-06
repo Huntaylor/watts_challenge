@@ -14,9 +14,9 @@ class JoyStickEntity extends JoystickComponent {
             sprite: Sprite(
               knobImage,
             ),
-            size: Vector2.all(64),
+            size: Vector2.all(160),
           ),
-          knobRadius: 96,
+          knobRadius: 64,
           size: 128,
           background: SpriteComponent(
             sprite: Sprite(

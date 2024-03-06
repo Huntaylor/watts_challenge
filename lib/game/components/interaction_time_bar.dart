@@ -37,11 +37,7 @@ class InteractionTimerBar extends PositionComponent
 
   @override
   void update(double dt) {
-    if (game.playerCubit.state.asInitial.isInteracting) {
-      isInteracting = true;
-    } else {
-      isInteracting = false;
-    }
+    super.update(dt);
     accumulatedTime += dt;
     while (accumulatedTime >= fixedDeltaTime) {
       if (_timer != null && _progress < interactionTime.toDouble()) {
@@ -58,26 +54,6 @@ class InteractionTimerBar extends PositionComponent
       accumulatedTime -= fixedDeltaTime;
     }
   }
-
-  // @override
-  // void update(double dt) {
-  //   super.update(dt);
-  //   accumulatedTime += dt;
-  //   while (accumulatedTime >= fixedDeltaTime) {
-  //     if (_timer != null && _progress < interactionTime.toDouble()) {
-  //       _progress += fixedDeltaTime *
-  //           (interactionTime / 2); // Update progress based on time
-  //       if (_progress >= interactionTime.toDouble()) {
-  //         _progress = interactionTime.toDouble();
-  //         _timer?.stop();
-  //         if (onInteractionComplete != null) {
-  //           onInteractionComplete?.call();
-  //         }
-  //       }
-  //     }
-  //     accumulatedTime -= fixedDeltaTime;
-  //   }
-  // }
 
   @override
   void render(Canvas canvas) {
@@ -101,6 +77,8 @@ class InteractionTimerBar extends PositionComponent
     super.render(canvas);
   }
 
+  void resetInteraction() {}
+
   void startInteraction() {
     _progress = 0.0;
     final interactionDuration = interactionTime.toDouble();
@@ -119,5 +97,44 @@ class InteractionTimerBar extends PositionComponent
   void cancelInteraction() {
     _timer?.stop();
     _progress = 0.0;
+  }
+}
+
+class InteractionProgressManager extends Component
+    with HasGameRef<WattsChallenge> {
+  InteractionProgressManager({required this.interactionTime});
+  final int interactionTime;
+  bool isInteracting = false;
+  double elapsedTime = 0;
+
+  @override
+  void onMount() {
+    super.onMount();
+    // Listen for the interact button press and release events
+    // gameRef.onPanStart.listen((details) {
+    //   if (object.containsPoint(details.startPosition)) {
+    //     isInteracting = true;
+    //     elapsedTime = 0;
+    //   }
+    // });
+
+    // gameRef.onPanEnd.listen((_) {
+    //   isInteracting = false;
+    // });
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if (isInteracting) {
+      elapsedTime += dt;
+      if (elapsedTime >= interactionTime) {
+        // Interaction completed
+        isInteracting = false;
+        elapsedTime = 0;
+        // Perform the desired action here
+        print('Interaction completed for $interactionTime');
+      }
+    }
   }
 }

@@ -73,4 +73,4 @@ flutter:
     - assets/images/player/json/
 
   shaders:
-    - assets/shaders/lightbulbs.glsl
+    - assets/shaders/darkening_shader.glsl

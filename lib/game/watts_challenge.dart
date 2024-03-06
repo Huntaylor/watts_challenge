@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:environment_hackaton/game/components/hud_text_component.dart';
 import 'package:environment_hackaton/game/components/interaction_time_bar.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
@@ -8,6 +10,7 @@ import 'package:environment_hackaton/game/entity/hud_buttons/sprint_hud_button.d
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
+import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
@@ -34,6 +37,8 @@ class WattsChallenge extends FlameGame
   // final AudioPlayer effectPlayer;
 
   // final TextStyle textStyle;
+
+  late Shader shader;
 
   Player player = Player();
   late Level level;
