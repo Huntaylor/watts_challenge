@@ -1,38 +1,41 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/shader_component.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/components.dart';
+import 'package:flutter_shaders/flutter_shaders.dart';
 
 class LightShaderEntity extends PositionComponent {
   LightShaderEntity({
+    required this.shader,
     super.position,
     super.anchor,
     super.size,
+    super.priority,
   });
   late ValueNotifier<bool> isLightOn;
+  final FragmentShader shader;
 
-  late ShaderComponent shaderComponent;
+  late Size shaderSize;
 
   @override
   FutureOr<void> onLoad() {
-    priority = 25;
-    shaderComponent = ShaderComponent(
-      uniforms: {
-        'lightPosition':
-            Float32List.fromList([0.5, 0.5]), // Set the light position
-        'lightRadius': 0.3, // Set the light radius
-        'darkness': 0.0, // Set the initial darkness level (0.0 = no darkness)
-      },
-    );
+    shaderSize = Size(width, height);
 
-    isLightOn = ValueNotifier(false);
     return super.onLoad();
   }
 
   @override
-  void update(double dt) {
-    shaderComponent.uniforms['darkness'] = isLightOn.value ? 0.0 : 1.0;
-    super.update(dt);
+  void render(Canvas canvas) {
+    shader.setFloatUniforms((value) {
+      value
+        ..setSize(shaderSize)
+        ..setFloats(Float32List.fromList([.5, .5]))
+        ..setFloat(1) // Set the lights (transparency)
+        ..setFloat(.8); // Set the strength of the darkness
+    });
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, size.x, size.y),
+      Paint()..shader = shader,
+    );
   }
 }

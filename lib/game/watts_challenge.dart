@@ -10,7 +10,6 @@ import 'package:environment_hackaton/game/entity/hud_buttons/sprint_hud_button.d
 import 'package:environment_hackaton/game/entity/joystick_entity.dart';
 import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
-import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
@@ -38,7 +37,7 @@ class WattsChallenge extends FlameGame
 
   // final TextStyle textStyle;
 
-  late Shader shader;
+  late FragmentShader shader;
 
   Player player = Player();
   late Level level;
@@ -66,6 +65,12 @@ class WattsChallenge extends FlameGame
   @override
   Future<void> onLoad() async {
     await images.loadAllImages();
+
+    final program = await FragmentProgram.fromAsset(
+      AssetConst.darkeningShader,
+    );
+
+    shader = program.fragmentShader();
 
     await _loadHud();
 

@@ -48,8 +48,7 @@
 </data>
  </layer>
  <objectgroup color="#ffff00" id="8" name="Shaders">
-  <object id="91" name="Hallway" type="LightShader" x="1024" y="1856" width="192" height="512"/>
-  <object id="105" name="Hallway" type="LightShaders" x="64" y="1728" width="1664" height="128"/>
+  <object id="105" name="Hallway" type="LightShaders" x="64" y="1664" width="1664" height="192"/>
  </objectgroup>
  <objectgroup color="#00ff00" id="3" name="Collisions">
   <object id="2" name="Wall" type="Wall" x="0" y="768" width="64" height="1728"/>
@@ -85,7 +84,7 @@
   <object id="55" name="Wall" type="Wall" x="896" y="1536" width="64" height="96"/>
  </objectgroup>
  <objectgroup color="#ffaaff" id="2" name="Spawnpoints">
-  <object id="1" name="Player" type="Player" x="1088" y="2240" width="56" height="72"/>
+  <object id="1" name="Player" type="Player" x="768" y="1728" width="56" height="72"/>
   <object id="92" name="Switch" type="Switch" x="1088" y="1664" width="16" height="32">
    <properties>
     <property name="interactionTime" type="int" value="1"/>

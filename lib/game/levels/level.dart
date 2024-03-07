@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:environment_hackaton/game/components/components.dart';
-import 'package:environment_hackaton/game/components/shader_component.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/game.dart';
-import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
@@ -42,7 +40,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
 
     _addCollisions(level);
     _spawningObjects(level);
-    _addShaders(level);
+    await _addShaders(level);
     return super.onLoad();
   }
 
@@ -102,7 +100,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
     }
   }
 
-  void _addShaders(TiledComponent level) {
+  Future<void> _addShaders(TiledComponent level) async {
     final shadersLayer =
         level.tileMap.getLayer<ObjectGroup>(AssetConst.shaders);
 
@@ -111,7 +109,13 @@ class Level extends World with HasGameRef<WattsChallenge> {
         switch (lightShaders.class_) {
           case AssetConst.lightShaders:
             final lightShader = LightShaderEntity(
-              position: lightShaders.position,
+              shader: gameRef.shader,
+              priority: 30,
+              size: lightShaders.size,
+              position: Vector2(
+                lightShaders.position.x,
+                lightShaders.position.y,
+              ),
             );
             add(lightShader);
         }
