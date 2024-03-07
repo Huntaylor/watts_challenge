@@ -108,7 +108,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
       for (final lightShaders in shadersLayer.objects) {
         switch (lightShaders.class_) {
           case AssetConst.lightShaders:
-            final lightShader = LightShaderEntity(
+            final lightShaderEntity = LightShaderEntity(
               shader: gameRef.shader,
               priority: 30,
               size: lightShaders.size,
@@ -117,7 +117,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
                 lightShaders.position.y,
               ),
             );
-            add(lightShader);
+            add(lightShaderEntity);
         }
       }
     }

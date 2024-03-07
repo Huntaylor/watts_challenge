@@ -30,8 +30,8 @@ class LightShaderEntity extends PositionComponent {
       value
         ..setSize(shaderSize)
         ..setFloats(Float32List.fromList([.5, .5]))
-        ..setFloat(1) // Set the lights (transparency)
-        ..setFloat(.8); // Set the strength of the darkness
+        ..setFloat(0) // Set the lights (transparency)
+        ..setFloat(.9); // Set the strength of the darkness
     });
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.x, size.y),
