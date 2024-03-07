@@ -896,10 +896,10 @@ packages:
     dependency: "direct main"
     description:
       name: sip_cli
-      sha256: "8542f21565fc41fa205c8c10a11aa7176140cbdc17d021cdc5ed989a48a79e01"
+      sha256: "61afbe86eee9acbc2408bc265ca1102a8f74070b3cf971ae158f0025fc640619"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "0.1.2+1"
   sip_console:
     dependency: transitive
     description:
