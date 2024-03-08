@@ -144,13 +144,46 @@ class AssetConst {
   ///Platform collisions
   static String get platform => 'Platform';
 
-  ///Snowflake collisions
-  static String get snowflake => 'Snowflake';
-
   //?                      -Tiled Object Custom Property Names-
 
   ///'interactionTime'
-  static String get interactionTime => 'interactionTime';
+  static const String interactionTime = 'interactionTime';
+
+  ///'Hallway'
+  static const String hallwayProperty = 'Hallway';
+
+  ///'MasterBedroom'
+  static const String masterBedroomProperty = 'MasterBedroom';
+
+  ///'MasterBathroom'
+  static const String masterBathroomProperty = 'MasterBathroom';
+
+  ///'MasterCloset'
+  static const String masterClosetProperty = 'MasterCloset';
+
+  ///'Bedroom1'
+  static const String bedroom1Property = 'Bedroom1';
+
+  ///'BedroomCloset1'
+  static const String bedroomCloset1Property = 'BedroomCloset1';
+
+  ///'Bedroom2'
+  static const String bedroom2Property = 'Bedroom2';
+
+  ///'BedroomCloset2'
+  static const String bedroomCloset2Property = 'BedroomCloset2';
+
+  ///'LaundryRoom'
+  static const String laundryRoomProperty = 'LaundryRoom';
+
+  ///'Garage'
+  static const String garageProperty = 'Garage';
+
+  ///'Kitchen'
+  static const String kitchenProperty = 'Kitchen';
+
+  ///'Pantry'
+  static const String pantryProperty = 'Pantry';
 
   //?                      -Shader Names-
 

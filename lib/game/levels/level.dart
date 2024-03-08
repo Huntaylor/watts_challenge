@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:environment_hackaton/game/behaviors/behaviors.dart';
 import 'package:environment_hackaton/game/components/components.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/game.dart';
@@ -39,7 +40,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
     ]);
 
     _addCollisions(level);
-    _spawningObjects(level);
+    await _spawningObjects(level);
     await _addShaders(level);
     return super.onLoad();
   }
@@ -70,7 +71,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
     }
   }
 
-  void _spawningObjects(TiledComponent level) {
+  Future<void> _spawningObjects(TiledComponent level) async {
     final spawnPointLayer =
         level.tileMap.getLayer<ObjectGroup>(AssetConst.spawnpoints);
 
@@ -86,6 +87,10 @@ class Level extends World with HasGameRef<WattsChallenge> {
             add(player);
           case AssetConst.lightSwitch:
             final lightSwitch = InteractableObjects(
+              lightSwitchState: await getSwitchState(spawnPoint.name),
+              // lightSwitchState: (spawnPoint.name == 'Hallway')
+              //     ? LightSwitchState.hallway
+              //     : LightSwitchState.none,
               interactionTime: spawnPoint.properties
                   .getValue(AssetConst.interactionTime) as int,
               onSprite: game.images.fromCache(AssetConst.lightSwitchOn),
@@ -100,15 +105,52 @@ class Level extends World with HasGameRef<WattsChallenge> {
     }
   }
 
+  Future<LightSwitchState> getSwitchState(String name) async {
+    switch (name) {
+      case AssetConst.hallwayProperty:
+        print('LightSwitchState.hallway');
+        return LightSwitchState.hallway;
+      case AssetConst.masterBedroomProperty:
+        return LightSwitchState.masterBedroom;
+      case AssetConst.masterBathroomProperty:
+        return LightSwitchState.masterBathroom;
+      case AssetConst.masterClosetProperty:
+        return LightSwitchState.masterCloset;
+      case AssetConst.bedroom1Property:
+        return LightSwitchState.bedroom1;
+      case AssetConst.bedroomCloset1Property:
+        return LightSwitchState.bedroomCloset1;
+      case AssetConst.bedroom2Property:
+        return LightSwitchState.bedroom2;
+      case AssetConst.bedroomCloset2Property:
+        return LightSwitchState.bedroomCloset2;
+      case AssetConst.laundryRoomProperty:
+        return LightSwitchState.laundryRoom;
+      case AssetConst.garageProperty:
+        return LightSwitchState.garage;
+      case AssetConst.kitchenProperty:
+        return LightSwitchState.kitchen;
+      case AssetConst.pantryProperty:
+        return LightSwitchState.pantry;
+      default:
+        return LightSwitchState.none;
+    }
+  }
+
   Future<void> _addShaders(TiledComponent level) async {
     final shadersLayer =
         level.tileMap.getLayer<ObjectGroup>(AssetConst.shaders);
+
+    var shaderIndex = 0;
 
     if (shadersLayer != null) {
       for (final lightShaders in shadersLayer.objects) {
         switch (lightShaders.class_) {
           case AssetConst.lightShaders:
+            shaderIndex++;
             final lightShaderEntity = LightShaderEntity(
+              location: lightShaders.properties.getValue('location') as String,
+              key: ComponentKey.named('${lightShaders.name}$shaderIndex'),
               shader: gameRef.shader,
               priority: 30,
               size: lightShaders.size,
@@ -117,6 +159,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
                 lightShaders.position.y,
               ),
             );
+            gameRef.lightShaders.add(lightShaderEntity);
             add(lightShaderEntity);
         }
       }

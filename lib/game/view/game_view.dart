@@ -5,6 +5,7 @@ import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
 
 class MyGame extends StatelessWidget {
   const MyGame({super.key});

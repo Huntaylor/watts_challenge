@@ -4,19 +4,14 @@ import 'package:environment_hackaton/game/components/hud_text_component.dart';
 import 'package:environment_hackaton/game/components/interaction_time_bar.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
-import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.dart';
-import 'package:environment_hackaton/game/entity/hud_buttons/interaction_hud_button.dart';
-import 'package:environment_hackaton/game/entity/hud_buttons/sprint_hud_button.dart';
-import 'package:environment_hackaton/game/entity/joystick_entity.dart';
-import 'package:environment_hackaton/game/entity/player_entity.dart';
+import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/levels/level.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-
-// import 'package:flutter/painting.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 
 class WattsChallenge extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
@@ -48,6 +43,8 @@ class WattsChallenge extends FlameGame
 
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
+
+  List<LightShaderEntity> lightShaders = [];
 
   late HudText hudTimer;
 
@@ -104,8 +101,17 @@ class WattsChallenge extends FlameGame
       snap: true,
       player,
     );
-    await addAll(
-      [camera, level],
+    // await addAll(
+    //   [camera, level],
+    // );
+    await add(
+      FlameBlocProvider<PlayerGameCubit, PlayerGameState>.value(
+        value: playerCubit,
+        children: [
+          camera,
+          level,
+        ],
+      ),
     );
   }
 
@@ -131,7 +137,7 @@ class WattsChallenge extends FlameGame
 
     interactionTimerBar = InteractionTimerBar(
       position: timeBar,
-      interactionTime: 60,
+      interactionTime: 5,
     );
 
     hudTimer = HudText(

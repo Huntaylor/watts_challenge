@@ -21,11 +21,15 @@ class PlayerGameState extends Equatable {
 class PlayerInteractionState extends PlayerGameState {
   const PlayerInteractionState({
     required this.isInteracting,
+    required this.timerState,
   });
 
-  const PlayerInteractionState.initial() : isInteracting = false;
+  const PlayerInteractionState.initial()
+      : isInteracting = false,
+        timerState = TimerState.initial;
 
   final bool isInteracting;
+  final TimerState timerState;
 
   @override
   List<Object?> get props => _$props;

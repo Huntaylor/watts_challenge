@@ -1,4 +1,4 @@
-import 'package:environment_hackaton/game/behaviors/player/player.dart';
+// import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/entity/interactable_objects.dart';
 import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
@@ -11,13 +11,6 @@ class InteractableCollisionBehavior
   InteractableCollisionBehavior();
 
   @override
-  void onCollisionStart(Set<Vector2> intersectionPoints, Player other) {
-    parent.isPlayerColliding = true;
-    other.isWithinRange = true;
-    super.onCollisionStart(intersectionPoints, other);
-  }
-
-  @override
   void onCollisionEnd(Player other) {
     other.isWithinRange = false;
     parent.isPlayerColliding = false;
@@ -26,12 +19,8 @@ class InteractableCollisionBehavior
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, Player other) {
-    if (other.interactionState == InteractionState.interacting) {
-      parent.interactableBehaviorState.objectInteraction();
-    }
-    if (other.interactionState == InteractionState.notInteracting) {
-      parent.interactableBehaviorState.stopInteraction();
-    }
+    parent.isPlayerColliding = true;
+    other.isWithinRange = true;
     super.onCollision(intersectionPoints, other);
   }
 }

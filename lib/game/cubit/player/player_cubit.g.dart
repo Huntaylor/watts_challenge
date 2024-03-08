@@ -7,7 +7,10 @@ part of 'player_cubit.dart';
 // **************************************************************************
 
 extension _$PlayerInteractionStateAutoequal on PlayerInteractionState {
-  List<Object?> get _$props => [isInteracting];
+  List<Object?> get _$props => [
+        isInteracting,
+        timerState,
+      ];
 }
 
 // **************************************************************************
@@ -17,6 +20,8 @@ extension _$PlayerInteractionStateAutoequal on PlayerInteractionState {
 abstract class _$PlayerInteractionStateCWProxy {
   PlayerInteractionState isInteracting(bool isInteracting);
 
+  PlayerInteractionState timerState(TimerState timerState);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerInteractionState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -25,6 +30,7 @@ abstract class _$PlayerInteractionStateCWProxy {
   /// ````
   PlayerInteractionState call({
     bool? isInteracting,
+    TimerState? timerState,
   });
 }
 
@@ -40,6 +46,10 @@ class _$PlayerInteractionStateCWProxyImpl
       this(isInteracting: isInteracting);
 
   @override
+  PlayerInteractionState timerState(TimerState timerState) =>
+      this(timerState: timerState);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerInteractionState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -49,6 +59,7 @@ class _$PlayerInteractionStateCWProxyImpl
   /// ````
   PlayerInteractionState call({
     Object? isInteracting = const $CopyWithPlaceholder(),
+    Object? timerState = const $CopyWithPlaceholder(),
   }) {
     return PlayerInteractionState(
       isInteracting:
@@ -56,6 +67,11 @@ class _$PlayerInteractionStateCWProxyImpl
               ? _value.isInteracting
               // ignore: cast_nullable_to_non_nullable
               : isInteracting as bool,
+      timerState:
+          timerState == const $CopyWithPlaceholder() || timerState == null
+              ? _value.timerState
+              // ignore: cast_nullable_to_non_nullable
+              : timerState as TimerState,
     );
   }
 }

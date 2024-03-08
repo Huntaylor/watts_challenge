@@ -17,12 +17,16 @@ class $AssetsImagesGen {
       const $AssetsImagesInteractablesGen();
   $AssetsImagesPlayerGen get player => const $AssetsImagesPlayerGen();
 
+  /// File path: assets/images/testing_the_shader.png
+  AssetGenImage get testingTheShader =>
+      const AssetGenImage('assets/images/testing_the_shader.png');
+
   /// File path: assets/images/tilemap_64.png
   AssetGenImage get tilemap64 =>
       const AssetGenImage('assets/images/tilemap_64.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [tilemap64];
+  List<AssetGenImage> get values => [testingTheShader, tilemap64];
 }
 
 class $AssetsTilesGen {

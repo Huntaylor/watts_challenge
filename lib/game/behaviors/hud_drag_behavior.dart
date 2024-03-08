@@ -25,13 +25,8 @@ class HudDragBehavior extends Behavior<CustomHudButton>
 
   @override
   void onDragEnd(DragEndEvent event) {
-    final details = event.velocity;
-    if (!isWithinButtonBounds(
-      details,
-    )) {
-      if (parent.onReleased != null) {
-        parent.onReleased?.call();
-      }
+    if (parent.onReleased != null) {
+      parent.onReleased?.call();
     }
     super.onDragEnd(event);
   }

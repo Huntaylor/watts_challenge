@@ -1,58 +1,59 @@
 import 'dart:async';
 
+import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
 import 'package:flame/components.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart';
 
+enum TimerState {
+  initial,
+  inProcess,
+  complete,
+  cancelled,
+}
+
 class InteractionTimerBar extends PositionComponent
-    with HasGameRef<WattsChallenge> {
+    with
+        HasGameRef<WattsChallenge>,
+        FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
   InteractionTimerBar({
     required this.interactionTime,
-    this.onInteractionComplete,
     super.position,
     super.scale,
     super.angle,
-    super.anchor,
     super.children,
     super.priority,
   }) : super(
           size: Vector2(66, 20),
         );
+
   int interactionTime;
-  final VoidCallback? onInteractionComplete;
-  Timer? _timer;
+  late TimerComponent _timerComponent;
   double _progress = 0;
   double accumulatedTime = 0;
   double fixedDeltaTime = 1 / 60;
-
-  bool isInteracting = false;
+  late TimerState timerState;
 
   double elapsedTime = 0;
 
   @override
   FutureOr<void> onLoad() {
+    timerState = TimerState.initial;
     debugMode = true;
-    return super.onLoad();
-  }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-    accumulatedTime += dt;
-    while (accumulatedTime >= fixedDeltaTime) {
-      if (_timer != null && _progress < interactionTime.toDouble()) {
-        _progress += fixedDeltaTime *
-            (interactionTime / 2); // Update progress based on time
-        if (_progress >= interactionTime.toDouble()) {
-          _progress = interactionTime.toDouble();
-          _timer?.stop();
-          if (onInteractionComplete != null) {
-            onInteractionComplete?.call();
-          }
+    _progress = 0.0;
+    final interactionDuration = interactionTime.toDouble();
+    _timerComponent = TimerComponent(
+      period: interactionTime.toDouble(),
+      onTick: () {
+        if (_progress >= interactionDuration) {
+          _progress = interactionDuration;
+          _timerComponent.timer.stop();
         }
-      }
-      accumulatedTime -= fixedDeltaTime;
-    }
+      },
+    );
+    add(_timerComponent);
+    return super.onLoad();
   }
 
   @override
@@ -73,68 +74,50 @@ class InteractionTimerBar extends PositionComponent
       ),
       Paint()..color = Colors.yellowAccent,
     );
-
     super.render(canvas);
-  }
-
-  void resetInteraction() {}
-
-  void startInteraction() {
-    _progress = 0.0;
-    final interactionDuration = interactionTime.toDouble();
-    _timer = Timer(
-      interactionDuration,
-      onTick: () {
-        if (_progress >= interactionDuration) {
-          _progress = interactionDuration;
-          _timer?.stop();
-          onInteractionComplete?.call();
-        }
-      },
-    );
-  }
-
-  void cancelInteraction() {
-    _timer?.stop();
-    _progress = 0.0;
-  }
-}
-
-class InteractionProgressManager extends Component
-    with HasGameRef<WattsChallenge> {
-  InteractionProgressManager({required this.interactionTime});
-  final int interactionTime;
-  bool isInteracting = false;
-  double elapsedTime = 0;
-
-  @override
-  void onMount() {
-    super.onMount();
-    // Listen for the interact button press and release events
-    // gameRef.onPanStart.listen((details) {
-    //   if (object.containsPoint(details.startPosition)) {
-    //     isInteracting = true;
-    //     elapsedTime = 0;
-    //   }
-    // });
-
-    // gameRef.onPanEnd.listen((_) {
-    //   isInteracting = false;
-    // });
   }
 
   @override
   void update(double dt) {
     super.update(dt);
-    if (isInteracting) {
-      elapsedTime += dt;
-      if (elapsedTime >= interactionTime) {
-        // Interaction completed
-        isInteracting = false;
-        elapsedTime = 0;
-        // Perform the desired action here
-        print('Interaction completed for $interactionTime');
+    accumulatedTime += dt;
+    while (accumulatedTime >= fixedDeltaTime) {
+      if (gameRef.playerGameState.asInitial.isInteracting) {
+        if (_progress < interactionTime.toDouble()) {
+          timerState = TimerState.inProcess;
+          bloc.setTimer(timerState: timerState);
+          _progress += fixedDeltaTime *
+              (interactionTime / 2); // Update progress based on time
+          if (_progress >= interactionTime.toDouble()) {
+            _progress = interactionTime.toDouble();
+            _timerComponent.timer.stop();
+            timerState = TimerState.complete;
+            bloc.setTimer(timerState: timerState);
+            _resetTimer();
+          }
+        }
       }
+      accumulatedTime -= fixedDeltaTime;
     }
+  }
+
+  void startTimer() {
+    timerState = TimerState.inProcess;
+    bloc.setTimer(timerState: timerState);
+    _timerComponent.timer.start();
+  }
+
+  void cancelInteraction() {
+    timerState = TimerState.cancelled;
+    bloc.setTimer(timerState: timerState);
+    _timerComponent.timer.reset();
+    _progress = 0.0;
+  }
+
+  void _resetTimer() {
+    _timerComponent.timer.reset();
+    _progress = 0.0;
+    timerState = TimerState.initial;
+    bloc.setTimer(timerState: timerState);
   }
 }

@@ -55,7 +55,6 @@ class InteractionHudButton extends CustomHudButton {
 
   @override
   void onTapDown(TapDownEvent event) {
-    super.onTapDown(event);
     if (isDisabled) {
       return;
     } else {
@@ -63,6 +62,7 @@ class InteractionHudButton extends CustomHudButton {
         intState: InteractionState.interacting,
       );
     }
+    super.onTapDown(event);
   }
 
   @override

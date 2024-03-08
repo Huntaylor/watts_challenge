@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:environment_hackaton/game/behaviors/interactables/interactable_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/interactables/interactable_state_behavior.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/image_composition.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
 class InteractableObjects extends SpriteGroupComponent<InteractableState>
     with EntityMixin, HasGameRef<WattsChallenge> {
   InteractableObjects({
+    required this.lightSwitchState,
     required this.interactionTime,
     required this.onSprite,
     required this.offSprite,
@@ -20,19 +21,17 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
     super.sprites,
     super.current,
   });
-
-  late RectangleHitbox hitbox;
-
+  final LightSwitchState lightSwitchState;
   final int interactionTime;
 
   final Image onSprite;
   final Image offSprite;
 
   late InteractableState deviceState;
-
-  bool isPlayerColliding = false;
-
+  late RectangleHitbox hitbox;
   late bool isOn;
+
+  late bool isPlayerColliding;
 
   late final InteractableBehaviorState interactableBehaviorState =
       findBehavior<InteractableBehaviorState>();
@@ -44,7 +43,8 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
       findBehavior<InteractableCollisionBehavior>();
 
   @override
-  FutureOr<void> onLoad() {
+  FutureOr<void> onLoad() async {
+    isPlayerColliding = false;
     isOn = false;
     hitbox = RectangleHitbox.relative(
       Vector2.all(1),
@@ -57,7 +57,7 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
     priority = gameRef.interactablePriority;
     deviceState = InteractableState.on;
 
-    addAll([
+    await addAll([
       InteractableBehaviorState(),
       InteractableCollisionBehavior(),
       PropagatingCollisionBehavior(hitbox),

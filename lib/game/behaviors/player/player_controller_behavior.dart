@@ -2,9 +2,9 @@ import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
 import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
-import 'package:flutter/services.dart';
 
 enum DirectionState {
   left,
@@ -130,9 +130,9 @@ class PlayerControllerBehavior extends Behavior<Player>
     parent.interactionState = intState;
     switch (intState) {
       case InteractionState.interacting:
-        gameRef.playerCubit.getIntercation(isInteracting: true);
+        gameRef.playerCubit.getInteractionCubit(isInteracting: true);
       case InteractionState.notInteracting:
-        gameRef.playerCubit.getIntercation(isInteracting: false);
+        gameRef.playerCubit.getInteractionCubit(isInteracting: false);
     }
   }
 
