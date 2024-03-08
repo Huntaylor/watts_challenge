@@ -1,17 +1,20 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
+import 'package:environment_hackaton/game/components/interaction_time_bar_component.dart';
+import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 
 enum InteractablePosition {
   holding,
   released,
 }
 
-class InteractionHudButton extends CustomHudButton {
+class InteractionHudButton extends CustomHudButton
+    with FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
   InteractionHudButton({
     required super.player,
     required super.buttonAsset,
@@ -28,24 +31,43 @@ class InteractionHudButton extends CustomHudButton {
 
   late bool isDisabled;
 
+  late bool isReleasedTriggered;
+
+  @override
+  bool listenWhen(PlayerGameState previousState, PlayerGameState newState) {
+    isDisabled = !newState.asInitial.isWithinRange;
+
+    if (newState.asInitial.timerState == TimerState.complete) {
+      if (onReleased != null) {
+        onReleased?.call();
+      }
+    }
+    return super.listenWhen(previousState, newState);
+  }
+
   @override
   Future<void> onLoad() {
+    isReleasedTriggered = true;
+    isDisabled = true;
     _loadEffects();
 
-    isDisabled = !player.isWithinRange;
     button!.add(disabledEffect);
     return super.onLoad();
   }
 
   @override
   void update(double dt) {
-    isDisabled = !player.isWithinRange;
-
     if (isDisabled) {
-      disabledEffect.reset();
-      button!.add(disabledEffect);
-    }
-    if (!isDisabled) {
+      if (onReleased != null) {
+        onReleased?.call();
+      }
+      if (!button!.contains(disabledEffect)) {
+        button!.add(disabledEffect);
+      } else {
+        disabledEffect.reset();
+      }
+    } else {
+      isReleasedTriggered = false;
       enabledEffect.reset();
       button!.add(enabledEffect);
     }
@@ -58,9 +80,7 @@ class InteractionHudButton extends CustomHudButton {
     if (isDisabled) {
       return;
     } else {
-      player.controllerBehavior.getInteraction(
-        intState: InteractionState.interacting,
-      );
+      _startInteraction();
     }
     super.onTapDown(event);
   }
@@ -70,9 +90,7 @@ class InteractionHudButton extends CustomHudButton {
     if (isDisabled) {
       return;
     } else {
-      player.controllerBehavior.getInteraction(
-        intState: InteractionState.notInteracting,
-      );
+      _stopInteraction();
     }
     super.onTapUp(event);
   }
@@ -89,9 +107,22 @@ class InteractionHudButton extends CustomHudButton {
 
   @override
   void Function()? get onReleased {
-    player.controllerBehavior.getInteraction(
-      intState: InteractionState.notInteracting,
-    );
+    if (!isReleasedTriggered) {
+      _stopInteraction();
+    }
     return super.onReleased;
+  }
+
+  void _stopInteraction() {
+    isReleasedTriggered = true;
+    if (bloc.state.asInitial.isInteracting) {
+      bloc.getInteractionCubit(isInteracting: false);
+    }
+  }
+
+  void _startInteraction() {
+    if (!bloc.state.asInitial.isInteracting) {
+      bloc.getInteractionCubit(isInteracting: true);
+    }
   }
 }

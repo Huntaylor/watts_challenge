@@ -21,14 +21,17 @@ class PlayerGameState extends Equatable {
 class PlayerInteractionState extends PlayerGameState {
   const PlayerInteractionState({
     required this.isInteracting,
+    required this.isWithinRange,
     required this.timerState,
   });
 
   const PlayerInteractionState.initial()
       : isInteracting = false,
+        isWithinRange = false,
         timerState = TimerState.initial;
 
   final bool isInteracting;
+  final bool isWithinRange;
   final TimerState timerState;
 
   @override

@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:environment_hackaton/game/components/hud_text_component.dart';
-import 'package:environment_hackaton/game/components/interaction_time_bar.dart';
+import 'package:environment_hackaton/game/components/interaction_loading_manager.dart';
+import 'package:environment_hackaton/game/components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
@@ -39,7 +40,7 @@ class WattsChallenge extends FlameGame
 
   late JoyStickEntity joyStickEntity;
 
-  late InteractionTimerBar interactionTimerBar;
+  late InteractionLoadingManager loadingManager;
 
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
@@ -92,7 +93,7 @@ class WattsChallenge extends FlameGame
         joyStickEntity,
         hudSprintButtonComponent,
         hudInteractButtonComponent,
-        interactionTimerBar,
+        loadingManager,
         hudTimer,
       ],
     );
@@ -133,11 +134,11 @@ class WattsChallenge extends FlameGame
       buttonDownAsset: images.fromCache(AssetConst.interactButtonDown),
     );
 
-    final timeBar = Vector2(640, 325);
+    final timeBarPosition = Vector2(640, 325);
 
-    interactionTimerBar = InteractionTimerBar(
-      position: timeBar,
-      interactionTime: 5,
+    loadingManager = InteractionLoadingManager(
+      timerBar: InteractionTimerBar(interactionTime: 5),
+      position: timeBarPosition,
     );
 
     hudTimer = HudText(

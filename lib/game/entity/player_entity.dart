@@ -35,9 +35,6 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   late PlayerState playerState;
   late DirectionState directionState;
-  late InteractionState interactionState;
-
-  bool isWithinRange = false;
 
   final Vector2 direction = Vector2.zero();
 
@@ -78,8 +75,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   }
 
   void _getInitialValues() {
-    interactionState = InteractionState.notInteracting;
     playerState = PlayerState.idleForward;
-    directionState = DirectionState.down;
+    directionState = DirectionState.up;
   }
 }

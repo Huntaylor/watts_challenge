@@ -34,15 +34,18 @@
             "scaleInDock": 1
         },
         "house_1.tmx": {
-            "expandedObjectLayers": [
-                2,
-                3
+            "expandedGroupLayers": [
+                11
             ],
-            "scale": 0.75,
-            "selectedLayer": 4,
+            "expandedObjectLayers": [
+                11,
+                8
+            ],
+            "scale": 0.33,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1370,
-                "y": 1909.333333333333
+                "x": 1701.5151515151515,
+                "y": 1842.4242424242425
             }
         },
         "house_1.tmx#house_layout": {

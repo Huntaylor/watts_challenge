@@ -11,7 +11,18 @@
       "program": "lib/main_development.dart",
       "args": [
         "--target",
-        "lib/main_development.dart"
+        "lib/main_development.dart",
+      ]
+    },
+    {
+      "name": "Launch development -Verbose",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--target",
+        "lib/main_development.dart",
+        "-v"
       ]
     },
   ]

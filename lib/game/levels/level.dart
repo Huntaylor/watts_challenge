@@ -108,7 +108,6 @@ class Level extends World with HasGameRef<WattsChallenge> {
   Future<LightSwitchState> getSwitchState(String name) async {
     switch (name) {
       case AssetConst.hallwayProperty:
-        print('LightSwitchState.hallway');
         return LightSwitchState.hallway;
       case AssetConst.masterBedroomProperty:
         return LightSwitchState.masterBedroom;

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/interaction_time_bar.dart';
+import 'package:environment_hackaton/game/components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
@@ -41,13 +41,19 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
   late List<LightShaderEntity> shaders;
 
   bool hasStarted = false;
+  bool isTriggered = false;
 
   @override
   bool listenWhen(PlayerGameState previousState, PlayerGameState newState) {
     if (newState.asInitial.timerState == TimerState.complete &&
         parent.isPlayerColliding) {
-      parent.isOn = !parent.isOn;
-      _loadObjectState();
+      if (!isTriggered) {
+        isTriggered = true;
+        parent.isOn = !parent.isOn;
+        _loadObjectState();
+      }
+    } else {
+      isTriggered = false;
     }
     return super.listenWhen(previousState, newState);
   }

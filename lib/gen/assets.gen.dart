@@ -118,6 +118,10 @@ class $AssetsImagesHudGen {
   /// File path: assets/images/hud/knob.png
   AssetGenImage get knob => const AssetGenImage('assets/images/hud/knob.png');
 
+  /// File path: assets/images/hud/refactored_joystick.aseprite
+  String get refactoredJoystick =>
+      'assets/images/hud/refactored_joystick.aseprite';
+
   /// File path: assets/images/hud/sprint_button.png
   AssetGenImage get sprintButton =>
       const AssetGenImage('assets/images/hud/sprint_button.png');
@@ -136,6 +140,7 @@ class $AssetsImagesHudGen {
         joystick,
         jumpButton,
         knob,
+        refactoredJoystick,
         sprintButton,
         sprintButtonDown
       ];

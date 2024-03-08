@@ -126,16 +126,6 @@ class PlayerControllerBehavior extends Behavior<Player>
     }
   }
 
-  void getInteraction({required InteractionState intState}) {
-    parent.interactionState = intState;
-    switch (intState) {
-      case InteractionState.interacting:
-        gameRef.playerCubit.getInteractionCubit(isInteracting: true);
-      case InteractionState.notInteracting:
-        gameRef.playerCubit.getInteractionCubit(isInteracting: false);
-    }
-  }
-
   void getWalkingState() {
     parent.moveSpeed = 200;
   }

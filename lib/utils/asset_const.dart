@@ -189,4 +189,8 @@ class AssetConst {
 
   ///Darkening Shader - 'shaders/darkening_shader.glsl'
   static String get darkeningShader => 'assets/shaders/darkening_shader.glsl';
+
+  ///Electricity Shader - 'shaders/electricity_shader.glsl'
+  static String get electricityShader =>
+      'assets/shaders/electricity_shader.glsl';
 }

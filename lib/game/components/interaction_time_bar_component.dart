@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 enum TimerState {
   initial,
-  inProcess,
+  inProgress,
   complete,
   cancelled,
 }
@@ -29,18 +29,18 @@ class InteractionTimerBar extends PositionComponent
         );
 
   int interactionTime;
-  late TimerComponent _timerComponent;
   double _progress = 0;
   double accumulatedTime = 0;
   double fixedDeltaTime = 1 / 60;
+
   late TimerState timerState;
+  late TimerComponent _timerComponent;
 
   double elapsedTime = 0;
 
   @override
   FutureOr<void> onLoad() {
     timerState = TimerState.initial;
-    debugMode = true;
     _progress = 0.0;
     final interactionDuration = interactionTime.toDouble();
     _timerComponent = TimerComponent(
@@ -72,7 +72,7 @@ class InteractionTimerBar extends PositionComponent
         size.x * progressRatio,
         size.y,
       ),
-      Paint()..color = Colors.yellowAccent,
+      Paint()..color = Colors.yellow,
     );
     super.render(canvas);
   }
@@ -84,8 +84,6 @@ class InteractionTimerBar extends PositionComponent
     while (accumulatedTime >= fixedDeltaTime) {
       if (gameRef.playerGameState.asInitial.isInteracting) {
         if (_progress < interactionTime.toDouble()) {
-          timerState = TimerState.inProcess;
-          bloc.setTimer(timerState: timerState);
           _progress += fixedDeltaTime *
               (interactionTime / 2); // Update progress based on time
           if (_progress >= interactionTime.toDouble()) {
@@ -102,22 +100,21 @@ class InteractionTimerBar extends PositionComponent
   }
 
   void startTimer() {
-    timerState = TimerState.inProcess;
-    bloc.setTimer(timerState: timerState);
+    _progress = 0.0;
     _timerComponent.timer.start();
   }
 
   void cancelInteraction() {
+    _progress = 0.0;
     timerState = TimerState.cancelled;
     bloc.setTimer(timerState: timerState);
+    _timerComponent.timer.stop();
     _timerComponent.timer.reset();
-    _progress = 0.0;
   }
 
   void _resetTimer() {
-    _timerComponent.timer.reset();
     _progress = 0.0;
-    timerState = TimerState.initial;
-    bloc.setTimer(timerState: timerState);
+    _timerComponent.timer.stop();
+    _timerComponent.timer.reset();
   }
 }
