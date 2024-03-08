@@ -32,7 +32,7 @@ dependencies:
   google_fonts: ^6.2.1
   intl: ^0.18.1
   path_provider: ^2.1.2
-  sip_cli: ^0.1.1
+  sip_cli: ^0.2.1
 
 dev_dependencies:
   autoequal_gen: ^0.9.1

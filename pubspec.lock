@@ -652,6 +652,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  mason_logger:
+    dependency: transitive
+    description:
+      name: mason_logger
+      sha256: c12860ae81f0bdc5d05d7914fe473bfb294047e9dc64e8995b5753c7207e81b9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.8"
   matcher:
     dependency: transitive
     description:
@@ -896,10 +904,10 @@ packages:
     dependency: "direct main"
     description:
       name: sip_cli
-      sha256: "8542f21565fc41fa205c8c10a11aa7176140cbdc17d021cdc5ed989a48a79e01"
+      sha256: "035989e8a85c3663e937cc18e255fade88a66ad3af8cd1862fa33327b9a1bd5f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "0.2.1"
   sip_console:
     dependency: transitive
     description:
