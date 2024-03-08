@@ -8,11 +8,6 @@ import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 
-enum InteractablePosition {
-  holding,
-  released,
-}
-
 class InteractionHudButton extends CustomHudButton
     with FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
   InteractionHudButton({
@@ -23,8 +18,6 @@ class InteractionHudButton extends CustomHudButton
           buttonType: HudButtonType.interact,
           position: Vector2(1000, 600),
         );
-
-  late InteractablePosition interactablePosition;
 
   late OpacityEffect disabledEffect;
   late OpacityEffect enabledEffect;
@@ -65,6 +58,11 @@ class InteractionHudButton extends CustomHudButton
         button!.add(disabledEffect);
       } else {
         disabledEffect.reset();
+      }
+      if (contains(buttonDown!)) {
+        remove(buttonDown!);
+        add(button!);
+        button!.add(disabledEffect);
       }
     } else {
       isReleasedTriggered = false;

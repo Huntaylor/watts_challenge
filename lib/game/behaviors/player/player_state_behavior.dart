@@ -19,11 +19,6 @@ enum PlayerState {
   walkingRight,
 }
 
-enum InteractionState {
-  interacting,
-  notInteracting,
-}
-
 class PlayerStateBehavior extends Behavior<Player>
     with HasGameRef<WattsChallenge> {
   PlayerState? _playerState;

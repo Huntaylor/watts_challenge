@@ -11,6 +11,7 @@ extension _$PlayerInteractionStateAutoequal on PlayerInteractionState {
         isInteracting,
         isWithinRange,
         timerState,
+        objectInteractionTime,
       ];
 }
 
@@ -23,6 +24,8 @@ abstract class _$PlayerInteractionStateCWProxy {
 
   PlayerInteractionState isWithinRange(bool isWithinRange);
 
+  PlayerInteractionState objectInteractionTime(double objectInteractionTime);
+
   PlayerInteractionState timerState(TimerState timerState);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlayerInteractionState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -34,6 +37,7 @@ abstract class _$PlayerInteractionStateCWProxy {
   PlayerInteractionState call({
     bool? isInteracting,
     bool? isWithinRange,
+    double? objectInteractionTime,
     TimerState? timerState,
   });
 }
@@ -54,6 +58,10 @@ class _$PlayerInteractionStateCWProxyImpl
       this(isWithinRange: isWithinRange);
 
   @override
+  PlayerInteractionState objectInteractionTime(double objectInteractionTime) =>
+      this(objectInteractionTime: objectInteractionTime);
+
+  @override
   PlayerInteractionState timerState(TimerState timerState) =>
       this(timerState: timerState);
 
@@ -68,6 +76,7 @@ class _$PlayerInteractionStateCWProxyImpl
   PlayerInteractionState call({
     Object? isInteracting = const $CopyWithPlaceholder(),
     Object? isWithinRange = const $CopyWithPlaceholder(),
+    Object? objectInteractionTime = const $CopyWithPlaceholder(),
     Object? timerState = const $CopyWithPlaceholder(),
   }) {
     return PlayerInteractionState(
@@ -81,6 +90,12 @@ class _$PlayerInteractionStateCWProxyImpl
               ? _value.isWithinRange
               // ignore: cast_nullable_to_non_nullable
               : isWithinRange as bool,
+      objectInteractionTime:
+          objectInteractionTime == const $CopyWithPlaceholder() ||
+                  objectInteractionTime == null
+              ? _value.objectInteractionTime
+              // ignore: cast_nullable_to_non_nullable
+              : objectInteractionTime as double,
       timerState:
           timerState == const $CopyWithPlaceholder() || timerState == null
               ? _value.timerState

@@ -13,7 +13,9 @@ class PlayerGameCubit extends Cubit<PlayerGameState> {
           const PlayerInteractionState.initial(),
         );
 
-  void getInteractionCubit({required bool isInteracting}) {
+  void getInteractionCubit({
+    required bool isInteracting,
+  }) {
     emit(
       state.asInitial.copyWith(
         isInteracting: isInteracting,
@@ -21,10 +23,14 @@ class PlayerGameCubit extends Cubit<PlayerGameState> {
     );
   }
 
-  void getWithinRange({required bool isWithinRange}) {
+  void getWithinRange({
+    required bool isWithinRange,
+    required double objectInteractionTime,
+  }) {
     emit(
       state.asInitial.copyWith(
         isWithinRange: isWithinRange,
+        objectInteractionTime: objectInteractionTime,
       ),
     );
   }

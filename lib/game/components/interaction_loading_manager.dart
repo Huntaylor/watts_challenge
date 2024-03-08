@@ -22,19 +22,22 @@ class InteractionLoadingManager extends PositionComponent
   final InteractionTimerBar timerBar;
 
   late TimerState timerState;
-
+  late double interactionTime;
   late bool shouldAddBar;
 
   @override
   bool listenWhen(PlayerGameState previousState, PlayerGameState newState) {
     final playerState = newState.asInitial;
     timerState = playerState.timerState;
+    interactionTime = newState.asInitial.objectInteractionTime;
+    if (!newState.asInitial.isInteracting && contains(timerBar)) {
+      timerBar.cancelTimer();
+      shouldAddBar = false;
+    }
 
     if (playerState.isInteracting && playerState.isWithinRange) {
       bloc.setTimer(timerState: TimerState.inProgress);
       shouldAddBar = true;
-      // add(timerBar);
-      // print('add!');
     } else if (timerState == TimerState.complete ||
         timerState == TimerState.cancelled) {
       bloc.setTimer(timerState: TimerState.initial);
@@ -53,7 +56,10 @@ class InteractionLoadingManager extends PositionComponent
   @override
   void update(double dt) {
     if (shouldAddBar && !contains(timerBar)) {
-      add(timerBar);
+      add(
+        timerBar..interactionTime = interactionTime,
+        // ..isInteracting = true,
+      );
     } else if (!shouldAddBar && contains(timerBar)) {
       remove(timerBar);
     }

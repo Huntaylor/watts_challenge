@@ -16,7 +16,7 @@ class InteractableCollisionBehavior
 
   @override
   void onCollisionEnd(Player other) {
-    bloc.getWithinRange(isWithinRange: false);
+    bloc.getWithinRange(isWithinRange: false, objectInteractionTime: 1);
     parent.isPlayerColliding = false;
     super.onCollisionEnd(other);
   }
@@ -24,7 +24,10 @@ class InteractableCollisionBehavior
   @override
   void onCollision(Set<Vector2> intersectionPoints, Player other) {
     if (!gameRef.playerGameState.asInitial.isWithinRange) {
-      bloc.getWithinRange(isWithinRange: true);
+      bloc.getWithinRange(
+        isWithinRange: true,
+        objectInteractionTime: parent.baseObject.interactionTime,
+      );
     }
     parent.isPlayerColliding = true;
     super.onCollision(intersectionPoints, other);

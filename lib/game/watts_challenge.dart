@@ -137,7 +137,7 @@ class WattsChallenge extends FlameGame
     final timeBarPosition = Vector2(640, 325);
 
     loadingManager = InteractionLoadingManager(
-      timerBar: InteractionTimerBar(interactionTime: 5),
+      timerBar: InteractionTimerBar(),
       position: timeBarPosition,
     );
 

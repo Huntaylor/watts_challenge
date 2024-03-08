@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:environment_hackaton/game/behaviors/interactables/interactable_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/interactables/interactable_state_behavior.dart';
+import 'package:environment_hackaton/game/components/base_object.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/collisions.dart';
@@ -11,8 +12,8 @@ import 'package:flame_behaviors/flame_behaviors.dart';
 class InteractableObjects extends SpriteGroupComponent<InteractableState>
     with EntityMixin, HasGameRef<WattsChallenge> {
   InteractableObjects({
+    required this.objectType,
     required this.lightSwitchState,
-    required this.interactionTime,
     required this.onSprite,
     required this.offSprite,
     super.priority,
@@ -21,13 +22,14 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
     super.sprites,
     super.current,
   });
+  final ObjectType objectType;
   final LightSwitchState lightSwitchState;
-  final int interactionTime;
 
   final Image onSprite;
   final Image offSprite;
 
   late InteractableState deviceState;
+  late BaseObject baseObject;
   late RectangleHitbox hitbox;
   late bool isOn;
 
@@ -44,6 +46,7 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
 
   @override
   FutureOr<void> onLoad() async {
+    baseObject = BaseObject(objectType: objectType);
     isPlayerColliding = false;
     isOn = false;
     hitbox = RectangleHitbox.relative(
@@ -58,6 +61,7 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
     deviceState = InteractableState.on;
 
     await addAll([
+      baseObject,
       InteractableBehaviorState(),
       InteractableCollisionBehavior(),
       PropagatingCollisionBehavior(hitbox),

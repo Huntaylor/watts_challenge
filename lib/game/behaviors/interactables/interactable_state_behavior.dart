@@ -76,26 +76,6 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
       ..current = InteractableState.off;
   }
 
-  // void objectInteraction() {
-  //   if (!hasStarted) {
-  //     parent.isOn = !parent.isOn;
-  //     // gameRef.interactionTimerBar
-  //     //   ..interactionTime = parent.timerBar
-  //     //   ..startTimer();
-  //     _loadObjectState();
-  //     hasStarted = true;
-  //   }
-  // }
-
-  // void stopInteraction() {
-  //   if (hasStarted) {
-  //     // gameRef.interactionTimerBar
-  //     //   ..interactionTime = parent.interactionTime
-  //     //   ..cancelInteraction();
-  //     hasStarted = false;
-  //   }
-  // }
-
   void _loadObjectState() {
     parent.current = parent.isOn ? InteractableState.on : InteractableState.off;
 

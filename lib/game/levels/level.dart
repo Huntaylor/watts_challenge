@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:environment_hackaton/game/behaviors/behaviors.dart';
+import 'package:environment_hackaton/game/components/base_object.dart';
 import 'package:environment_hackaton/game/components/components.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/game.dart';
@@ -88,11 +89,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
           case AssetConst.lightSwitch:
             final lightSwitch = InteractableObjects(
               lightSwitchState: await getSwitchState(spawnPoint.name),
-              // lightSwitchState: (spawnPoint.name == 'Hallway')
-              //     ? LightSwitchState.hallway
-              //     : LightSwitchState.none,
-              interactionTime: spawnPoint.properties
-                  .getValue(AssetConst.interactionTime) as int,
+              objectType: ObjectType.lightSwitch,
               onSprite: game.images.fromCache(AssetConst.lightSwitchOn),
               offSprite: game.images.fromCache(AssetConst.lightSwitchOff),
               position: spawnPoint.position,
