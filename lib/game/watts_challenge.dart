@@ -56,7 +56,7 @@ class WattsChallenge extends FlameGame
   final int interactablePriority = 2;
   final int playerPriority = 3;
   final int foregroundLevelPriority = 4;
-  final int interactionBarPriority = 5;
+  final int shaderPriority = 10;
 
   double totalUsage = 0;
 
