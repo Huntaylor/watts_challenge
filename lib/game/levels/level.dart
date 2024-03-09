@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:environment_hackaton/game/behaviors/behaviors.dart';
 import 'package:environment_hackaton/game/components/base_object.dart';
+import 'package:environment_hackaton/game/components/cache_provider.dart';
 import 'package:environment_hackaton/game/components/components.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/game.dart';
@@ -90,15 +91,18 @@ class Level extends World with HasGameRef<WattsChallenge> {
             player.scale.x = 1;
             add(player);
           case AssetConst.lightSwitch:
-            final lightSwitch = InteractableObjects(
-              lightSwitchState: await getSwitchState(spawnPoint.name),
-              objectType: ObjectType.lightSwitch,
-              onSprite: game.images.fromCache(AssetConst.lightSwitchOn),
-              offSprite: game.images.fromCache(AssetConst.lightSwitchOff),
-              position: spawnPoint.position,
-              size: spawnPoint.size,
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                lightSwitchStateParam: await getSwitchState(spawnPoint.name),
+                objectTypeParam: ObjectType.lightSwitch,
+                onSpriteParam: game.images.fromCache(AssetConst.lightSwitchOn),
+                offSpriteParam:
+                    game.images.fromCache(AssetConst.lightSwitchOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
             );
-            add(lightSwitch);
+            add(cachedObjectProvider.cachedComponent);
         }
       }
     }
