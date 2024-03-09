@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/set_times_mixin.dart';
 import 'package:flame/components.dart';
 
@@ -10,7 +11,8 @@ enum ObjectType {
   lightSwitch,
 }
 
-class BaseObject extends PositionComponent with SetObjectTypeMixin {
+class BaseObject extends PositionComponent
+    with SetObjectTypeMixin, HasGameRef<WattsChallenge> {
   BaseObject({required this.objectType});
 
   final ObjectType objectType;
@@ -34,6 +36,8 @@ class BaseObject extends PositionComponent with SetObjectTypeMixin {
         interactionTime = SetObjectTypeMixin.lightSwitchTime;
         powerUsage = SetObjectTypeMixin.lightSwitchPowerUsage;
     }
+
+    gameRef.totalUsage += powerUsage;
     return super.onLoad();
   }
 }

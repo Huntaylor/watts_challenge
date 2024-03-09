@@ -12,14 +12,21 @@ class GameCubit extends Cubit<GameState> {
           const GameState.initial(),
         );
 
-  void onStartLevel({
+  void startGame({
+    required double totalUsage,
     required int gameTimer,
-    required int elecUsage,
   }) {
     emit(
-      GameStartState(
-        gameTimer: gameTimer,
-        elecUsage: elecUsage,
+      GameStartState(gameTimer: gameTimer, electricUsage: totalUsage),
+    );
+  }
+
+  void onAddUsageCount({
+    required double totalUsage,
+  }) {
+    emit(
+      state.asStarting.copyWith(
+        electricUsage: totalUsage,
       ),
     );
   }

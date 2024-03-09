@@ -12,13 +12,11 @@ class HudText extends TextComponent with HasGameRef<WattsChallenge> {
   });
 
   late Timer countDown;
-  int remainingTime = 30;
+  int remainingTime = 5;
   bool timerStarted = false;
 
   @override
   FutureOr<void> onLoad() {
-    // remainingTime = gameRef.gameState.asStarting.gameTimer;
-
     textRenderer = TextPaint(style: WattsChallengeTextStyle.headline1);
     countDown = Timer(
       1,

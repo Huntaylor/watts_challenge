@@ -20,15 +20,15 @@ class GameState extends Equatable {
 class GameStartState extends GameState {
   const GameStartState({
     required this.gameTimer,
-    required this.elecUsage,
+    required this.electricUsage,
   });
 
   const GameStartState.initial()
-      : elecUsage = 100,
+      : electricUsage = 0,
         gameTimer = 30;
 
   final int gameTimer;
-  final int elecUsage;
+  final double electricUsage;
 
   @override
   List<Object?> get props => _$props;

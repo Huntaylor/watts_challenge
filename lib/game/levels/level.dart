@@ -22,9 +22,11 @@ class Level extends World with HasGameRef<WattsChallenge> {
   final Player player;
   List<CollisionBlock> collisionBlock = [];
 
+  late TiledComponent tiledLevel;
+
   @override
   Future<void> onLoad() async {
-    final level = await TiledComponent.load(
+    tiledLevel = await TiledComponent.load(
       levelName,
       Vector2.all(64),
       priority: game.levelPriority,
@@ -36,13 +38,14 @@ class Level extends World with HasGameRef<WattsChallenge> {
     );
 
     await addAll([
-      level,
+      tiledLevel,
       foregroundLevel,
     ]);
 
-    _addCollisions(level);
-    await _spawningObjects(level);
-    await _addShaders(level);
+    _addCollisions(tiledLevel);
+    await _spawningObjects(tiledLevel);
+    await _addShaders(tiledLevel);
+
     return super.onLoad();
   }
 
@@ -95,7 +98,6 @@ class Level extends World with HasGameRef<WattsChallenge> {
               position: spawnPoint.position,
               size: spawnPoint.size,
             );
-
             add(lightSwitch);
         }
       }

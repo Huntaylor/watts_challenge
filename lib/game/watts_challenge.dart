@@ -33,21 +33,19 @@ class WattsChallenge extends FlameGame
 
   // final TextStyle textStyle;
 
-  late FragmentShader shader;
-
   Player player = Player();
+
   late Level level;
 
+  late FragmentShader shader;
   late JoyStickEntity joyStickEntity;
-
   late InteractionLoadingManager loadingManager;
-
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
+  late HudText hudTimer;
 
   List<LightShaderEntity> lightShaders = [];
-
-  late HudText hudTimer;
+  List<InteractableObjects> objects = [];
 
   GameState get gameState => gameCubit.state;
 
@@ -59,6 +57,8 @@ class WattsChallenge extends FlameGame
   final int playerPriority = 3;
   final int foregroundLevelPriority = 4;
   final int interactionBarPriority = 5;
+
+  double totalUsage = 0;
 
   @override
   Future<void> onLoad() async {
@@ -73,6 +73,8 @@ class WattsChallenge extends FlameGame
     await _loadHud();
 
     await _loadLevel();
+
+    await _initializeGameCubit();
   }
 
   Future<void> _loadLevel() async {
@@ -102,15 +104,23 @@ class WattsChallenge extends FlameGame
       snap: true,
       player,
     );
-    // await addAll(
-    //   [camera, level],
-    // );
+
     await add(
-      FlameBlocProvider<PlayerGameCubit, PlayerGameState>.value(
-        value: playerCubit,
-        children: [
-          camera,
-          level,
+      FlameMultiBlocProvider(
+        providers: [
+          FlameBlocProvider<GameCubit, GameState>.value(
+            value: gameCubit,
+            children: [
+              level,
+            ],
+          ),
+          FlameBlocProvider<PlayerGameCubit, PlayerGameState>.value(
+            value: playerCubit,
+            children: [
+              level,
+              camera,
+            ],
+          ),
         ],
       ),
     );
@@ -145,5 +155,9 @@ class WattsChallenge extends FlameGame
       size: Vector2.all(32),
       position: Vector2(10, 100),
     );
+  }
+
+  Future<void> _initializeGameCubit() async {
+    gameCubit.startGame(totalUsage: totalUsage, gameTimer: 60);
   }
 }

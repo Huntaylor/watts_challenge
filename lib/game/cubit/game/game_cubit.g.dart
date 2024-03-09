@@ -9,7 +9,7 @@ part of 'game_cubit.dart';
 extension _$GameStartStateAutoequal on GameStartState {
   List<Object?> get _$props => [
         gameTimer,
-        elecUsage,
+        electricUsage,
       ];
 }
 
@@ -20,7 +20,7 @@ extension _$GameStartStateAutoequal on GameStartState {
 abstract class _$GameStartStateCWProxy {
   GameStartState gameTimer(int gameTimer);
 
-  GameStartState elecUsage(int elecUsage);
+  GameStartState electricUsage(double electricUsage);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -30,7 +30,7 @@ abstract class _$GameStartStateCWProxy {
   /// ````
   GameStartState call({
     int? gameTimer,
-    int? elecUsage,
+    double? electricUsage,
   });
 }
 
@@ -44,7 +44,8 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   GameStartState gameTimer(int gameTimer) => this(gameTimer: gameTimer);
 
   @override
-  GameStartState elecUsage(int elecUsage) => this(elecUsage: elecUsage);
+  GameStartState electricUsage(double electricUsage) =>
+      this(electricUsage: electricUsage);
 
   @override
 
@@ -56,17 +57,18 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   /// ````
   GameStartState call({
     Object? gameTimer = const $CopyWithPlaceholder(),
-    Object? elecUsage = const $CopyWithPlaceholder(),
+    Object? electricUsage = const $CopyWithPlaceholder(),
   }) {
     return GameStartState(
       gameTimer: gameTimer == const $CopyWithPlaceholder() || gameTimer == null
           ? _value.gameTimer
           // ignore: cast_nullable_to_non_nullable
           : gameTimer as int,
-      elecUsage: elecUsage == const $CopyWithPlaceholder() || elecUsage == null
-          ? _value.elecUsage
-          // ignore: cast_nullable_to_non_nullable
-          : elecUsage as int,
+      electricUsage:
+          electricUsage == const $CopyWithPlaceholder() || electricUsage == null
+              ? _value.electricUsage
+              // ignore: cast_nullable_to_non_nullable
+              : electricUsage as double,
     );
   }
 }
