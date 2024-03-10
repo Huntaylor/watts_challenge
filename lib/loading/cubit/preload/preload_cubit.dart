@@ -31,7 +31,7 @@ class PreloadCubit extends Cubit<PreloadState> {
       // ),
     ];
 
-    // emit(state.copyWith(totalCount: phases.length));
+    emit(state.copyWith(totalCount: phases.length));
     // for (final phase in phases) {
     //   emit(state.copyWith(currentLabel: phase.label));
     //   // Throttle phases to take at least 1/5 seconds

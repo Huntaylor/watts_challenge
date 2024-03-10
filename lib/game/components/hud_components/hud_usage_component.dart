@@ -22,11 +22,28 @@ class HudUsageComponent extends SpriteComponent
   double leftOffset = 9.5;
   double topOffset = .5;
   Vector2 newPosition = Vector2(22, 23);
+  String percentageName = '';
+  double percentageAmount = 0;
+  double maxPercentage = 0;
+  double halfWayPercentage = 0;
+
+  @override
+  bool listenWhen(GameState previousState, GameState newState) {
+    percentageAmount = newState.asStarting.percentage;
+    percentageName = '${newState.asStarting.percentage}%';
+    return super.listenWhen(previousState, newState);
+  }
 
   @override
   FutureOr<void> onLoad() {
     drawSize = size.x - 34;
     textComponent = TextComponent();
+
+    if (gameRef.gameState.isStarting) {
+      percentageName = '${gameRef.gameState.asStarting.percentage}%';
+      percentageAmount = gameRef.gameState.asStarting.percentage;
+      maxPercentage = gameRef.gameState.asStarting.percentage;
+    }
 
     return super.onLoad();
   }
@@ -40,14 +57,25 @@ class HudUsageComponent extends SpriteComponent
     canvas
       ..drawRect(
         Rect.fromLTWH(leftOffset, topOffset, drawSize, size.y - 1),
-        Paint()..color = color.Colors.red[900]!.withAlpha(200),
+        // Paint()..color = percentageColor.withAlpha(200),
+        Paint()..color = getUsageColor(percentageAmount),
       )
       ..restore();
     textComponent.textRenderer.render(
       canvas,
-      '200%',
+      percentageName,
       newPosition,
     );
     super.render(canvas);
+  }
+
+  Color getUsageColor(double usagePercentage) {
+    if (usagePercentage >= maxPercentage) {
+      return color.Colors.red[900]!.withAlpha(200);
+    } else if (usagePercentage >= 100) {
+      return color.Colors.green[900]!.withAlpha(200);
+    } else {
+      return color.Colors.blue.withAlpha(200);
+    }
   }
 }

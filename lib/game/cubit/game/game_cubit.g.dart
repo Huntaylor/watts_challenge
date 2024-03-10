@@ -7,7 +7,10 @@ part of 'game_cubit.dart';
 // **************************************************************************
 
 extension _$GameStartStateAutoequal on GameStartState {
-  List<Object?> get _$props => [electricUsage];
+  List<Object?> get _$props => [
+        totalElectricUsage,
+        currentUsage,
+      ];
 }
 
 extension _$GameEndStateAutoequal on GameEndState {
@@ -22,7 +25,9 @@ extension _$GameEndStateAutoequal on GameEndState {
 // **************************************************************************
 
 abstract class _$GameStartStateCWProxy {
-  GameStartState electricUsage(double electricUsage);
+  GameStartState totalElectricUsage(double totalElectricUsage);
+
+  GameStartState currentUsage(double currentUsage);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -31,7 +36,8 @@ abstract class _$GameStartStateCWProxy {
   /// GameStartState(...).copyWith(id: 12, name: "My name")
   /// ````
   GameStartState call({
-    double? electricUsage,
+    double? totalElectricUsage,
+    double? currentUsage,
   });
 }
 
@@ -42,8 +48,12 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   final GameStartState _value;
 
   @override
-  GameStartState electricUsage(double electricUsage) =>
-      this(electricUsage: electricUsage);
+  GameStartState totalElectricUsage(double totalElectricUsage) =>
+      this(totalElectricUsage: totalElectricUsage);
+
+  @override
+  GameStartState currentUsage(double currentUsage) =>
+      this(currentUsage: currentUsage);
 
   @override
 
@@ -54,14 +64,20 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   /// GameStartState(...).copyWith(id: 12, name: "My name")
   /// ````
   GameStartState call({
-    Object? electricUsage = const $CopyWithPlaceholder(),
+    Object? totalElectricUsage = const $CopyWithPlaceholder(),
+    Object? currentUsage = const $CopyWithPlaceholder(),
   }) {
     return GameStartState(
-      electricUsage:
-          electricUsage == const $CopyWithPlaceholder() || electricUsage == null
-              ? _value.electricUsage
+      totalElectricUsage: totalElectricUsage == const $CopyWithPlaceholder() ||
+              totalElectricUsage == null
+          ? _value.totalElectricUsage
+          // ignore: cast_nullable_to_non_nullable
+          : totalElectricUsage as double,
+      currentUsage:
+          currentUsage == const $CopyWithPlaceholder() || currentUsage == null
+              ? _value.currentUsage
               // ignore: cast_nullable_to_non_nullable
-              : electricUsage as double,
+              : currentUsage as double,
     );
   }
 }

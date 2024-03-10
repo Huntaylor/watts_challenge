@@ -21,12 +21,24 @@ class GameState extends Equatable {
 @CopyWith()
 class GameStartState extends GameState {
   const GameStartState({
-    required this.electricUsage,
+    required this.totalElectricUsage,
+    required this.currentUsage,
   });
 
-  const GameStartState.initial() : electricUsage = 0;
+  const GameStartState.initial()
+      : totalElectricUsage = 0,
+        currentUsage = 0;
 
-  final double electricUsage;
+  final double totalElectricUsage;
+  final double currentUsage;
+
+  double get optimizedUsage {
+    return totalElectricUsage * (2 / 3);
+  }
+
+  double get percentage {
+    return (currentUsage / optimizedUsage) * 100;
+  }
 
   @override
   List<Object?> get props => _$props;

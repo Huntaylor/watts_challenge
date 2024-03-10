@@ -92,6 +92,9 @@ class AssetConst {
   ///'hud/battery.png'
   static String get usageOutline => 'hud/battery.png';
 
+  ///'hud/pause_button.png'
+  static String get pauseButton => 'hud/pause_button.png';
+
   //?                      -Interactable Files-
 
   ///'interactables/light_switch_off.png'

@@ -14,17 +14,18 @@ class GameCubit extends Cubit<GameState> {
 
   void startGame() {
     emit(
-      const GameStartState(electricUsage: 0),
+      const GameStartState(totalElectricUsage: 0, currentUsage: 0),
     );
   }
 
   void setTotalUsage({
     required double objectUsage,
   }) {
-    final newTotalUsage = state.asStarting.electricUsage + objectUsage;
+    final newTotalUsage = state.asStarting.totalElectricUsage + objectUsage;
     emit(
       state.asStarting.copyWith(
-        electricUsage: newTotalUsage,
+        totalElectricUsage: newTotalUsage,
+        currentUsage: newTotalUsage,
       ),
     );
   }
@@ -32,10 +33,10 @@ class GameCubit extends Cubit<GameState> {
   void addUsage({
     required double objectUsage,
   }) {
-    final newTotalUsage = state.asStarting.electricUsage + objectUsage;
+    final newTotalUsage = state.asStarting.currentUsage + objectUsage;
     emit(
       state.asStarting.copyWith(
-        electricUsage: newTotalUsage,
+        currentUsage: newTotalUsage,
       ),
     );
   }
@@ -43,10 +44,10 @@ class GameCubit extends Cubit<GameState> {
   void subtractUsage({
     required double objectUsage,
   }) {
-    final newTotalUsage = state.asStarting.electricUsage - objectUsage;
+    final newTotalUsage = state.asStarting.currentUsage - objectUsage;
     emit(
       state.asStarting.copyWith(
-        electricUsage: newTotalUsage,
+        currentUsage: newTotalUsage,
       ),
     );
   }

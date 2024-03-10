@@ -1,9 +1,6 @@
 import 'dart:ui';
 
-import 'package:environment_hackaton/game/components/hud_components/hud_sprite_component.dart';
-import 'package:environment_hackaton/game/components/hud_components/hud_usage_component.dart';
-import 'package:environment_hackaton/game/components/hud_components/interaction_loading_manager.dart';
-import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';
+import 'package:environment_hackaton/game/components/hud_components/hud_components.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
@@ -44,7 +41,7 @@ class WattsChallenge extends FlameGame
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
   late HudSpriteTimer hudTimer;
-  // late HudTextComponent hudTimer;
+  late PauseButtonComponent pauseButtonComponent;
   late HudUsageComponent hudUsageComponent;
 
   List<LightShaderEntity> lightShaders = [];
@@ -107,6 +104,7 @@ class WattsChallenge extends FlameGame
         loadingManager,
         hudTimer,
         hudUsageComponent,
+        pauseButtonComponent,
       ],
     );
 
@@ -175,6 +173,13 @@ class WattsChallenge extends FlameGame
       sprite: Sprite(
         images.fromCache(AssetConst.usageOutline),
       ),
+    );
+
+    pauseButtonComponent = PauseButtonComponent(
+      size: Vector2.all(96),
+      position: Vector2.all(32),
+      anchor: Anchor.topLeft,
+      buttonAsset: images.fromCache(AssetConst.pauseButton),
     );
   }
 
