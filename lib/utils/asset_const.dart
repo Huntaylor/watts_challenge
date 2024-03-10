@@ -151,6 +151,19 @@ class AssetConst {
   ///'interactables/tv_off.png'
   static String get tvOff => 'interactables/tv_off.png';
 
+  ///'interactables/washing_machine_on.png'
+  static String get washingMachineOn => 'interactables/washing_machine_on.png';
+
+  ///'interactables/washing_machine_off.png'
+  static String get washingMachineOff =>
+      'interactables/washing_machine_off.png';
+
+  ///'interactables/dryer_on.png'
+  static String get dryerOn => 'interactables/dryer_on.png';
+
+  ///'interactables/dryer_off.png'
+  static String get dryerOff => 'interactables/dryer_off.png';
+
   //* Shader Files
 
   ///'shaders/lightbulbs.glsl'
@@ -194,6 +207,36 @@ class AssetConst {
 
   ///Spawnpoints - Light Switches
   static const String lightSwitch = 'Switch';
+
+  ///Spawnpoints - Console
+  static const String console = 'Console';
+
+  ///Spawnpoints - Fridge
+  static const String fridge = 'Fridge';
+
+  ///Spawnpoints - Lamp
+  static const String lamp = 'Lamp';
+
+  ///Spawnpoints - Laptop
+  static const String laptop = 'Laptop';
+
+  ///Spawnpoints - Oven
+  static const String oven = 'Oven';
+
+  ///Spawnpoints - Radio
+  static const String radio = 'Radio';
+
+  ///Spawnpoints - Thermo
+  static const String thermo = 'Thermo';
+
+  ///Spawnpoints - TV
+  static const String tv = 'TV';
+
+  ///Spawnpoints - WashingMachine
+  static const String washingMachine = 'WashingMachine';
+
+  ///Spawnpoints - Dryer
+  static const String dryer = 'Dryer';
 
   ///Shaders Class - LightShaders
   static const String lightShaders = 'LightShaders';
