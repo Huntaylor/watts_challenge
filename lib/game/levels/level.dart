@@ -106,6 +106,138 @@ class Level extends World with HasGameRef<WattsChallenge> {
             add(cachedObjectProvider.cachedComponent);
             powerUsage +=
                 cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.console:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.small,
+                onSpriteParam: game.images.fromCache(AssetConst.consoleOn),
+                offSpriteParam: game.images.fromCache(AssetConst.consoleOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.fridge:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.large,
+                onSpriteParam: game.images.fromCache(AssetConst.fridgeOn),
+                offSpriteParam: game.images.fromCache(AssetConst.fridgeOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.lamp:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.medium,
+                onSpriteParam: game.images.fromCache(AssetConst.lampOn),
+                offSpriteParam: game.images.fromCache(AssetConst.lampOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.laptop:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.medium,
+                onSpriteParam: game.images.fromCache(AssetConst.laptopOn),
+                offSpriteParam: game.images.fromCache(AssetConst.laptopOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.oven:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.large,
+                onSpriteParam: game.images.fromCache(AssetConst.ovenOn),
+                offSpriteParam: game.images.fromCache(AssetConst.ovenOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.radio:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.small,
+                onSpriteParam: game.images.fromCache(AssetConst.radioOn),
+                offSpriteParam: game.images.fromCache(AssetConst.radioOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.thermo:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.large,
+                onSpriteParam: game.images.fromCache(AssetConst.thermoOn),
+                offSpriteParam: game.images.fromCache(AssetConst.thermoOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.tv:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.large,
+                onSpriteParam: game.images.fromCache(AssetConst.tvOn),
+                offSpriteParam: game.images.fromCache(AssetConst.tvOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.washingMachine:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.large,
+                onSpriteParam:
+                    game.images.fromCache(AssetConst.washingMachineOn),
+                offSpriteParam:
+                    game.images.fromCache(AssetConst.washingMachineOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
+          case AssetConst.dryer:
+            final cachedObjectProvider = CachedInteractableObjectProvider(
+              ObjectParams(
+                objectTypeParam: ObjectType.large,
+                onSpriteParam: game.images.fromCache(AssetConst.dryerOn),
+                offSpriteParam: game.images.fromCache(AssetConst.dryerOff),
+                positionParam: spawnPoint.position,
+                sizeParam: spawnPoint.size,
+              ),
+            );
+            add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
         }
       }
     }
