@@ -88,6 +88,10 @@ class $AssetsTilesGen {
 class $AssetsImagesHudGen {
   const $AssetsImagesHudGen();
 
+  /// File path: assets/images/hud/battery.png
+  AssetGenImage get battery =>
+      const AssetGenImage('assets/images/hud/battery.png');
+
   /// File path: assets/images/hud/e_button.png
   AssetGenImage get eButton =>
       const AssetGenImage('assets/images/hud/e_button.png');
@@ -132,6 +136,7 @@ class $AssetsImagesHudGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        battery,
         eButton,
         eButtonDownAseprite,
         eButtonDownPng,

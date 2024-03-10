@@ -108,7 +108,7 @@
         "house_1.tmx"
     ],
     "project": "watts_challenge.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
         "house_1.tmx",
         "house_1_foreground.tmx",

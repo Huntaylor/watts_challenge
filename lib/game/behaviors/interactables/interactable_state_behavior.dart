@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/interaction_time_bar_component.dart';
+import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
@@ -49,7 +49,9 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
         parent.isPlayerColliding) {
       if (!isTriggered) {
         isTriggered = true;
-        parent.isOn = !parent.isOn;
+        parent
+          ..isOn = !parent.isOn
+          ..adjustTotalUsage();
         _loadObjectState();
       }
     } else {
@@ -73,51 +75,53 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
         InteractableState.on: onSprite,
         InteractableState.off: offSprite,
       }
-      ..current = InteractableState.off;
+      ..current = InteractableState.on;
   }
 
   void _loadObjectState() {
     parent.current = parent.isOn ? InteractableState.on : InteractableState.off;
-
-    switch (parent.lightSwitchState) {
-      case LightSwitchState.hallway:
-        shaders = getShaders(AssetConst.hallwayProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.masterBedroom:
-        shaders = getShaders(AssetConst.masterBedroomProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.masterBathroom:
-        shaders = getShaders(AssetConst.masterBathroomProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.masterCloset:
-        shaders = getShaders(AssetConst.masterClosetProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.bedroom1:
-        shaders = getShaders(AssetConst.bedroom1Property);
-        interactWithShaders(shaders);
-      case LightSwitchState.bedroomCloset1:
-        shaders = getShaders(AssetConst.bedroomCloset1Property);
-        interactWithShaders(shaders);
-      case LightSwitchState.bedroom2:
-        shaders = getShaders(AssetConst.bedroom2Property);
-        interactWithShaders(shaders);
-      case LightSwitchState.bedroomCloset2:
-        shaders = getShaders(AssetConst.bedroomCloset2Property);
-        interactWithShaders(shaders);
-      case LightSwitchState.laundryRoom:
-        shaders = getShaders(AssetConst.laundryRoomProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.garage:
-        shaders = getShaders(AssetConst.garageProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.kitchen:
-        shaders = getShaders(AssetConst.kitchenProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.pantry:
-        shaders = getShaders(AssetConst.pantryProperty);
-        interactWithShaders(shaders);
-      case LightSwitchState.none:
-        break;
+    if (parent.lightSwitchState != null) {
+      switch (parent.lightSwitchState) {
+        case LightSwitchState.hallway:
+          shaders = getShaders(AssetConst.hallwayProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.masterBedroom:
+          shaders = getShaders(AssetConst.masterBedroomProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.masterBathroom:
+          shaders = getShaders(AssetConst.masterBathroomProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.masterCloset:
+          shaders = getShaders(AssetConst.masterClosetProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.bedroom1:
+          shaders = getShaders(AssetConst.bedroom1Property);
+          interactWithShaders(shaders);
+        case LightSwitchState.bedroomCloset1:
+          shaders = getShaders(AssetConst.bedroomCloset1Property);
+          interactWithShaders(shaders);
+        case LightSwitchState.bedroom2:
+          shaders = getShaders(AssetConst.bedroom2Property);
+          interactWithShaders(shaders);
+        case LightSwitchState.bedroomCloset2:
+          shaders = getShaders(AssetConst.bedroomCloset2Property);
+          interactWithShaders(shaders);
+        case LightSwitchState.laundryRoom:
+          shaders = getShaders(AssetConst.laundryRoomProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.garage:
+          shaders = getShaders(AssetConst.garageProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.kitchen:
+          shaders = getShaders(AssetConst.kitchenProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.pantry:
+          shaders = getShaders(AssetConst.pantryProperty);
+          interactWithShaders(shaders);
+        case LightSwitchState.none:
+        case null:
+          break;
+      }
     }
   }
 

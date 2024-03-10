@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/interaction_time_bar_component.dart';
+import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/hud_buttons/custom_hud_button.dart';
 import 'package:flame/components.dart';

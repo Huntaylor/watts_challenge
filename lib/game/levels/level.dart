@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:environment_hackaton/game/behaviors/behaviors.dart';
-import 'package:environment_hackaton/game/components/base_object.dart';
-import 'package:environment_hackaton/game/components/cache_provider.dart';
 import 'package:environment_hackaton/game/components/components.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
 import 'package:environment_hackaton/game/game.dart';
@@ -24,6 +22,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
   List<CollisionBlock> collisionBlock = [];
 
   late TiledComponent tiledLevel;
+  late int gameTimer;
 
   @override
   Future<void> onLoad() async {
@@ -32,6 +31,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
       Vector2.all(64),
       priority: game.levelPriority,
     );
+
     final foregroundLevel = await TiledComponent.load(
       foregroundLevelName,
       Vector2.all(64),
@@ -77,6 +77,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
   }
 
   Future<void> _spawningObjects(TiledComponent level) async {
+    var powerUsage = 0.0;
     final spawnPointLayer =
         level.tileMap.getLayer<ObjectGroup>(AssetConst.spawnpoints);
 
@@ -103,8 +104,13 @@ class Level extends World with HasGameRef<WattsChallenge> {
               ),
             );
             add(cachedObjectProvider.cachedComponent);
+            powerUsage +=
+                cachedObjectProvider.cachedComponent.baseObject.powerUsage;
         }
       }
+    }
+    if (game.gameState.isStarting) {
+      gameRef.gameCubit.setTotalUsage(objectUsage: powerUsage);
     }
   }
 

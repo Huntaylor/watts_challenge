@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:environment_hackaton/game/components/components.dart';
+import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
@@ -30,10 +30,6 @@ class InteractionLoadingManager extends PositionComponent
     final playerState = newState.asInitial;
     timerState = playerState.timerState;
     interactionTime = newState.asInitial.objectInteractionTime;
-    if (!newState.asInitial.isInteracting && contains(timerBar)) {
-      timerBar.cancelTimer();
-      shouldAddBar = false;
-    }
 
     if (playerState.isInteracting && playerState.isWithinRange) {
       bloc.setTimer(timerState: TimerState.inProgress);
@@ -41,6 +37,11 @@ class InteractionLoadingManager extends PositionComponent
     } else if (timerState == TimerState.complete ||
         timerState == TimerState.cancelled) {
       bloc.setTimer(timerState: TimerState.initial);
+      shouldAddBar = false;
+    } else if (timerState == TimerState.inProgress &&
+        !newState.asInitial.isInteracting) {
+      bloc.setTimer(timerState: TimerState.cancelled);
+      timerBar.cancelTimer();
       shouldAddBar = false;
     }
     return super.listenWhen(previousState, newState);

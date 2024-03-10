@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/set_times_mixin.dart';
 import 'package:flame/components.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 
 enum ObjectType {
   large,
@@ -12,7 +14,10 @@ enum ObjectType {
 }
 
 class BaseObject extends PositionComponent
-    with SetObjectTypeMixin, HasGameRef<WattsChallenge> {
+    with
+        SetObjectTypeMixin,
+        HasGameRef<WattsChallenge>,
+        FlameBlocReader<GameCubit, GameState> {
   BaseObject({required this.objectType});
 
   final ObjectType objectType;
@@ -21,7 +26,7 @@ class BaseObject extends PositionComponent
   late double powerUsage;
 
   @override
-  FutureOr<void> onLoad() {
+  Future<void> onLoad() {
     switch (objectType) {
       case ObjectType.large:
         interactionTime = SetObjectTypeMixin.largeItemTime;
@@ -37,7 +42,6 @@ class BaseObject extends PositionComponent
         powerUsage = SetObjectTypeMixin.lightSwitchPowerUsage;
     }
 
-    gameRef.totalUsage += powerUsage;
     return super.onLoad();
   }
 }

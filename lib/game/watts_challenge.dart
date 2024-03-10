@@ -1,8 +1,9 @@
 import 'dart:ui';
 
-import 'package:environment_hackaton/game/components/hud_text_component.dart';
-import 'package:environment_hackaton/game/components/interaction_loading_manager.dart';
-import 'package:environment_hackaton/game/components/interaction_time_bar_component.dart';
+import 'package:environment_hackaton/game/components/hud_components/hud_sprite_component.dart';
+import 'package:environment_hackaton/game/components/hud_components/hud_usage_component.dart';
+import 'package:environment_hackaton/game/components/hud_components/interaction_loading_manager.dart';
+import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
@@ -42,7 +43,9 @@ class WattsChallenge extends FlameGame
   late InteractionLoadingManager loadingManager;
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
-  late HudText hudTimer;
+  late HudSpriteTimer hudTimer;
+  // late HudTextComponent hudTimer;
+  late HudUsageComponent hudUsageComponent;
 
   List<LightShaderEntity> lightShaders = [];
   List<InteractableObjects> objects = [];
@@ -57,6 +60,12 @@ class WattsChallenge extends FlameGame
   final int playerPriority = 3;
   final int foregroundLevelPriority = 4;
   final int shaderPriority = 10;
+
+  Vector2 interactionBarPosition = Vector2(640, 325);
+  Vector2 timerPosition = Vector2(672, 64);
+  Vector2 timerSize = Vector2(256, 48);
+  Vector2 powerComponentSize = Vector2(256, 80);
+  Vector2 powerComponentPosition = Vector2(1100, 64);
 
   double totalUsage = 0;
 
@@ -97,6 +106,7 @@ class WattsChallenge extends FlameGame
         hudInteractButtonComponent,
         loadingManager,
         hudTimer,
+        hudUsageComponent,
       ],
     );
 
@@ -144,20 +154,31 @@ class WattsChallenge extends FlameGame
       buttonDownAsset: images.fromCache(AssetConst.interactButtonDown),
     );
 
-    final timeBarPosition = Vector2(640, 325);
-
     loadingManager = InteractionLoadingManager(
       timerBar: InteractionTimerBar(),
-      position: timeBarPosition,
+      position: interactionBarPosition,
     );
 
-    hudTimer = HudText(
-      size: Vector2.all(32),
-      position: Vector2(10, 100),
+    hudTimer = HudSpriteTimer(
+      size: timerSize,
+      position: timerPosition,
+      anchor: Anchor.center,
+      sprite: Sprite(
+        images.fromCache(AssetConst.timerOutline),
+      ),
+    );
+
+    hudUsageComponent = HudUsageComponent(
+      size: powerComponentSize,
+      position: powerComponentPosition,
+      anchor: Anchor.center,
+      sprite: Sprite(
+        images.fromCache(AssetConst.usageOutline),
+      ),
     );
   }
 
   Future<void> _initializeGameCubit() async {
-    gameCubit.startGame(totalUsage: totalUsage, gameTimer: 60);
+    gameCubit.startGame();
   }
 }

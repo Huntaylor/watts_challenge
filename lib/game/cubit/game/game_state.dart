@@ -6,9 +6,11 @@ class GameState extends Equatable {
   const GameState.initial();
 
   bool get isStarting => this is GameStartState;
+  bool get isGameOver => this is GameEndState;
   bool get isLoading => this is LoadingState;
 
   GameStartState get asStarting => this as GameStartState;
+  GameEndState get asGameOver => this as GameEndState;
   LoadingState get asLoading => this as LoadingState;
 
   @override
@@ -19,16 +21,27 @@ class GameState extends Equatable {
 @CopyWith()
 class GameStartState extends GameState {
   const GameStartState({
-    required this.gameTimer,
     required this.electricUsage,
   });
 
-  const GameStartState.initial()
-      : electricUsage = 0,
-        gameTimer = 30;
+  const GameStartState.initial() : electricUsage = 0;
 
-  final int gameTimer;
   final double electricUsage;
+
+  @override
+  List<Object?> get props => _$props;
+}
+
+@autoequal
+@CopyWith()
+class GameEndState extends GameState {
+  const GameEndState({
+    required this.electricUsage,
+    required this.endTime,
+  });
+
+  final double electricUsage;
+  final String endTime;
 
   @override
   List<Object?> get props => _$props;

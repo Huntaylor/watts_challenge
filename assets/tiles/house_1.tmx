@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="tilemap_64_patched" tilewidth="64" tileheight="64" spacing="2" tilecount="400" columns="20">
   <image source="../images/tilemap_64.png" width="1320" height="1320"/>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="60" height="40">
+ <layer id="1" name="LevelLayout" width="60" height="40">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -47,7 +47,7 @@
 228,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,230,231,232,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229,233,229,229,229,229,229,233,234,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <group id="11" name="Shaders_Layer">
+ <group id="11" name="Shaders_Layer" visible="0">
   <objectgroup color="#ffff00" id="8" name="Shaders">
    <object id="113" name="Hallway" type="LightShaders" x="64" y="1600" width="1665.13" height="256">
     <properties>
@@ -186,7 +186,7 @@
    </object>
   </objectgroup>
  </group>
- <objectgroup color="#00ff00" id="3" name="Collisions" visible="0">
+ <objectgroup color="#00ff00" id="3" name="Collisions">
   <object id="2" name="Wall" type="Wall" x="0" y="768" width="64" height="1728"/>
   <object id="7" name="Wall" type="Wall" x="64" y="1952" width="315.938" height="32"/>
   <object id="10" name="Wall" type="Wall" x="768" y="1984" width="64" height="192"/>
@@ -220,7 +220,7 @@
   <object id="55" name="Wall" type="Wall" x="896" y="1536" width="64" height="96"/>
  </objectgroup>
  <objectgroup color="#ffaaff" id="2" name="Spawnpoints">
-  <object id="1" name="Player" type="Player" x="768" y="1728" width="56" height="72"/>
+  <object id="1" name="Player" type="Player" x="1088" y="2240" width="56" height="72"/>
   <object id="92" name="Hallway" type="Switch" x="1088" y="1664" width="16" height="32">
    <properties>
     <property name="interactionTime" type="int" value="1"/>

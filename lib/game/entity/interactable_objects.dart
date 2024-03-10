@@ -4,20 +4,25 @@ import 'dart:ui';
 import 'package:environment_hackaton/game/behaviors/interactables/interactable_collision_behavior.dart';
 import 'package:environment_hackaton/game/behaviors/interactables/interactable_state_behavior.dart';
 import 'package:environment_hackaton/game/components/base_object.dart';
+import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart' as color;
 
 class InteractableObjects extends SpriteGroupComponent<InteractableState>
-    with EntityMixin, HasGameRef<WattsChallenge> {
+    with
+        EntityMixin,
+        HasGameRef<WattsChallenge>,
+        FlameBlocReader<GameCubit, GameState> {
   InteractableObjects({
     required this.objectType,
-    required this.lightSwitchState,
     required this.onSprite,
     required this.offSprite,
+    this.lightSwitchState,
     super.priority,
     super.position,
     super.size,
@@ -25,7 +30,7 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
     super.current,
   });
   final ObjectType objectType;
-  final LightSwitchState lightSwitchState;
+  final LightSwitchState? lightSwitchState;
 
   final Image onSprite;
   final Image offSprite;
@@ -34,6 +39,7 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
   late BaseObject baseObject;
   late RectangleHitbox hitbox;
   late bool isOn;
+  late bool isVisable;
 
   bool isMax = false;
   double interactionTime = .35;
@@ -55,32 +61,7 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
       findBehavior<InteractableCollisionBehavior>();
 
   @override
-  void update(double dt) {
-    priority = isPlayerColliding
-        ? gameRef.interactablePriority
-        : gameRef.foregroundLevelPriority + 1;
-    if (isMax) {
-      elapsedTime -= dt;
-      final targetProgress = elapsedTime / interactionTime;
-      if (targetProgress > minProgress) {
-        _progress = targetProgress;
-      } else {
-        reset();
-      }
-    } else {
-      elapsedTime += dt;
-      final targetProgress = elapsedTime / interactionTime;
-      if (targetProgress < maxProgress) {
-        _progress = targetProgress;
-      } else {
-        reset();
-      }
-    }
-    super.update(dt);
-  }
-
-  @override
-  FutureOr<void> onLoad() async {
+  Future<void> onLoad() async {
     _progress = 0.0;
     baseObject = BaseObject(objectType: objectType);
     isPlayerColliding = false;
@@ -109,6 +90,33 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
   }
 
   @override
+  void update(double dt) {
+    // isVisable = gameRef.camera.canSee(this);
+    // print(isVisable);
+    priority = isPlayerColliding
+        ? gameRef.interactablePriority
+        : gameRef.foregroundLevelPriority + 1;
+    if (isMax) {
+      elapsedTime -= dt;
+      final targetProgress = elapsedTime / interactionTime;
+      if (targetProgress > minProgress) {
+        _progress = targetProgress;
+      } else {
+        reset();
+      }
+    } else {
+      elapsedTime += dt;
+      final targetProgress = elapsedTime / interactionTime;
+      if (targetProgress < maxProgress) {
+        _progress = targetProgress;
+      } else {
+        reset();
+      }
+    }
+    super.update(dt);
+  }
+
+  @override
   void render(Canvas canvas) {
     color.Color glowColor;
     if (isOn) {
@@ -130,5 +138,13 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
 
   void reset() {
     isMax = !isMax;
+  }
+
+  void adjustTotalUsage() {
+    if (!isOn) {
+      bloc.subtractUsage(objectUsage: baseObject.powerUsage);
+    } else {
+      bloc.addUsage(objectUsage: baseObject.powerUsage);
+    }
   }
 }

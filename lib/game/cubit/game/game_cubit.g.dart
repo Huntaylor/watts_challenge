@@ -7,9 +7,13 @@ part of 'game_cubit.dart';
 // **************************************************************************
 
 extension _$GameStartStateAutoequal on GameStartState {
+  List<Object?> get _$props => [electricUsage];
+}
+
+extension _$GameEndStateAutoequal on GameEndState {
   List<Object?> get _$props => [
-        gameTimer,
         electricUsage,
+        endTime,
       ];
 }
 
@@ -18,8 +22,6 @@ extension _$GameStartStateAutoequal on GameStartState {
 // **************************************************************************
 
 abstract class _$GameStartStateCWProxy {
-  GameStartState gameTimer(int gameTimer);
-
   GameStartState electricUsage(double electricUsage);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -29,7 +31,6 @@ abstract class _$GameStartStateCWProxy {
   /// GameStartState(...).copyWith(id: 12, name: "My name")
   /// ````
   GameStartState call({
-    int? gameTimer,
     double? electricUsage,
   });
 }
@@ -39,9 +40,6 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   const _$GameStartStateCWProxyImpl(this._value);
 
   final GameStartState _value;
-
-  @override
-  GameStartState gameTimer(int gameTimer) => this(gameTimer: gameTimer);
 
   @override
   GameStartState electricUsage(double electricUsage) =>
@@ -56,14 +54,9 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   /// GameStartState(...).copyWith(id: 12, name: "My name")
   /// ````
   GameStartState call({
-    Object? gameTimer = const $CopyWithPlaceholder(),
     Object? electricUsage = const $CopyWithPlaceholder(),
   }) {
     return GameStartState(
-      gameTimer: gameTimer == const $CopyWithPlaceholder() || gameTimer == null
-          ? _value.gameTimer
-          // ignore: cast_nullable_to_non_nullable
-          : gameTimer as int,
       electricUsage:
           electricUsage == const $CopyWithPlaceholder() || electricUsage == null
               ? _value.electricUsage
@@ -77,4 +70,66 @@ extension $GameStartStateCopyWith on GameStartState {
   /// Returns a callable class that can be used as follows: `instanceOfGameStartState.copyWith(...)` or like so:`instanceOfGameStartState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$GameStartStateCWProxy get copyWith => _$GameStartStateCWProxyImpl(this);
+}
+
+abstract class _$GameEndStateCWProxy {
+  GameEndState electricUsage(double electricUsage);
+
+  GameEndState endTime(String endTime);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameEndState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// GameEndState(...).copyWith(id: 12, name: "My name")
+  /// ````
+  GameEndState call({
+    double? electricUsage,
+    String? endTime,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGameEndState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGameEndState.copyWith.fieldName(...)`
+class _$GameEndStateCWProxyImpl implements _$GameEndStateCWProxy {
+  const _$GameEndStateCWProxyImpl(this._value);
+
+  final GameEndState _value;
+
+  @override
+  GameEndState electricUsage(double electricUsage) =>
+      this(electricUsage: electricUsage);
+
+  @override
+  GameEndState endTime(String endTime) => this(endTime: endTime);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameEndState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// GameEndState(...).copyWith(id: 12, name: "My name")
+  /// ````
+  GameEndState call({
+    Object? electricUsage = const $CopyWithPlaceholder(),
+    Object? endTime = const $CopyWithPlaceholder(),
+  }) {
+    return GameEndState(
+      electricUsage:
+          electricUsage == const $CopyWithPlaceholder() || electricUsage == null
+              ? _value.electricUsage
+              // ignore: cast_nullable_to_non_nullable
+              : electricUsage as double,
+      endTime: endTime == const $CopyWithPlaceholder() || endTime == null
+          ? _value.endTime
+          // ignore: cast_nullable_to_non_nullable
+          : endTime as String,
+    );
+  }
+}
+
+extension $GameEndStateCopyWith on GameEndState {
+  /// Returns a callable class that can be used as follows: `instanceOfGameEndState.copyWith(...)` or like so:`instanceOfGameEndState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$GameEndStateCWProxy get copyWith => _$GameEndStateCWProxyImpl(this);
 }

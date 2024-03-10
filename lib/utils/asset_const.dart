@@ -86,6 +86,12 @@ class AssetConst {
   ///'hud/sprint_button.png'
   static String get sprintButton => 'hud/sprint_button.png';
 
+  ///'hud/timer_outline.png'
+  static String get timerOutline => 'hud/timer_outline.png';
+
+  ///'hud/battery.png'
+  static String get usageOutline => 'hud/battery.png';
+
   //?                      -Interactable Files-
 
   ///'interactables/light_switch_off.png'
@@ -120,6 +126,9 @@ class AssetConst {
 
   //?                      -Tiled Object Names-
 
+  ///LevelLayout
+  static String get levelLayout => 'LevelLayout';
+
   ///Collisions
   static String get collisions => 'Collisions';
 
@@ -146,8 +155,8 @@ class AssetConst {
 
   //?                      -Tiled Object Custom Property Names-
 
-  ///'interactionTime'
-  static const String interactionTime = 'interactionTime';
+  ///'gameTimer'
+  static const String gameTimer = 'gameTimer';
 
   ///'Hallway'
   static const String hallwayProperty = 'Hallway';
