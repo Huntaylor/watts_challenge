@@ -103,6 +103,54 @@ class AssetConst {
   ///'interactables/light_switch_on.png'
   static String get lightSwitchOn => 'interactables/light_switch_on.png';
 
+  ///'interactables/console_on.png'
+  static String get consoleOn => 'interactables/console_on.png';
+
+  ///'interactables/console_off.png'
+  static String get consoleOff => 'interactables/console_off.png';
+
+  ///'interactables/fridge_on.png'
+  static String get fridgeOn => 'interactables/fridge_on.png';
+
+  ///'interactables/fridge_off.png'
+  static String get fridgeOff => 'interactables/fridge_off.png';
+
+  ///'interactables/lamp_on.png'
+  static String get lampOn => 'interactables/lamp_on.png';
+
+  ///'interactables/lamp_off.png'
+  static String get lampOff => 'interactables/lamp_off.png';
+
+  ///'interactables/laptop_on.png'
+  static String get laptopOn => 'interactables/laptop_on.png';
+
+  ///'interactables/laptop_off.png'
+  static String get laptopOff => 'interactables/laptop_off.png';
+
+  ///'interactables/oven_on.png'
+  static String get ovenOn => 'interactables/oven_on.png';
+
+  ///'interactables/oven_off.png'
+  static String get ovenOff => 'interactables/oven_off.png';
+
+  ///'interactables/radio_on.png'
+  static String get radioOn => 'interactables/radio_on.png';
+
+  ///'interactables/radio_off.png'
+  static String get radioOff => 'interactables/radio_off.png';
+
+  ///'interactables/thermostat_on.png'
+  static String get thermoOn => 'interactables/thermostat_on.png';
+
+  ///'interactables/thermostat_off.png'
+  static String get thermoOff => 'interactables/thermostat_off.png';
+
+  ///'interactables/tv_on.png'
+  static String get tvOn => 'interactables/tv_on.png';
+
+  ///'interactables/tv_off.png'
+  static String get tvOff => 'interactables/tv_off.png';
+
   //* Shader Files
 
   ///'shaders/lightbulbs.glsl'

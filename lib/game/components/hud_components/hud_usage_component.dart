@@ -70,9 +70,9 @@ class HudUsageComponent extends SpriteComponent
   }
 
   Color getUsageColor(double usagePercentage) {
-    if (usagePercentage >= maxPercentage) {
+    if (usagePercentage <= maxPercentage && usagePercentage > 100) {
       return color.Colors.red[900]!.withAlpha(200);
-    } else if (usagePercentage >= 100) {
+    } else if (usagePercentage <= 100) {
       return color.Colors.green[900]!.withAlpha(200);
     } else {
       return color.Colors.blue.withAlpha(200);
