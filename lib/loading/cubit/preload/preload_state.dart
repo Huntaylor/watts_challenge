@@ -1,18 +1,21 @@
 part of 'preload_cubit.dart';
 
 /// State for [PreloadCubit].
+
+@autoequal
+@CopyWith()
 class PreloadState extends Equatable {
+  const PreloadState(
+    this.loadedCount,
+    this.currentLabel,
+    this.totalCount,
+  );
+
   /// Create a [PreloadState] with initial conditions.
   const PreloadState.initial()
       : totalCount = 0,
         loadedCount = 0,
         currentLabel = '';
-
-  const PreloadState._(
-    this.loadedCount,
-    this.currentLabel,
-    this.totalCount,
-  );
 
   /// The total count of load phases to be completed
   final int totalCount;
@@ -28,21 +31,5 @@ class PreloadState extends Equatable {
   bool get isComplete => progress == 1.0;
 
   @override
-  List<Object?> get props => [
-        totalCount,
-        loadedCount,
-        currentLabel,
-      ];
-
-  PreloadState copyWith({
-    int? loadedCount,
-    String? currentLabel,
-    int? totalCount,
-  }) {
-    return PreloadState._(
-      loadedCount ?? this.loadedCount,
-      currentLabel ?? this.currentLabel,
-      totalCount ?? this.totalCount,
-    );
-  }
+  List<Object?> get props => [];
 }

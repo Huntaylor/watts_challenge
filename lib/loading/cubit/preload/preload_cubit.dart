@@ -1,9 +1,12 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:bloc/bloc.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flame/cache.dart';
 import 'package:flutter/widgets.dart';
 
 part 'preload_state.dart';
+part 'preload_cubit.g.dart';
 
 class PreloadCubit extends Cubit<PreloadState> {
   PreloadCubit(
@@ -28,7 +31,7 @@ class PreloadCubit extends Cubit<PreloadState> {
       // ),
     ];
 
-    emit(state.copyWith(totalCount: phases.length));
+    // emit(state.copyWith(totalCount: phases.length));
     // for (final phase in phases) {
     //   emit(state.copyWith(currentLabel: phase.label));
     //   // Throttle phases to take at least 1/5 seconds

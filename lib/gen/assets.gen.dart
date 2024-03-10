@@ -122,6 +122,10 @@ class $AssetsImagesHudGen {
   /// File path: assets/images/hud/knob.png
   AssetGenImage get knob => const AssetGenImage('assets/images/hud/knob.png');
 
+  /// File path: assets/images/hud/pause_button.png
+  AssetGenImage get pauseButton =>
+      const AssetGenImage('assets/images/hud/pause_button.png');
+
   /// File path: assets/images/hud/refactored_joystick.aseprite
   String get refactoredJoystick =>
       'assets/images/hud/refactored_joystick.aseprite';
@@ -134,6 +138,10 @@ class $AssetsImagesHudGen {
   AssetGenImage get sprintButtonDown =>
       const AssetGenImage('assets/images/hud/sprint_button_down.png');
 
+  /// File path: assets/images/hud/timer_outline.png
+  AssetGenImage get timerOutline =>
+      const AssetGenImage('assets/images/hud/timer_outline.png');
+
   /// List of all assets
   List<dynamic> get values => [
         battery,
@@ -145,9 +153,11 @@ class $AssetsImagesHudGen {
         joystick,
         jumpButton,
         knob,
+        pauseButton,
         refactoredJoystick,
         sprintButton,
-        sprintButtonDown
+        sprintButtonDown,
+        timerOutline
       ];
 }
 
