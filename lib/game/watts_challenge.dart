@@ -18,18 +18,13 @@ class WattsChallenge extends FlameGame
     required this.gameCubit,
     required this.playerCubit,
   }
-      // required this.l10n,
       // required this.effectPlayer,
-      // required this.textStyle,
       );
 
   final GameCubit gameCubit;
   final PlayerGameCubit playerCubit;
-  // final AppLocalizations l10n;
 
   // final AudioPlayer effectPlayer;
-
-  // final TextStyle textStyle;
 
   Player player = Player();
 
@@ -40,7 +35,7 @@ class WattsChallenge extends FlameGame
   late InteractionLoadingManager loadingManager;
   late CustomHudButton hudSprintButtonComponent;
   late CustomHudButton hudInteractButtonComponent;
-  late HudSpriteTimer hudTimer;
+  late HudTimerSprite hudTimer;
   late PauseButtonComponent pauseButtonComponent;
   late HudUsageComponent hudUsageComponent;
 
@@ -157,7 +152,7 @@ class WattsChallenge extends FlameGame
       position: interactionBarPosition,
     );
 
-    hudTimer = HudSpriteTimer(
+    hudTimer = HudTimerSprite(
       size: timerSize,
       position: timerPosition,
       anchor: Anchor.center,

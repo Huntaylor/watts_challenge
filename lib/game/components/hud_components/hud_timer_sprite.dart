@@ -2,12 +2,15 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:app_ui/app_ui.dart';
+import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:flame/components.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart' as color;
 
-class HudSpriteTimer extends SpriteComponent with HasGameRef<WattsChallenge> {
-  HudSpriteTimer({
+class HudTimerSprite extends SpriteComponent
+    with HasGameRef<WattsChallenge>, FlameBlocListenable<GameCubit, GameState> {
+  HudTimerSprite({
     super.size,
     super.position,
     super.anchor,
@@ -17,12 +20,22 @@ class HudSpriteTimer extends SpriteComponent with HasGameRef<WattsChallenge> {
   late TimerComponent gameTime;
   late double drawSize;
 
+  String timer = '';
   int minutes = 0;
   int moveMark = 10;
   double leftOffset = 9.5;
   double topOffset = .5;
   Vector2 overTenMins = Vector2(9, 7);
   Vector2 underTenMins = Vector2(38, 7);
+
+  @override
+  bool listenWhen(GameState previousState, GameState newState) {
+    if (newState.asStarting.percentage <= 100) {
+      bloc.gameOver(timer);
+      gameRef.pauseEngine();
+    }
+    return super.listenWhen(previousState, newState);
+  }
 
   @override
   FutureOr<void> onLoad() {
@@ -66,6 +79,7 @@ class HudSpriteTimer extends SpriteComponent with HasGameRef<WattsChallenge> {
       position = underTenMins;
     }
 
+    timer = '$minutes:$seconds';
     textComponent.textRenderer =
         TextPaint(style: WattsChallengeTextStyle.headline2);
     canvas
@@ -76,7 +90,7 @@ class HudSpriteTimer extends SpriteComponent with HasGameRef<WattsChallenge> {
       ..restore();
     textComponent.textRenderer.render(
       canvas,
-      '$minutes:$seconds',
+      timer,
       position,
     );
     super.render(canvas);

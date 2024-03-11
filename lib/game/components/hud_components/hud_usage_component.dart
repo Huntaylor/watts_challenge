@@ -21,7 +21,7 @@ class HudUsageComponent extends SpriteComponent
 
   double leftOffset = 9.5;
   double topOffset = .5;
-  Vector2 newPosition = Vector2(22, 23);
+  Vector2 newPosition = Vector2(16, 23);
   String percentageName = '';
   double percentageAmount = 0;
   double maxPercentage = 0;
@@ -30,7 +30,7 @@ class HudUsageComponent extends SpriteComponent
   @override
   bool listenWhen(GameState previousState, GameState newState) {
     percentageAmount = newState.asStarting.percentage;
-    percentageName = '${newState.asStarting.percentage}%';
+    percentageName = '${newState.asStarting.percentage.toStringAsFixed(2)}%';
     return super.listenWhen(previousState, newState);
   }
 
@@ -40,7 +40,8 @@ class HudUsageComponent extends SpriteComponent
     textComponent = TextComponent();
 
     if (gameRef.gameState.isStarting) {
-      percentageName = '${gameRef.gameState.asStarting.percentage}%';
+      percentageName =
+          '${gameRef.gameState.asStarting.percentage.toStringAsFixed(2)}%';
       percentageAmount = gameRef.gameState.asStarting.percentage;
       maxPercentage = gameRef.gameState.asStarting.percentage;
     }
@@ -57,7 +58,6 @@ class HudUsageComponent extends SpriteComponent
     canvas
       ..drawRect(
         Rect.fromLTWH(leftOffset, topOffset, drawSize, size.y - 1),
-        // Paint()..color = percentageColor.withAlpha(200),
         Paint()..color = getUsageColor(percentageAmount),
       )
       ..restore();

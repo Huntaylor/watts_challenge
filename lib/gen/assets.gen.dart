@@ -12,6 +12,18 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/house_items_tilemap.png
+  AssetGenImage get houseItemsTilemap =>
+      const AssetGenImage('assets/images/house_items_tilemap.png');
+
+  /// File path: assets/images/house_items_tileset.png
+  AssetGenImage get houseItemsTileset =>
+      const AssetGenImage('assets/images/house_items_tileset.png');
+
+  /// File path: assets/images/house_items_tileset_patched.png
+  AssetGenImage get houseItemsTilesetPatched =>
+      const AssetGenImage('assets/images/house_items_tileset_patched.png');
+
   $AssetsImagesHudGen get hud => const $AssetsImagesHudGen();
   $AssetsImagesInteractablesGen get interactables =>
       const $AssetsImagesInteractablesGen();
@@ -26,7 +38,13 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/tilemap_64.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [testingTheShader, tilemap64];
+  List<AssetGenImage> get values => [
+        houseItemsTilemap,
+        houseItemsTileset,
+        houseItemsTilesetPatched,
+        testingTheShader,
+        tilemap64
+      ];
 }
 
 class $AssetsTilesGen {
@@ -164,6 +182,61 @@ class $AssetsImagesHudGen {
 class $AssetsImagesInteractablesGen {
   const $AssetsImagesInteractablesGen();
 
+  /// File path: assets/images/interactables/console.aseprite
+  String get console => 'assets/images/interactables/console.aseprite';
+
+  /// File path: assets/images/interactables/console_off.png
+  AssetGenImage get consoleOff =>
+      const AssetGenImage('assets/images/interactables/console_off.png');
+
+  /// File path: assets/images/interactables/console_on.png
+  AssetGenImage get consoleOn =>
+      const AssetGenImage('assets/images/interactables/console_on.png');
+
+  /// File path: assets/images/interactables/dryer.aseprite
+  String get dryer => 'assets/images/interactables/dryer.aseprite';
+
+  /// File path: assets/images/interactables/dryer_off.png
+  AssetGenImage get dryerOff =>
+      const AssetGenImage('assets/images/interactables/dryer_off.png');
+
+  /// File path: assets/images/interactables/dryer_on.png
+  AssetGenImage get dryerOn =>
+      const AssetGenImage('assets/images/interactables/dryer_on.png');
+
+  /// File path: assets/images/interactables/fridge.aseprite
+  String get fridge => 'assets/images/interactables/fridge.aseprite';
+
+  /// File path: assets/images/interactables/fridge_off.png
+  AssetGenImage get fridgeOff =>
+      const AssetGenImage('assets/images/interactables/fridge_off.png');
+
+  /// File path: assets/images/interactables/fridge_on.png
+  AssetGenImage get fridgeOn =>
+      const AssetGenImage('assets/images/interactables/fridge_on.png');
+
+  /// File path: assets/images/interactables/lamp.aseprite
+  String get lamp => 'assets/images/interactables/lamp.aseprite';
+
+  /// File path: assets/images/interactables/lamp_off.png
+  AssetGenImage get lampOff =>
+      const AssetGenImage('assets/images/interactables/lamp_off.png');
+
+  /// File path: assets/images/interactables/lamp_on.png
+  AssetGenImage get lampOn =>
+      const AssetGenImage('assets/images/interactables/lamp_on.png');
+
+  /// File path: assets/images/interactables/laptop.aseprite
+  String get laptop => 'assets/images/interactables/laptop.aseprite';
+
+  /// File path: assets/images/interactables/laptop_off.png
+  AssetGenImage get laptopOff =>
+      const AssetGenImage('assets/images/interactables/laptop_off.png');
+
+  /// File path: assets/images/interactables/laptop_on.png
+  AssetGenImage get laptopOn =>
+      const AssetGenImage('assets/images/interactables/laptop_on.png');
+
   /// File path: assets/images/interactables/light_switch_off.png
   AssetGenImage get lightSwitchOff =>
       const AssetGenImage('assets/images/interactables/light_switch_off.png');
@@ -172,8 +245,97 @@ class $AssetsImagesInteractablesGen {
   AssetGenImage get lightSwitchOn =>
       const AssetGenImage('assets/images/interactables/light_switch_on.png');
 
+  /// File path: assets/images/interactables/oven.aseprite
+  String get oven => 'assets/images/interactables/oven.aseprite';
+
+  /// File path: assets/images/interactables/oven_off.png
+  AssetGenImage get ovenOff =>
+      const AssetGenImage('assets/images/interactables/oven_off.png');
+
+  /// File path: assets/images/interactables/oven_on.png
+  AssetGenImage get ovenOn =>
+      const AssetGenImage('assets/images/interactables/oven_on.png');
+
+  /// File path: assets/images/interactables/radio.aseprite
+  String get radio => 'assets/images/interactables/radio.aseprite';
+
+  /// File path: assets/images/interactables/radio_off.png
+  AssetGenImage get radioOff =>
+      const AssetGenImage('assets/images/interactables/radio_off.png');
+
+  /// File path: assets/images/interactables/radio_on.png
+  AssetGenImage get radioOn =>
+      const AssetGenImage('assets/images/interactables/radio_on.png');
+
+  /// File path: assets/images/interactables/thermostat.aseprite
+  String get thermostat => 'assets/images/interactables/thermostat.aseprite';
+
+  /// File path: assets/images/interactables/thermostat_off.png
+  AssetGenImage get thermostatOff =>
+      const AssetGenImage('assets/images/interactables/thermostat_off.png');
+
+  /// File path: assets/images/interactables/thermostat_on.png
+  AssetGenImage get thermostatOn =>
+      const AssetGenImage('assets/images/interactables/thermostat_on.png');
+
+  /// File path: assets/images/interactables/tv.aseprite
+  String get tv => 'assets/images/interactables/tv.aseprite';
+
+  /// File path: assets/images/interactables/tv_off.png
+  AssetGenImage get tvOff =>
+      const AssetGenImage('assets/images/interactables/tv_off.png');
+
+  /// File path: assets/images/interactables/tv_on.png
+  AssetGenImage get tvOn =>
+      const AssetGenImage('assets/images/interactables/tv_on.png');
+
+  /// File path: assets/images/interactables/washing_machine.aseprite
+  String get washingMachine =>
+      'assets/images/interactables/washing_machine.aseprite';
+
+  /// File path: assets/images/interactables/washing_machine_off.png
+  AssetGenImage get washingMachineOff => const AssetGenImage(
+      'assets/images/interactables/washing_machine_off.png');
+
+  /// File path: assets/images/interactables/washing_machine_on.png
+  AssetGenImage get washingMachineOn =>
+      const AssetGenImage('assets/images/interactables/washing_machine_on.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [lightSwitchOff, lightSwitchOn];
+  List<dynamic> get values => [
+        console,
+        consoleOff,
+        consoleOn,
+        dryer,
+        dryerOff,
+        dryerOn,
+        fridge,
+        fridgeOff,
+        fridgeOn,
+        lamp,
+        lampOff,
+        lampOn,
+        laptop,
+        laptopOff,
+        laptopOn,
+        lightSwitchOff,
+        lightSwitchOn,
+        oven,
+        ovenOff,
+        ovenOn,
+        radio,
+        radioOff,
+        radioOn,
+        thermostat,
+        thermostatOff,
+        thermostatOn,
+        tv,
+        tvOff,
+        tvOn,
+        washingMachine,
+        washingMachineOff,
+        washingMachineOn
+      ];
 }
 
 class $AssetsImagesPlayerGen {

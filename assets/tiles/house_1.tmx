@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="176">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="214">
  <tileset firstgid="1" name="tilemap_64_patched" tilewidth="64" tileheight="64" spacing="2" tilecount="400" columns="20">
   <image source="../images/tilemap_64.png" width="1320" height="1320"/>
  </tileset>
@@ -94,9 +94,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <group id="11" name="Shaders_Layer" visible="0">
+ <group id="11" name="Shaders_Layer">
   <objectgroup color="#ffff00" id="8" name="Shaders">
-   <object id="113" name="Hallway" type="LightShaders" x="64" y="1600" width="1665.13" height="256">
+   <object id="113" name="Hallway" type="LightShaders" x="64" y="1600" width="1664.4" height="256">
     <properties>
      <property name="location" value="hallway"/>
     </properties>
@@ -196,17 +196,17 @@
      <property name="location" value="garage"/>
     </properties>
    </object>
-   <object id="129" name="Kitchen" type="LightShaders" x="1728" y="1152" width="321.273" height="704">
+   <object id="129" name="Kitchen" type="LightShaders" x="1728" y="1152" width="321.708" height="704">
     <properties>
      <property name="location" value="kitchen"/>
     </properties>
    </object>
-   <object id="130" name="Kitchen" type="LightShaders" x="2048" y="768" width="512" height="960">
+   <object id="130" name="Kitchen" type="LightShaders" x="2048.98" y="768" width="511.022" height="959.063">
     <properties>
      <property name="location" value="kitchen"/>
     </properties>
    </object>
-   <object id="131" name="Kitchen" type="LightShaders" x="2048" y="1726.5" width="448" height="129.5">
+   <object id="131" name="Kitchen" type="LightShaders" x="2048.94" y="1726.5" width="447.063" height="129.5">
     <properties>
      <property name="location" value="kitchen"/>
     </properties>
@@ -233,7 +233,7 @@
    </object>
   </objectgroup>
  </group>
- <objectgroup color="#00ff00" id="3" name="Collisions">
+ <objectgroup color="#00ff00" id="3" name="Collisions" visible="0">
   <object id="2" name="Wall" type="Wall" x="0" y="768" width="64" height="1728"/>
   <object id="7" name="Wall" type="Wall" x="64" y="1952" width="315.938" height="32"/>
   <object id="10" name="Wall" type="Wall" x="768" y="1984" width="64" height="192"/>
@@ -286,8 +286,22 @@
   <object id="159" name="HouseItem" type="Wall" x="3008" y="2156" width="64" height="55.6667"/>
   <object id="160" name="HouseItem" type="Wall" x="1728" y="2156" width="64" height="55.6667"/>
   <object id="161" name="HouseItem" type="Wall" x="64" y="1260" width="64" height="55.6667"/>
+  <object id="176" name="Wall" type="Wall" x="1936.18" y="1615.82"/>
+  <object id="177" name="Wall" type="Wall" x="2179.91" y="1286.18" width="24.7273" height="52.1818"/>
+  <object id="178" name="Wall" type="Wall" x="2176" y="896" width="64" height="35.1818"/>
+  <object id="179" name="Wall" type="Wall" x="2432" y="896" width="64" height="35.1818"/>
+  <object id="180" name="Wall" type="Wall" x="1600" y="2240" width="64" height="64"/>
+  <object id="181" name="Wall" type="Wall" x="1600" y="1984" width="64" height="64"/>
+  <object id="183" name="Wall" type="Wall" x="2816" y="1984" width="64" height="91.5"/>
+  <object id="203" name="Wall" type="Wall" x="1731.91" y="2310.18" width="24.7273" height="52.1818"/>
+  <object id="204" name="Wall" type="Wall" x="707.91" y="2118.18" width="24.7273" height="52.1818"/>
+  <object id="205" name="Wall" type="Wall" x="899.91" y="2310.18" width="24.7273" height="52.1818"/>
+  <object id="206" name="Wall" type="Wall" x="67.91" y="1414.18" width="24.7273" height="52.1818"/>
+  <object id="209" name="Wall" type="Wall" x="1603.91" y="1030.18" width="24.7273" height="52.1818"/>
+  <object id="210" name="Wall" type="Wall" x="2627.91" y="1094.18" width="24.7273" height="52.1818"/>
+  <object id="211" name="Wall" type="Wall" x="3011.91" y="1798.18" width="24.7273" height="52.1818"/>
  </objectgroup>
- <objectgroup color="#ffaaff" id="2" name="Spawnpoints">
+ <objectgroup color="#ffaaff" id="2" name="Spawnpoints" visible="0">
   <object id="1" name="Player" type="Player" x="1088" y="2240" width="56" height="72"/>
   <object id="92" name="Hallway" type="Switch" x="1088" y="1664" width="16" height="32">
    <properties>
@@ -360,5 +374,13 @@
   <object id="173" name="Lamp" type="Lamp" x="2176" y="1280" width="32" height="64"/>
   <object id="174" name="Fridge" type="Fridge" x="2176" y="832" width="64" height="128"/>
   <object id="175" name="Console" type="Console" x="1920" y="1600" width="32" height="32"/>
+  <object id="182" name="Fridge" type="Fridge" x="2816" y="1984" width="64" height="128"/>
+  <object id="185" name="Lamp" type="Lamp" x="64" y="1408" width="32" height="64"/>
+  <object id="187" name="Lamp" type="Lamp" x="704" y="2112" width="32" height="64"/>
+  <object id="189" name="Lamp" type="Lamp" x="896" y="2304" width="32" height="64"/>
+  <object id="191" name="Lamp" type="Lamp" x="2624" y="1088" width="32" height="64"/>
+  <object id="193" name="Lamp" type="Lamp" x="3008" y="1792" width="32" height="64"/>
+  <object id="195" name="Lamp" type="Lamp" x="1728" y="2304" width="32" height="64"/>
+  <object id="197" name="Lamp" type="Lamp" x="1600" y="1024" width="32" height="64"/>
  </objectgroup>
 </map>

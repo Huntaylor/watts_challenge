@@ -135,7 +135,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
           case AssetConst.lamp:
             final cachedObjectProvider = CachedInteractableObjectProvider(
               ObjectParams(
-                objectTypeParam: ObjectType.medium,
+                objectTypeParam: ObjectType.small,
                 onSpriteParam: game.images.fromCache(AssetConst.lampOn),
                 offSpriteParam: game.images.fromCache(AssetConst.lampOff),
                 positionParam: spawnPoint.position,
@@ -174,7 +174,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
           case AssetConst.radio:
             final cachedObjectProvider = CachedInteractableObjectProvider(
               ObjectParams(
-                objectTypeParam: ObjectType.small,
+                objectTypeParam: ObjectType.medium,
                 onSpriteParam: game.images.fromCache(AssetConst.radioOn),
                 offSpriteParam: game.images.fromCache(AssetConst.radioOff),
                 positionParam: spawnPoint.position,

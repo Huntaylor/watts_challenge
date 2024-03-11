@@ -25,5 +25,27 @@
         "-v"
       ]
     },
+    {
+      "name": "Launch Profile",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--profile",
+        "--target",
+        "lib/main_development.dart",
+      ]
+    },
+    {
+      "name": "Launch Release",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--release",
+        "--target",
+        "lib/main_development.dart",
+      ]
+    },
   ]
 }

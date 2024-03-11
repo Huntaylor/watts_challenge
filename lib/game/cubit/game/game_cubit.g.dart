@@ -15,7 +15,7 @@ extension _$GameStartStateAutoequal on GameStartState {
 
 extension _$GameEndStateAutoequal on GameEndState {
   List<Object?> get _$props => [
-        electricUsage,
+        percentage,
         endTime,
       ];
 }
@@ -89,7 +89,7 @@ extension $GameStartStateCopyWith on GameStartState {
 }
 
 abstract class _$GameEndStateCWProxy {
-  GameEndState electricUsage(double electricUsage);
+  GameEndState percentage(String percentage);
 
   GameEndState endTime(String endTime);
 
@@ -100,7 +100,7 @@ abstract class _$GameEndStateCWProxy {
   /// GameEndState(...).copyWith(id: 12, name: "My name")
   /// ````
   GameEndState call({
-    double? electricUsage,
+    String? percentage,
     String? endTime,
   });
 }
@@ -112,8 +112,7 @@ class _$GameEndStateCWProxyImpl implements _$GameEndStateCWProxy {
   final GameEndState _value;
 
   @override
-  GameEndState electricUsage(double electricUsage) =>
-      this(electricUsage: electricUsage);
+  GameEndState percentage(String percentage) => this(percentage: percentage);
 
   @override
   GameEndState endTime(String endTime) => this(endTime: endTime);
@@ -127,15 +126,15 @@ class _$GameEndStateCWProxyImpl implements _$GameEndStateCWProxy {
   /// GameEndState(...).copyWith(id: 12, name: "My name")
   /// ````
   GameEndState call({
-    Object? electricUsage = const $CopyWithPlaceholder(),
+    Object? percentage = const $CopyWithPlaceholder(),
     Object? endTime = const $CopyWithPlaceholder(),
   }) {
     return GameEndState(
-      electricUsage:
-          electricUsage == const $CopyWithPlaceholder() || electricUsage == null
-              ? _value.electricUsage
+      percentage:
+          percentage == const $CopyWithPlaceholder() || percentage == null
+              ? _value.percentage
               // ignore: cast_nullable_to_non_nullable
-              : electricUsage as double,
+              : percentage as String,
       endTime: endTime == const $CopyWithPlaceholder() || endTime == null
           ? _value.endTime
           // ignore: cast_nullable_to_non_nullable

@@ -33,7 +33,6 @@ class InteractionTimerBar extends PositionComponent
 
   late TimerState timerState;
   late double interactionTime;
-  // late bool isInteracting;
 
   double elapsedTime = 0;
 

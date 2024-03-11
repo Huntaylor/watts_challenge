@@ -59,7 +59,6 @@ class InteractionLoadingManager extends PositionComponent
     if (shouldAddBar && !contains(timerBar)) {
       add(
         timerBar..interactionTime = interactionTime,
-        // ..isInteracting = true,
       );
     } else if (!shouldAddBar && contains(timerBar)) {
       remove(timerBar);

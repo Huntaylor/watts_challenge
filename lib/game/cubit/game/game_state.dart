@@ -33,7 +33,7 @@ class GameStartState extends GameState {
   final double currentUsage;
 
   double get optimizedUsage {
-    return totalElectricUsage * (2 / 3);
+    return totalElectricUsage * (1 / 2);
   }
 
   double get percentage {
@@ -48,11 +48,11 @@ class GameStartState extends GameState {
 @CopyWith()
 class GameEndState extends GameState {
   const GameEndState({
-    required this.electricUsage,
+    required this.percentage,
     required this.endTime,
   });
 
-  final double electricUsage;
+  final String percentage;
   final String endTime;
 
   @override

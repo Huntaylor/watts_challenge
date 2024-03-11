@@ -1,10 +1,12 @@
 import 'package:environment_hackaton/game/behaviors/player/player.dart';
 import 'package:environment_hackaton/game/behaviors/player/player_state_behavior.dart';
+import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/game.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 
 enum DirectionState {
   left,
@@ -14,7 +16,10 @@ enum DirectionState {
 }
 
 class PlayerControllerBehavior extends Behavior<Player>
-    with KeyboardHandler, HasGameRef<WattsChallenge> {
+    with
+        KeyboardHandler,
+        HasGameRef<WattsChallenge>,
+        FlameBlocReader<PlayerGameCubit, PlayerGameState> {
   PlayerControllerBehavior();
 
   @override
@@ -37,7 +42,6 @@ class PlayerControllerBehavior extends Behavior<Player>
               isMoving: false,
             );
           }
-          parent.direction.x = 0;
         } else if (event.logicalKey == LogicalKeyboardKey.keyW ||
             event.logicalKey == LogicalKeyboardKey.keyS) {
           if (event.logicalKey == LogicalKeyboardKey.keyW) {
@@ -51,10 +55,8 @@ class PlayerControllerBehavior extends Behavior<Player>
               isMoving: false,
             );
           }
-          parent.direction.y = 0;
         }
       } else {
-        // Detect movement keys
         if (event.logicalKey == LogicalKeyboardKey.keyA ||
             event.logicalKey == LogicalKeyboardKey.keyD) {
           if (event.logicalKey == LogicalKeyboardKey.keyA) {
@@ -68,9 +70,8 @@ class PlayerControllerBehavior extends Behavior<Player>
               isMoving: true,
             );
           }
-          parent.direction
-            ..x = event.logicalKey == LogicalKeyboardKey.keyA ? -1 : 1
-            ..y = 0; // Disable vertical movement
+          parent.direction.x =
+              event.logicalKey == LogicalKeyboardKey.keyA ? -1 : 1;
         } else if (event.logicalKey == LogicalKeyboardKey.keyW ||
             event.logicalKey == LogicalKeyboardKey.keyS) {
           if (event.logicalKey == LogicalKeyboardKey.keyW) {
@@ -84,15 +85,17 @@ class PlayerControllerBehavior extends Behavior<Player>
               isMoving: true,
             );
           }
-          parent.direction
-            ..y = event.logicalKey == LogicalKeyboardKey.keyW ? -1 : 1
-            ..x = 0;
+          parent.direction.y =
+              event.logicalKey == LogicalKeyboardKey.keyW ? -1 : 1;
         }
       }
 
       if (event.logicalKey == LogicalKeyboardKey.shiftLeft) {
         isKeyDown ? getSprintState() : getWalkingState();
-        // parent.walkingStepTime += isKeyDown ? 0.10 : 0.15;
+      }
+
+      if (event.logicalKey == LogicalKeyboardKey.space) {
+        bloc.getInteractionCubit(isInteracting: isKeyDown);
       }
     }
 

@@ -91,8 +91,6 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
 
   @override
   void update(double dt) {
-    // isVisable = gameRef.camera.canSee(this);
-    // print(isVisable);
     priority = isPlayerColliding
         ? gameRef.interactablePriority
         : gameRef.foregroundLevelPriority + 1;

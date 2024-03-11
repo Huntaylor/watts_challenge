@@ -51,4 +51,21 @@ class GameCubit extends Cubit<GameState> {
       ),
     );
   }
+
+  Future<void> gameOver(String endTime) async {
+    final endingPercentage = state.asStarting.percentage.toStringAsFixed(2);
+    print('$endTime, $endingPercentage');
+    // Have it finish a few animations
+    await Future.delayed(
+      const Duration(milliseconds: 10),
+      () {
+        emit(
+          GameEndState(
+            percentage: endingPercentage,
+            endTime: endTime,
+          ),
+        );
+      },
+    );
+  }
 }
