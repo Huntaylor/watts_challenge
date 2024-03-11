@@ -15,6 +15,17 @@
       ]
     },
     {
+      "name": "Launch iOS development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--target",
+        "lib/main_development.dart",
+       "--no-enable-impeller"
+      ]
+    },
+    {
       "name": "Launch development -Verbose",
       "request": "launch",
       "type": "dart",

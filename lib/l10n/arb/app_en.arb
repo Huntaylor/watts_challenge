@@ -4,7 +4,7 @@
   "@startVeryGoodGame": {
     "description": "The initial start button of the game application"
   },
-  "titleAppBarTitle": "Environment Hackaton",
+  "titleAppBarTitle": "Watt's Challenge",
   "@titleAppBarTitle": {
     "description": "Text shown in the AppBar of the Title Page"
   },

@@ -95,7 +95,7 @@ BEGIN
             VALUE "InternalName", "environment_hackaton" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example.verygoodcore.environment-hackaton. All rights reserved." "\0"
             VALUE "OriginalFilename", "environment_hackaton.exe" "\0"
-            VALUE "ProductName", "Environment Hackaton" "\0"
+            VALUE "ProductName", "Watt's Challenge" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
