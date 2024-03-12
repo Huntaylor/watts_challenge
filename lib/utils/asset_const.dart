@@ -177,16 +177,22 @@ class AssetConst {
   ///'house_1_foreground.tmx'
   static String get houseForeground => 'house_1_foreground.tmx';
 
-  //* Overlay String
+  //?                      -Path String-
 
-  ///Game Over Overlay
-  static String get gameOver => 'GameOver';
+  ///Game Over Path
+  static const String gameOver = 'GameOver';
 
-  ///Pause Menu Overlay
-  static String get pauseMenu => 'PauseMenu';
+  ///Pause Menu Path
+  static const String pauseMenu = 'PauseMenu';
 
-  ///Main Menu Overlay
-  static String get mainMenu => 'MainMenu';
+  ///Main Menu Path
+  static const String mainMenu = 'MainMenu';
+
+  ///Score Board Path
+  static const String scoreBoard = 'ScoreBoard';
+
+  ///Watt's Challenge Path
+  static const String wattsChallenge = 'WattsChallenge';
 
   //?                      -Tiled Object Names-
 
@@ -296,4 +302,42 @@ class AssetConst {
   ///Electricity Shader - 'shaders/electricity_shader.glsl'
   static String get electricityShader =>
       'assets/shaders/electricity_shader.glsl';
+
+  //?                      -Background files-
+
+  ///Watt's Challenge Background - 'assets/images/background.png'
+  static String get background => 'assets/images/background.png';
+
+  ///Watt's Challenge Menu - 'assets/images/menu.png'
+  static String get menu => 'assets/images/menu.png';
+
+  ///Watt's Challenge Play - 'assets/images/play.png'
+  static String get play => 'assets/images/play.png';
+
+  ///Watt's Challenge Front Parallax - 'parallax/upfront.png'
+  static String get upfront => 'parallax/upfront.png';
+
+  ///Watt's Challenge Middle Layer Parallax - 'parallax/middle_layer.png'
+  static String get middleLayer => 'parallax/middle_layer.png';
+
+  ///Watt's Challenge Back Layer Parallax - 'parallax/back_layer.png'
+  static String get backLayer => 'parallax/back_layer.png';
+
+  ///'overlay/play_button.png'
+  static String get playButton => 'overlay/play_button.png';
+
+  ///'overlay/play_button_down.png'
+  static String get playButtonDown => 'overlay/play_button_down.png';
+
+  ///'overlay/sfx_button.png'
+  static String get sfxButton => 'overlay/sfx_button.png';
+
+  ///'overlay/sfx_button_down.png'
+  static String get sfxButtonDown => 'overlay/sfx_button_down.png';
+
+  ///'overlay/music_button.png'
+  static String get musicButton => 'overlay/music_button.png';
+
+  ///'overlay/music_button_down.png'
+  static String get musicButtonDown => 'overlay/music_button_down.png';
 }

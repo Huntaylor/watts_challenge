@@ -9,12 +9,20 @@ part 'game_cubit.g.dart';
 class GameCubit extends Cubit<GameState> {
   GameCubit()
       : super(
-          const GameState.initial(),
+          const GameMainMenu.initial(),
         );
 
   void startGame() {
+    final isMusicPlaying = state.asMainMenu.isMusicOn;
+    final isSFXPlaying = state.asMainMenu.isSFXOn;
+
     emit(
-      const GameStartState(totalElectricUsage: 0, currentUsage: 0),
+      GameStartState(
+        isSFXOn: isSFXPlaying,
+        isMusicOn: isMusicPlaying,
+        totalElectricUsage: 0,
+        currentUsage: 0,
+      ),
     );
   }
 
@@ -54,7 +62,6 @@ class GameCubit extends Cubit<GameState> {
 
   Future<void> gameOver(String endTime) async {
     final endingPercentage = state.asStarting.percentage.toStringAsFixed(2);
-    print('$endTime, $endingPercentage');
     // Have it finish a few animations
     await Future.delayed(
       const Duration(milliseconds: 10),

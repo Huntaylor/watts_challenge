@@ -53,8 +53,11 @@ unlinked_spec.ds
 **/android/app/profile
 **/android/app/release
 *.jks
+android/app/google-services.json
+lib/firebase_options.dart
 
 # iOS/XCode related
+ios/firebase_app_id_file.json
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
 **/ios/**/*.moved-aside
@@ -110,3 +113,4 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+ios/Runner/GoogleService-Info.plist

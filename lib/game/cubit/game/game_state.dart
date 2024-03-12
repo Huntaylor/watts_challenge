@@ -12,9 +12,29 @@ class GameState extends Equatable {
   GameStartState get asStarting => this as GameStartState;
   GameEndState get asGameOver => this as GameEndState;
   LoadingState get asLoading => this as LoadingState;
+  GameMainMenu get asMainMenu => this as GameMainMenu;
 
   @override
   List<Object?> get props => [];
+}
+
+@autoequal
+@CopyWith()
+class GameMainMenu extends GameState {
+  const GameMainMenu({
+    required this.isSFXOn,
+    required this.isMusicOn,
+  });
+
+  const GameMainMenu.initial()
+      : isSFXOn = true,
+        isMusicOn = true;
+
+  final bool isSFXOn;
+  final bool isMusicOn;
+
+  @override
+  List<Object?> get props => _$props;
 }
 
 @autoequal
@@ -23,12 +43,18 @@ class GameStartState extends GameState {
   const GameStartState({
     required this.totalElectricUsage,
     required this.currentUsage,
+    required this.isSFXOn,
+    required this.isMusicOn,
   });
 
   const GameStartState.initial()
       : totalElectricUsage = 0,
-        currentUsage = 0;
+        currentUsage = 0,
+        isSFXOn = true,
+        isMusicOn = true;
 
+  final bool isSFXOn;
+  final bool isMusicOn;
   final double totalElectricUsage;
   final double currentUsage;
 

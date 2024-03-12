@@ -12,6 +12,13 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/background.aseprite
+  String get backgroundAseprite => 'assets/images/background.aseprite';
+
+  /// File path: assets/images/background.png
+  AssetGenImage get backgroundPng =>
+      const AssetGenImage('assets/images/background.png');
+
   /// File path: assets/images/house_items_tilemap.png
   AssetGenImage get houseItemsTilemap =>
       const AssetGenImage('assets/images/house_items_tilemap.png');
@@ -27,6 +34,7 @@ class $AssetsImagesGen {
   $AssetsImagesHudGen get hud => const $AssetsImagesHudGen();
   $AssetsImagesInteractablesGen get interactables =>
       const $AssetsImagesInteractablesGen();
+  $AssetsImagesParallaxGen get parallax => const $AssetsImagesParallaxGen();
   $AssetsImagesPlayerGen get player => const $AssetsImagesPlayerGen();
 
   /// File path: assets/images/testing_the_shader.png
@@ -38,7 +46,9 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/tilemap_64.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
+        backgroundAseprite,
+        backgroundPng,
         houseItemsTilemap,
         houseItemsTileset,
         houseItemsTilesetPatched,
@@ -335,6 +345,47 @@ class $AssetsImagesInteractablesGen {
         washingMachine,
         washingMachineOff,
         washingMachineOn
+      ];
+}
+
+class $AssetsImagesParallaxGen {
+  const $AssetsImagesParallaxGen();
+
+  /// File path: assets/images/parallax/back_layer.aseprite
+  String get backLayerAseprite => 'assets/images/parallax/back_layer.aseprite';
+
+  /// File path: assets/images/parallax/back_layer.png
+  AssetGenImage get backLayerPng =>
+      const AssetGenImage('assets/images/parallax/back_layer.png');
+
+  /// File path: assets/images/parallax/middle_layer.aseprite
+  String get middleLayerAseprite =>
+      'assets/images/parallax/middle_layer.aseprite';
+
+  /// File path: assets/images/parallax/middle_layer.png
+  AssetGenImage get middleLayerPng =>
+      const AssetGenImage('assets/images/parallax/middle_layer.png');
+
+  /// File path: assets/images/parallax/middle_layer_with_boat.aseprite
+  String get middleLayerWithBoat =>
+      'assets/images/parallax/middle_layer_with_boat.aseprite';
+
+  /// File path: assets/images/parallax/upfront.aseprite
+  String get upfrontAseprite => 'assets/images/parallax/upfront.aseprite';
+
+  /// File path: assets/images/parallax/upfront.png
+  AssetGenImage get upfrontPng =>
+      const AssetGenImage('assets/images/parallax/upfront.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+        backLayerAseprite,
+        backLayerPng,
+        middleLayerAseprite,
+        middleLayerPng,
+        middleLayerWithBoat,
+        upfrontAseprite,
+        upfrontPng
       ];
 }
 

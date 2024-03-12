@@ -1,6 +1,6 @@
+import 'package:environment_hackaton/app.dart';
 import 'package:environment_hackaton/bootstrap.dart';
-import 'package:environment_hackaton/game/view/game_view.dart';
 
 void main() {
-  bootstrap(() => const MyGame());
+  bootstrap(() => const App());
 }

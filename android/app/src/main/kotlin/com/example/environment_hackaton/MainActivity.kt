@@ -1,4 +1,4 @@
-package com.example.environment_hackaton
+package com.watts.challenge.underdevelopment
 
 import io.flutter.embedding.android.FlutterActivity
 

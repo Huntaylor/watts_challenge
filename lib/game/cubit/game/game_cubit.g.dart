@@ -6,8 +6,17 @@ part of 'game_cubit.dart';
 // AutoequalGenerator
 // **************************************************************************
 
+extension _$GameMainMenuAutoequal on GameMainMenu {
+  List<Object?> get _$props => [
+        isSFXOn,
+        isMusicOn,
+      ];
+}
+
 extension _$GameStartStateAutoequal on GameStartState {
   List<Object?> get _$props => [
+        isSFXOn,
+        isMusicOn,
         totalElectricUsage,
         currentUsage,
       ];
@@ -24,10 +33,74 @@ extension _$GameEndStateAutoequal on GameEndState {
 // CopyWithGenerator
 // **************************************************************************
 
+abstract class _$GameMainMenuCWProxy {
+  GameMainMenu isSFXOn(bool isSFXOn);
+
+  GameMainMenu isMusicOn(bool isMusicOn);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameMainMenu(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// GameMainMenu(...).copyWith(id: 12, name: "My name")
+  /// ````
+  GameMainMenu call({
+    bool? isSFXOn,
+    bool? isMusicOn,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGameMainMenu.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGameMainMenu.copyWith.fieldName(...)`
+class _$GameMainMenuCWProxyImpl implements _$GameMainMenuCWProxy {
+  const _$GameMainMenuCWProxyImpl(this._value);
+
+  final GameMainMenu _value;
+
+  @override
+  GameMainMenu isSFXOn(bool isSFXOn) => this(isSFXOn: isSFXOn);
+
+  @override
+  GameMainMenu isMusicOn(bool isMusicOn) => this(isMusicOn: isMusicOn);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameMainMenu(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// GameMainMenu(...).copyWith(id: 12, name: "My name")
+  /// ````
+  GameMainMenu call({
+    Object? isSFXOn = const $CopyWithPlaceholder(),
+    Object? isMusicOn = const $CopyWithPlaceholder(),
+  }) {
+    return GameMainMenu(
+      isSFXOn: isSFXOn == const $CopyWithPlaceholder() || isSFXOn == null
+          ? _value.isSFXOn
+          // ignore: cast_nullable_to_non_nullable
+          : isSFXOn as bool,
+      isMusicOn: isMusicOn == const $CopyWithPlaceholder() || isMusicOn == null
+          ? _value.isMusicOn
+          // ignore: cast_nullable_to_non_nullable
+          : isMusicOn as bool,
+    );
+  }
+}
+
+extension $GameMainMenuCopyWith on GameMainMenu {
+  /// Returns a callable class that can be used as follows: `instanceOfGameMainMenu.copyWith(...)` or like so:`instanceOfGameMainMenu.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$GameMainMenuCWProxy get copyWith => _$GameMainMenuCWProxyImpl(this);
+}
+
 abstract class _$GameStartStateCWProxy {
   GameStartState totalElectricUsage(double totalElectricUsage);
 
   GameStartState currentUsage(double currentUsage);
+
+  GameStartState isSFXOn(bool isSFXOn);
+
+  GameStartState isMusicOn(bool isMusicOn);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -38,6 +111,8 @@ abstract class _$GameStartStateCWProxy {
   GameStartState call({
     double? totalElectricUsage,
     double? currentUsage,
+    bool? isSFXOn,
+    bool? isMusicOn,
   });
 }
 
@@ -56,6 +131,12 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
       this(currentUsage: currentUsage);
 
   @override
+  GameStartState isSFXOn(bool isSFXOn) => this(isSFXOn: isSFXOn);
+
+  @override
+  GameStartState isMusicOn(bool isMusicOn) => this(isMusicOn: isMusicOn);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GameStartState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -66,6 +147,8 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
   GameStartState call({
     Object? totalElectricUsage = const $CopyWithPlaceholder(),
     Object? currentUsage = const $CopyWithPlaceholder(),
+    Object? isSFXOn = const $CopyWithPlaceholder(),
+    Object? isMusicOn = const $CopyWithPlaceholder(),
   }) {
     return GameStartState(
       totalElectricUsage: totalElectricUsage == const $CopyWithPlaceholder() ||
@@ -78,6 +161,14 @@ class _$GameStartStateCWProxyImpl implements _$GameStartStateCWProxy {
               ? _value.currentUsage
               // ignore: cast_nullable_to_non_nullable
               : currentUsage as double,
+      isSFXOn: isSFXOn == const $CopyWithPlaceholder() || isSFXOn == null
+          ? _value.isSFXOn
+          // ignore: cast_nullable_to_non_nullable
+          : isSFXOn as bool,
+      isMusicOn: isMusicOn == const $CopyWithPlaceholder() || isMusicOn == null
+          ? _value.isMusicOn
+          // ignore: cast_nullable_to_non_nullable
+          : isMusicOn as bool,
     );
   }
 }
