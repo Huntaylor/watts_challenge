@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:app_ui/app_ui.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart' as color;
@@ -30,9 +31,12 @@ class HudTimerSprite extends SpriteComponent
 
   @override
   bool listenWhen(GameState previousState, GameState newState) {
-    if (newState.asStarting.percentage <= 100) {
+    if (newState.isStarting && newState.asStarting.percentage <= 100) {
       bloc.gameOver(timer);
       gameRef.pauseEngine();
+    }
+    if (newState.isGameOver) {
+      gameRef.overlays.add(AssetConst.completeOverlay);
     }
     return super.listenWhen(previousState, newState);
   }

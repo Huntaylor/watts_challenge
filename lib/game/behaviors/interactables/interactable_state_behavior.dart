@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
 import 'package:environment_hackaton/game/entity/entity.dart';
@@ -48,6 +49,7 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
     if (newState.asInitial.timerState == TimerState.complete &&
         parent.isPlayerColliding) {
       if (!isTriggered) {
+        game.effectPlayer.play(AssetSource(AssetConst.sfx));
         isTriggered = true;
         parent
           ..isOn = !parent.isOn

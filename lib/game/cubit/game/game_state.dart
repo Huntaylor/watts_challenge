@@ -8,6 +8,7 @@ class GameState extends Equatable {
   bool get isStarting => this is GameStartState;
   bool get isGameOver => this is GameEndState;
   bool get isLoading => this is LoadingState;
+  bool get isMainMenu => this is GameMainMenu;
 
   GameStartState get asStarting => this as GameStartState;
   GameEndState get asGameOver => this as GameEndState;

@@ -70,8 +70,6 @@ class PlayerControllerBehavior extends Behavior<Player>
               isMoving: true,
             );
           }
-          parent.direction.x =
-              event.logicalKey == LogicalKeyboardKey.keyA ? -1 : 1;
         } else if (event.logicalKey == LogicalKeyboardKey.keyW ||
             event.logicalKey == LogicalKeyboardKey.keyS) {
           if (event.logicalKey == LogicalKeyboardKey.keyW) {
@@ -85,8 +83,6 @@ class PlayerControllerBehavior extends Behavior<Player>
               isMoving: true,
             );
           }
-          parent.direction.y =
-              event.logicalKey == LogicalKeyboardKey.keyW ? -1 : 1;
         }
       }
 

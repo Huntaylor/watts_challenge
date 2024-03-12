@@ -12,6 +12,12 @@ class GameCubit extends Cubit<GameState> {
           const GameMainMenu.initial(),
         );
 
+  void newGame() {
+    emit(
+      const GameMainMenu.initial(),
+    );
+  }
+
   void startGame() {
     final isMusicPlaying = state.asMainMenu.isMusicOn;
     final isSFXPlaying = state.asMainMenu.isSFXOn;

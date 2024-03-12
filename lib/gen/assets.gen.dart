@@ -9,6 +9,20 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAudioGen {
+  const $AssetsAudioGen();
+
+  /// File path: assets/audio/joshuamclean-mountain-trials.mp3
+  String get joshuamcleanMountainTrials =>
+      'assets/audio/joshuamclean-mountain-trials.mp3';
+
+  /// File path: assets/audio/pickupCoin.wav
+  String get pickupCoin => 'assets/audio/pickupCoin.wav';
+
+  /// List of all assets
+  List<String> get values => [joshuamcleanMountainTrials, pickupCoin];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -18,6 +32,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/background.png
   AssetGenImage get backgroundPng =>
       const AssetGenImage('assets/images/background.png');
+
+  /// File path: assets/images/background_info.png
+  AssetGenImage get backgroundInfo =>
+      const AssetGenImage('assets/images/background_info.png');
 
   /// File path: assets/images/house_items_tilemap.png
   AssetGenImage get houseItemsTilemap =>
@@ -34,8 +52,24 @@ class $AssetsImagesGen {
   $AssetsImagesHudGen get hud => const $AssetsImagesHudGen();
   $AssetsImagesInteractablesGen get interactables =>
       const $AssetsImagesInteractablesGen();
+
+  /// File path: assets/images/menu.aseprite
+  String get menuAseprite => 'assets/images/menu.aseprite';
+
+  /// File path: assets/images/menu.png
+  AssetGenImage get menuPng => const AssetGenImage('assets/images/menu.png');
+
+  $AssetsImagesOverlayGen get overlay => const $AssetsImagesOverlayGen();
   $AssetsImagesParallaxGen get parallax => const $AssetsImagesParallaxGen();
+
+  /// File path: assets/images/play.png
+  AssetGenImage get play => const AssetGenImage('assets/images/play.png');
+
   $AssetsImagesPlayerGen get player => const $AssetsImagesPlayerGen();
+
+  /// File path: assets/images/settings.png
+  AssetGenImage get settings =>
+      const AssetGenImage('assets/images/settings.png');
 
   /// File path: assets/images/testing_the_shader.png
   AssetGenImage get testingTheShader =>
@@ -49,9 +83,14 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
         backgroundAseprite,
         backgroundPng,
+        backgroundInfo,
         houseItemsTilemap,
         houseItemsTileset,
         houseItemsTilesetPatched,
+        menuAseprite,
+        menuPng,
+        play,
+        settings,
         testingTheShader,
         tilemap64
       ];
@@ -348,6 +387,49 @@ class $AssetsImagesInteractablesGen {
       ];
 }
 
+class $AssetsImagesOverlayGen {
+  const $AssetsImagesOverlayGen();
+
+  /// File path: assets/images/overlay/base_overlay.png
+  AssetGenImage get baseOverlay =>
+      const AssetGenImage('assets/images/overlay/base_overlay.png');
+
+  /// File path: assets/images/overlay/music_button.png
+  AssetGenImage get musicButton =>
+      const AssetGenImage('assets/images/overlay/music_button.png');
+
+  /// File path: assets/images/overlay/music_button_down.png
+  AssetGenImage get musicButtonDown =>
+      const AssetGenImage('assets/images/overlay/music_button_down.png');
+
+  /// File path: assets/images/overlay/play_button.png
+  AssetGenImage get playButton =>
+      const AssetGenImage('assets/images/overlay/play_button.png');
+
+  /// File path: assets/images/overlay/play_button_down.png
+  AssetGenImage get playButtonDown =>
+      const AssetGenImage('assets/images/overlay/play_button_down.png');
+
+  /// File path: assets/images/overlay/sfx_button.png
+  AssetGenImage get sfxButton =>
+      const AssetGenImage('assets/images/overlay/sfx_button.png');
+
+  /// File path: assets/images/overlay/sfx_button_down.png
+  AssetGenImage get sfxButtonDown =>
+      const AssetGenImage('assets/images/overlay/sfx_button_down.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        baseOverlay,
+        musicButton,
+        musicButtonDown,
+        playButton,
+        playButtonDown,
+        sfxButton,
+        sfxButtonDown
+      ];
+}
+
 class $AssetsImagesParallaxGen {
   const $AssetsImagesParallaxGen();
 
@@ -501,6 +583,7 @@ class $AssetsImagesPlayerJsonGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAudioGen audio = $AssetsAudioGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTilesGen tiles = $AssetsTilesGen();
 }

@@ -74,6 +74,9 @@ class AssetConst {
   ///'hud/e_button.png'
   static String get interactButton => 'hud/e_button.png';
 
+  ///'assets/images/hud/e_button.png'
+  static String get interactButtonFile => 'assets/images/hud/e_button.png';
+
   ///'hud/joystick.png'
   static String get joystick => 'hud/joystick.png';
 
@@ -85,6 +88,9 @@ class AssetConst {
 
   ///'hud/sprint_button.png'
   static String get sprintButton => 'hud/sprint_button.png';
+
+  ///'assets/images/hud/sprint_button.png'
+  static String get sprintButtonFile => 'assets/images/hud/sprint_button.png';
 
   ///'hud/timer_outline.png'
   static String get timerOutline => 'hud/timer_outline.png';
@@ -102,6 +108,10 @@ class AssetConst {
 
   ///'interactables/light_switch_on.png'
   static String get lightSwitchOn => 'interactables/light_switch_on.png';
+
+  ///'assets/images/interactables/light_switch_on.png'
+  static String get lightSwitchAsset =>
+      'assets/images/interactables/light_switch_on.png';
 
   ///'interactables/console_on.png'
   static String get consoleOn => 'interactables/console_on.png';
@@ -340,4 +350,16 @@ class AssetConst {
 
   ///'overlay/music_button_down.png'
   static String get musicButtonDown => 'overlay/music_button_down.png';
+
+  ///'completeOverlay'
+  static String get completeOverlay => 'completeOverlay';
+
+  ///'joshuamclean-mountain-trials.mp3'
+  static String get bgm => 'joshuamclean-mountain-trials.mp3';
+
+  ///'pickupCoin.wav'
+  static String get sfx => 'pickupCoin.wav';
+
+  ///'assets/images/background_info.png'
+  static String get infoBackground => 'assets/images/background_info.png';
 }

@@ -29,8 +29,10 @@ class HudUsageComponent extends SpriteComponent
 
   @override
   bool listenWhen(GameState previousState, GameState newState) {
-    percentageAmount = newState.asStarting.percentage;
-    percentageName = '${newState.asStarting.percentage.toStringAsFixed(2)}%';
+    if (newState.isStarting) {
+      percentageAmount = newState.asStarting.percentage;
+      percentageName = '${newState.asStarting.percentage.toStringAsFixed(2)}%';
+    }
     return super.listenWhen(previousState, newState);
   }
 

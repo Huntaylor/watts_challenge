@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:environment_hackaton/game/components/hud_components/hud_components.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
 import 'package:environment_hackaton/game/cubit/player/player_cubit.dart';
@@ -17,14 +18,13 @@ class WattsChallenge extends FlameGame
   WattsChallenge({
     required this.gameCubit,
     required this.playerCubit,
-  }
-      // required this.effectPlayer,
-      );
+    required this.effectPlayer,
+  });
 
   final GameCubit gameCubit;
   final PlayerGameCubit playerCubit;
 
-  // final AudioPlayer effectPlayer;
+  final AudioPlayer effectPlayer;
 
   Player player = Player();
 
@@ -60,6 +60,10 @@ class WattsChallenge extends FlameGame
   Vector2 powerComponentPosition = Vector2(1100, 64);
 
   double totalUsage = 0;
+
+  void resetGame() {
+    removeAll(children);
+  }
 
   @override
   Future<void> onLoad() async {

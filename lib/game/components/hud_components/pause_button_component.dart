@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:environment_hackaton/game/entity/hud_buttons/hud_buttons.dart';
 import 'package:environment_hackaton/game/game.dart';
+import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/input.dart';
@@ -24,7 +25,8 @@ class PauseButtonComponent extends ButtonComponent
 
   @override
   void onTapDown(TapDownEvent event) {
-    gameRef.paused = !gameRef.paused;
+    gameRef.pauseEngine();
+    gameRef.overlays.add(AssetConst.pauseMenu);
     super.onTapDown(event);
   }
 }

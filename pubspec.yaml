@@ -13,8 +13,14 @@ dependencies:
   audioplayers: ^5.2.1
   autoequal: ^0.9.1
   bloc: ^8.1.3
+  cloud_firestore: ^4.8.2
   copy_with_extension: ^5.0.4
   equatable: ^2.0.5
+  firebase_analytics: ^10.4.3
+  firebase_app_check: ^0.2.0
+  firebase_auth: ^4.6.3
+  firebase_core: ^2.14.0
+  firebase_storage: ^11.2.4
   flame: ^1.16.0
   flame_audio: ^2.1.8
   flame_behaviors: ^1.1.0
@@ -63,10 +69,12 @@ flutter:
   generate: true
 
   assets:
-    # - assets/audio/
+    - assets/audio/
     - assets/images/
     - assets/images/player/
+    - assets/images/parallax/
     - assets/images/hud/
+    - assets/images/overlay/
     - assets/images/interactables/
     - assets/tiles/
     - assets/images/player/json/

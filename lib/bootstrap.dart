@@ -32,12 +32,5 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = AppBlocObserver();
 
-  // LicenseRegistry.addLicense(() async* {
-  //   final poppins = await rootBundle.loadString(Assets.licenses.poppins.ofl);
-  //   yield LicenseEntryWithLineBreaks(['poppins'], poppins);
-  // });
-
-  // Add cross-flavor configuration here
-
   runApp(await builder());
 }
