@@ -47,6 +47,7 @@ class _InfoState extends State<Info> {
                         color: Colors.black,
                       ),
                       const Text('Your house has a lot of power usage.'),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -56,26 +57,28 @@ class _InfoState extends State<Info> {
                           Image.asset(AssetConst.lightSwitchAsset),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text('Hold the interact button on devices ->'),
-                          Image.asset(
-                            AssetConst.interactButtonFile,
-                            scale: 3,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text('Hold the Sprint button to run! -> '),
-                          Image.asset(
-                            AssetConst.sprintButtonFile,
-                            scale: 3,
-                          ),
-                        ],
-                      ),
+                      const Text('Hold the space to turn off devices'),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+
+                      //     Image.asset(
+                      //       AssetConst.interactButtonFile,
+                      //       scale: 3,
+                      //     ),
+                      //   ],
+                      // ),
+                      const Text('Hold the shift key to run!'),
+
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     Image.asset(
+                      //       AssetConst.sprintButtonFile,
+                      //       scale: 3,
+                      //     ),
+                      //   ],
+                      // ),
                       AnimatedButton(
                         color: Colors.red[800]!,
                         onPressed: () {

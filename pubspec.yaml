@@ -78,6 +78,3 @@ flutter:
     - assets/images/interactables/
     - assets/tiles/
     - assets/images/player/json/
-
-  shaders:
-    - assets/shaders/darkening_shader.glsl

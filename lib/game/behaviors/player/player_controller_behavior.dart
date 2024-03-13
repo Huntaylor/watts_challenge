@@ -91,7 +91,7 @@ class PlayerControllerBehavior extends Behavior<Player>
       }
 
       if (event.logicalKey == LogicalKeyboardKey.space) {
-        bloc.getInteractionCubit(isInteracting: isKeyDown);
+        bloc.getInteractionCubit(isInteracting: true);
       }
     }
 

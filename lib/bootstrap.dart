@@ -28,7 +28,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   await Flame.device.fullScreen();
 
-  await Flame.device.setLandscape();
+  // await Flame.device.setLandscape();
 
   Bloc.observer = AppBlocObserver();
 

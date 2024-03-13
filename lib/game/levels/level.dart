@@ -291,7 +291,6 @@ class Level extends World with HasGameRef<WattsChallenge> {
             final lightShaderEntity = LightShaderEntity(
               location: lightShaders.properties.getValue('location') as String,
               key: ComponentKey.named('${lightShaders.name}$shaderIndex'),
-              shader: gameRef.shader,
               priority: gameRef.shaderPriority,
               size: lightShaders.size,
               position: Vector2(

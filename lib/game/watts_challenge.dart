@@ -30,7 +30,7 @@ class WattsChallenge extends FlameGame
 
   late Level level;
 
-  late FragmentShader shader;
+  // late FragmentShader shader;
   late JoyStickEntity joyStickEntity;
   late InteractionLoadingManager loadingManager;
   late CustomHudButton hudSprintButtonComponent;
@@ -69,11 +69,11 @@ class WattsChallenge extends FlameGame
   Future<void> onLoad() async {
     await images.loadAllImages();
 
-    final program = await FragmentProgram.fromAsset(
-      AssetConst.darkeningShader,
-    );
+    // final program = await FragmentProgram.fromAsset(
+    //   AssetConst.darkeningShader,
+    // );
 
-    shader = program.fragmentShader();
+    // shader = program.fragmentShader();
 
     await _loadHud();
 
@@ -97,9 +97,9 @@ class WattsChallenge extends FlameGame
       width: 1280,
       height: 720,
       hudComponents: [
-        joyStickEntity,
-        hudSprintButtonComponent,
-        hudInteractButtonComponent,
+        // joyStickEntity,
+        // hudSprintButtonComponent,
+        // hudInteractButtonComponent,
         loadingManager,
         hudTimer,
         hudUsageComponent,
