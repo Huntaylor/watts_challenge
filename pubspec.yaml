@@ -35,9 +35,9 @@ dependencies:
   flutter_shaders: ^0.1.2
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
-  intl: ^0.18.1
+  intl: ^0.19.0
   path_provider: ^2.1.2
-  sip_cli: ^0.1.1
+  sip_cli: ^0.4.5
 
 dev_dependencies:
   autoequal_gen: ^0.9.1
@@ -47,7 +47,7 @@ dev_dependencies:
   flame_lint: ^1.1.2
   flame_test: ^1.15.4
   flutter_gen_runner: ^5.4.0
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
   mockingjay: ^0.5.0
