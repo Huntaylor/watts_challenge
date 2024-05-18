@@ -22,7 +22,6 @@ class AudioCubit extends Cubit<AudioState> {
     await effectPlayer.setVolume(volume);
     await bgm.audioPlayer.setVolume(volume);
     if (!isClosed) {
-      print('closed');
       emit(state.copyWith(volume: volume));
     }
   }

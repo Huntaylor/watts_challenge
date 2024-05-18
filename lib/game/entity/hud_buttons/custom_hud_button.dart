@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:environment_hackaton/game/behaviors/hud_drag_behavior.dart';
 import 'package:environment_hackaton/game/entity/player_entity.dart';
 import 'package:environment_hackaton/game/watts_challenge.dart';
@@ -45,7 +47,7 @@ class CustomHudButton extends HudButtonComponent with EntityMixin {
   late final HudDragBehavior dragBehavior = findBehavior<HudDragBehavior>();
 
   @override
-  Future<void> onLoad() {
+  FutureOr<void> onLoad() {
     add(HudDragBehavior());
     return super.onLoad();
   }

@@ -39,7 +39,7 @@ class InteractionHudButton extends CustomHudButton
   }
 
   @override
-  Future<void> onLoad() {
+  FutureOr<void> onLoad() {
     isReleasedTriggered = true;
     isDisabled = true;
     _loadEffects();

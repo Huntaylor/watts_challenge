@@ -3,7 +3,6 @@ import 'package:environment_hackaton/app/view/info.dart';
 import 'package:environment_hackaton/app/view/widgets/background.dart';
 import 'package:environment_hackaton/game/cubit/audio/audio_cubit.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';
-import 'package:environment_hackaton/game/view/game_view.dart';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame_audio/bgm.dart';
