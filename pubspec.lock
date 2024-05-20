@@ -1040,10 +1040,10 @@ packages:
     dependency: "direct main"
     description:
       name: sip_cli
-      sha256: "7137001dc6823ac65d67bfdbdbffccb26dcdc56e9df8ff9f1825a0ed07076841"
+      sha256: "255e3fa90e50fabf4dee58ff6693c94f4f81ac762c83acc49d6a45a29f3c89aa"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.6"
+    version: "0.6.0"
   sip_script_runner:
     dependency: transitive
     description:
