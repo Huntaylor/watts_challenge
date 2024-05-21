@@ -46,7 +46,7 @@ dev_dependencies:
   copy_with_extension_gen: ^5.0.4
   flame_lint: ^1.1.2
   flame_test: ^1.15.4
-  flutter_gen_runner: ^5.4.0
+  flutter_gen_runner: ^5.5.0+1
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
