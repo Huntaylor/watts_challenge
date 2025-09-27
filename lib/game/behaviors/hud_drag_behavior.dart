@@ -5,7 +5,7 @@ import 'package:flame/events.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
 class HudDragBehavior extends Behavior<CustomHudButton>
-    with DragCallbacks, HasGameRef<WattsChallenge> {
+    with DragCallbacks, HasGameReference<WattsChallenge> {
   HudDragBehavior();
 
   @override

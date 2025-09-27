@@ -34,7 +34,7 @@ enum LightSwitchState {
 
 class InteractableBehaviorState extends Behavior<InteractableObjects>
     with
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
   late final Sprite onSprite;
   late final Sprite offSprite;
@@ -128,7 +128,7 @@ class InteractableBehaviorState extends Behavior<InteractableObjects>
   }
 
   List<LightShaderEntity> getShaders(String locationName) {
-    return gameRef.lightShaders
+    return game.lightShaders
         .where(
           (shader) =>
               shader.location.toLowerCase() == locationName.toLowerCase(),

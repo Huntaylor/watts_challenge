@@ -8,7 +8,7 @@ import 'package:environment_hackaton/utils/asset_const.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
-class Level extends World with HasGameRef<WattsChallenge> {
+class Level extends World with HasGameReference<WattsChallenge> {
   Level({
     required this.levelName,
     required this.foregroundLevelName,
@@ -242,7 +242,7 @@ class Level extends World with HasGameRef<WattsChallenge> {
       }
     }
     if (game.gameState.isStarting) {
-      gameRef.gameCubit.setTotalUsage(objectUsage: powerUsage);
+      game.gameCubit.setTotalUsage(objectUsage: powerUsage);
     }
   }
 
@@ -291,15 +291,15 @@ class Level extends World with HasGameRef<WattsChallenge> {
             final lightShaderEntity = LightShaderEntity(
               location: lightShaders.properties.getValue('location') as String,
               key: ComponentKey.named('${lightShaders.name}$shaderIndex'),
-              shader: gameRef.shader,
-              priority: gameRef.shaderPriority,
+              shader: game.shader,
+              priority: game.shaderPriority,
               size: lightShaders.size,
               position: Vector2(
                 lightShaders.position.x,
                 lightShaders.position.y,
               ),
             );
-            gameRef.lightShaders.add(lightShaderEntity);
+            game.lightShaders.add(lightShaderEntity);
             add(lightShaderEntity);
         }
       }

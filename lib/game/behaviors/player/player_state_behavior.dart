@@ -20,7 +20,7 @@ enum PlayerState {
 }
 
 class PlayerStateBehavior extends Behavior<Player>
-    with HasGameRef<WattsChallenge> {
+    with HasGameReference<WattsChallenge> {
   PlayerState? _playerState;
 
   late final Map<PlayerState, PositionComponent> _stateMap;
@@ -67,59 +67,59 @@ class PlayerStateBehavior extends Behavior<Player>
   Future<void> _loadAllAnimations() async {
     forwardAnimation = await _spriteAnimation(
       animationPath: AssetConst.walkingForwardSprite,
-      jsonData: await gameRef.assets.readJson(AssetConst.walkingForwardJson),
+      jsonData: await game.assets.readJson(AssetConst.walkingForwardJson),
     );
     forwardReallyAnimation = await _spriteAnimation(
       animationPath: AssetConst.reallyWalkingSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.reallyWalkingJson,
       ),
     );
     backAnimation = await _spriteAnimation(
       animationPath: AssetConst.walkingBackSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.walkingBackJson,
       ),
     );
     leftAnimation = await _spriteAnimation(
       animationPath: AssetConst.walkingLeftSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.walkingLeftJson,
       ),
     );
     rightAnimation = await _spriteAnimation(
       animationPath: AssetConst.walkingRightSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.walkingRightJson,
       ),
     );
     idleForwardAnimation = await _spriteAnimation(
       animationPath: AssetConst.idleForwardSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.idleForwardJson,
       ),
     );
     idleReallyAnimation = await _spriteAnimation(
       animationPath: AssetConst.idleReallySprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.idleReallyJson,
       ),
     );
     idleBackAnimation = await _spriteAnimation(
       animationPath: AssetConst.idleBackSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.idleBackJson,
       ),
     );
     idleRightAnimation = await _spriteAnimation(
       animationPath: AssetConst.idleRightSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.idleRightJson,
       ),
     );
     idleLeftAnimation = await _spriteAnimation(
       animationPath: AssetConst.idleLeftSprite,
-      jsonData: await gameRef.assets.readJson(
+      jsonData: await game.assets.readJson(
         AssetConst.idleLeftJson,
       ),
     );

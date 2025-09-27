@@ -16,7 +16,7 @@ import 'package:flutter/material.dart' as color;
 class InteractableObjects extends SpriteGroupComponent<InteractableState>
     with
         EntityMixin,
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocReader<GameCubit, GameState> {
   InteractableObjects({
     required this.objectType,
@@ -75,8 +75,8 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
     add(hitbox);
 
     priority = isPlayerColliding
-        ? gameRef.interactablePriority
-        : gameRef.interactablePriority + 3;
+        ? game.interactablePriority
+        : game.interactablePriority + 3;
     deviceState = InteractableState.on;
 
     await addAll([
@@ -92,8 +92,8 @@ class InteractableObjects extends SpriteGroupComponent<InteractableState>
   @override
   void update(double dt) {
     priority = isPlayerColliding
-        ? gameRef.interactablePriority
-        : gameRef.foregroundLevelPriority + 1;
+        ? game.interactablePriority
+        : game.foregroundLevelPriority + 1;
     if (isMax) {
       elapsedTime -= dt;
       final targetProgress = elapsedTime / interactionTime;

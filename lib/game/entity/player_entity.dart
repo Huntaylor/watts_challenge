@@ -9,7 +9,7 @@ import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 
 class Player extends SpriteAnimationGroupComponent<PlayerState>
-    with HasGameRef<WattsChallenge>, KeyboardHandler, EntityMixin {
+    with HasGameReference<WattsChallenge>, KeyboardHandler, EntityMixin {
   Player({
     super.position,
     super.current,

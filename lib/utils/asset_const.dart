@@ -176,8 +176,8 @@ class AssetConst {
 
   //* Shader Files
 
-  ///'shaders/lightbulbs.glsl'
-  static String get lightBulbShader => 'shaders/lightbulbs.glsl';
+  ///'shaders/lightbulbs.frag'
+  static String get lightBulbShader => 'shaders/lightbulbs.frag';
 
   //?                      -Tiled Files-
 
@@ -306,12 +306,12 @@ class AssetConst {
 
   //?                      -Shader Names-
 
-  ///Darkening Shader - 'shaders/darkening_shader.glsl'
-  static String get darkeningShader => 'assets/shaders/darkening_shader.glsl';
+  ///Darkening Shader - 'shaders/darkening_shader.frag'
+  static String get darkeningShader => 'assets/shaders/darkening_shader.frag';
 
-  ///Electricity Shader - 'shaders/electricity_shader.glsl'
+  ///Electricity Shader - 'shaders/electricity_shader.frag'
   static String get electricityShader =>
-      'assets/shaders/electricity_shader.glsl';
+      'assets/shaders/electricity_shader.frag';
 
   //?                      -Background files-
 

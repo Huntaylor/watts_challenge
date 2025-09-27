@@ -16,7 +16,7 @@ enum ObjectType {
 class BaseObject extends PositionComponent
     with
         SetObjectTypeMixin,
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocReader<GameCubit, GameState> {
   BaseObject({required this.objectType});
 

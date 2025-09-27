@@ -8,7 +8,7 @@ import 'package:flame_bloc/flame_bloc.dart';
 
 class InteractionLoadingManager extends PositionComponent
     with
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
   InteractionLoadingManager({
     required this.timerBar,

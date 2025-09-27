@@ -18,7 +18,7 @@ enum DirectionState {
 class PlayerControllerBehavior extends Behavior<Player>
     with
         KeyboardHandler,
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocReader<PlayerGameCubit, PlayerGameState> {
   PlayerControllerBehavior();
 

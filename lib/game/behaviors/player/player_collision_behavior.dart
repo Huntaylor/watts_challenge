@@ -7,7 +7,7 @@ import 'package:flame_behaviors/flame_behaviors.dart';
 
 class PlayerCollisionBehavior
     extends CollisionBehavior<InteractableObjects, Player>
-    with HasGameRef<WattsChallenge> {
+    with HasGameReference<WattsChallenge> {
   PlayerCollisionBehavior();
 
   @override

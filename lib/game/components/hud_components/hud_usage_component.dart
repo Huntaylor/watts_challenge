@@ -9,7 +9,9 @@ import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart' as color;
 
 class HudUsageComponent extends SpriteComponent
-    with HasGameRef<WattsChallenge>, FlameBlocListenable<GameCubit, GameState> {
+    with
+        HasGameReference<WattsChallenge>,
+        FlameBlocListenable<GameCubit, GameState> {
   HudUsageComponent({
     super.size,
     super.position,
@@ -41,11 +43,11 @@ class HudUsageComponent extends SpriteComponent
     drawSize = size.x - 34;
     textComponent = TextComponent();
 
-    if (gameRef.gameState.isStarting) {
+    if (game.gameState.isStarting) {
       percentageName =
-          '${gameRef.gameState.asStarting.percentage.toStringAsFixed(2)}%';
-      percentageAmount = gameRef.gameState.asStarting.percentage;
-      maxPercentage = gameRef.gameState.asStarting.percentage;
+          '${game.gameState.asStarting.percentage.toStringAsFixed(2)}%';
+      percentageAmount = game.gameState.asStarting.percentage;
+      maxPercentage = game.gameState.asStarting.percentage;
     }
 
     return super.onLoad();

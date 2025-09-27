@@ -9,7 +9,7 @@ import 'package:flame_bloc/flame_bloc.dart';
 class InteractableCollisionBehavior
     extends CollisionBehavior<Player, InteractableObjects>
     with
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocReader<PlayerGameCubit, PlayerGameState> {
   InteractableCollisionBehavior();
 
@@ -22,7 +22,7 @@ class InteractableCollisionBehavior
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, Player other) {
-    if (!gameRef.playerGameState.asInitial.isWithinRange) {
+    if (!game.playerGameState.asInitial.isWithinRange) {
       bloc.getWithinRange(
         isWithinRange: true,
         objectInteractionTime: parent.baseObject.interactionTime,

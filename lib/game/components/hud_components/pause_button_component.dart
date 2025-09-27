@@ -8,7 +8,7 @@ import 'package:flame/events.dart';
 import 'package:flame/input.dart';
 
 class PauseButtonComponent extends ButtonComponent
-    with HasGameRef<WattsChallenge> {
+    with HasGameReference<WattsChallenge> {
   PauseButtonComponent({
     required this.buttonAsset,
     super.size,
@@ -25,8 +25,8 @@ class PauseButtonComponent extends ButtonComponent
 
   @override
   void onTapDown(TapDownEvent event) {
-    gameRef.pauseEngine();
-    gameRef.overlays.add(AssetConst.pauseMenu);
+    game.pauseEngine();
+    game.overlays.add(AssetConst.pauseMenu);
     super.onTapDown(event);
   }
 }

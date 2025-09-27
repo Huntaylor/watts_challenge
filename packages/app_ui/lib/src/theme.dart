@@ -147,7 +147,7 @@ class WattsChallengeTheme {
   }
 
   static AppBarTheme get _appBarTheme {
-    return const AppBarTheme(color: WattsChallengeColors.primary);
+    return const AppBarTheme(backgroundColor: WattsChallengeColors.primary);
   }
 
   static ElevatedButtonThemeData get _elevatedButtonTheme {
@@ -187,8 +187,8 @@ class WattsChallengeTheme {
     );
   }
 
-  static DialogTheme get _dialogTheme {
-    return DialogTheme(
+  static DialogThemeData get _dialogTheme {
+    return DialogThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -204,8 +204,8 @@ class WattsChallengeTheme {
     );
   }
 
-  static TabBarTheme get _tabBarTheme {
-    return const TabBarTheme(
+  static TabBarThemeData get _tabBarTheme {
+    return const TabBarThemeData(
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(
           width: 2,

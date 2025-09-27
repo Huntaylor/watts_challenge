@@ -10,7 +10,9 @@ import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart' as color;
 
 class HudTimerSprite extends SpriteComponent
-    with HasGameRef<WattsChallenge>, FlameBlocListenable<GameCubit, GameState> {
+    with
+        HasGameReference<WattsChallenge>,
+        FlameBlocListenable<GameCubit, GameState> {
   HudTimerSprite({
     super.size,
     super.position,
@@ -33,10 +35,10 @@ class HudTimerSprite extends SpriteComponent
   bool listenWhen(GameState previousState, GameState newState) {
     if (newState.isStarting && newState.asStarting.percentage <= 100) {
       bloc.gameOver(timer);
-      gameRef.pauseEngine();
+      game.pauseEngine();
     }
     if (newState.isGameOver) {
-      gameRef.overlays.add(AssetConst.completeOverlay);
+      game.overlays.add(AssetConst.completeOverlay);
     }
     return super.listenWhen(previousState, newState);
   }
@@ -54,7 +56,7 @@ class HudTimerSprite extends SpriteComponent
         minutes++;
       },
     );
-    if (gameRef.gameState.isStarting) {
+    if (game.gameState.isStarting) {
       gameTime.timer.start();
     }
     return super.onLoad();

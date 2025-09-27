@@ -54,7 +54,7 @@ class CustomHudButton extends HudButtonComponent with EntityMixin {
 }
 
 class CustomButtonSprite extends SpriteComponent
-    with HasGameRef<WattsChallenge> {
+    with HasGameReference<WattsChallenge> {
   CustomButtonSprite({
     super.sprite,
     super.size,

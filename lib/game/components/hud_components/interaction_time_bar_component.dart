@@ -15,7 +15,7 @@ enum TimerState {
 
 class InteractionTimerBar extends PositionComponent
     with
-        HasGameRef<WattsChallenge>,
+        HasGameReference<WattsChallenge>,
         FlameBlocListenable<PlayerGameCubit, PlayerGameState> {
   InteractionTimerBar({
     super.position,

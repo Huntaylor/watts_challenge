@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:environment_hackaton/utils/app_library.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_shaders/flutter_shaders.dart';
+import 'package:flutter_shaders/flutter_shaders.dart' show FragmentShader;
 
 class LightShaderEntity extends PositionComponent {
   LightShaderEntity({
