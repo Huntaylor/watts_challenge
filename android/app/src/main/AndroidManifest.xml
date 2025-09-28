@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="watts_challenge_underdevelopment"
+        android:label="Watt's Challenge"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/watts_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
