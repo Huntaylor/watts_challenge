@@ -8,20 +8,20 @@
       "name": "Launch development",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_development.dart",
+      "program": "lib/main.dart",
       "args": [
         "--target",
-        "lib/main_development.dart",
+        "lib/main.dart",
       ]
     },
     {
       "name": "Launch iOS development",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_development.dart",
+      "program": "lib/main.dart",
       "args": [
         "--target",
-        "lib/main_development.dart",
+        "lib/main.dart",
        "--no-enable-impeller"
       ]
     },
@@ -29,10 +29,10 @@
       "name": "Launch development -Verbose",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_development.dart",
+      "program": "lib/main.dart",
       "args": [
         "--target",
-        "lib/main_development.dart",
+        "lib/main.dart",
         "-v"
       ]
     },
@@ -40,22 +40,22 @@
       "name": "Launch Profile",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_development.dart",
+      "program": "lib/main.dart",
       "args": [
         "--profile",
         "--target",
-        "lib/main_development.dart",
+        "lib/main.dart",
       ]
     },
     {
       "name": "Launch Release",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_development.dart",
+      "program": "lib/main.dart",
       "args": [
         "--release",
         "--target",
-        "lib/main_development.dart",
+        "lib/main.dart",
       ]
     },
   ]
