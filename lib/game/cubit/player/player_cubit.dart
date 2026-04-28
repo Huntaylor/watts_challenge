@@ -1,4 +1,3 @@
-import 'package:autoequal/autoequal.dart';
 import 'package:bloc/bloc.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:environment_hackaton/game/components/hud_components/interaction_time_bar_component.dart';

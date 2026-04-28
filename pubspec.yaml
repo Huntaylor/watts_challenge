@@ -1,59 +1,52 @@
 name: environment_hackaton
 description: A Very Good Project created by Very Good CLI.
-version: 1.0.0+1
+version: 1.0.1
 publish_to: none
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
-  animated_button: ^0.2.0
-  intl: ^0.20.2
+  animated_button: ^0.3.1
   app_ui:
     path: packages/app_ui
-  audioplayers: ^5.2.1
-  autoequal: ^0.9.1
-  bloc: ^8.1.3
-  cloud_firestore: ^4.8.2
-  copy_with_extension: ^5.0.4
+  audioplayers: ^6.6.0
+  bloc: ^9.2.0
+  copy_with_extension: ^15.0.0
   equatable: ^2.0.5
-  firebase_analytics: ^10.4.3
-  firebase_app_check: ^0.2.0
-  firebase_auth: ^4.6.3
-  firebase_core: ^2.14.0
-  firebase_storage: ^11.2.4
+  equatable_annotations: ^1.2.0
   flame: ^1.16.0
   flame_audio: ^2.1.8
   flame_behaviors: ^1.1.0
   flame_bloc: ^1.10.10
-  flame_tiled: ^1.19.0
+  flame_splash_screen: ^0.3.1+2
+  flame_tiled: ^3.0.11
+
   flutter:
     sdk: flutter
 
-  flutter_bloc: ^8.1.4
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
   flutter_shaders: ^0.1.2
   flutter_svg: ^2.0.10+1
-  google_fonts: ^6.2.1
+  google_fonts: ^8.1.0
+  intl: ^0.20.2
   path_provider: ^2.1.2
-  sip_cli: ^0.4.5
-  flame_splash_screen: ^0.3.1+2
+  sip_cli: ^0.18.7
 
 dev_dependencies:
-  autoequal_gen: ^0.9.1
-  bloc_test: ^9.1.6
+  bloc_test: ^10.0.0
   build_runner: ^2.4.8
-  copy_with_extension_gen: ^5.0.4
+  copy_with_extension_gen: ^15.0.0
+  equatable_gen: ^1.3.2
   flame_lint: ^1.1.2
-  flame_test: ^1.15.4
+  flame_test: ^2.2.2
   flutter_gen_runner: ^5.4.0
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-  mockingjay: ^0.5.0
-  mocktail: ^1.0.3
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^10.0.0
 
 scripts: derry.yaml
 

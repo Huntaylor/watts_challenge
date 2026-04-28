@@ -83,7 +83,13 @@ class _InfoState extends State<Info> {
                             MyGame.route(),
                           );
                         },
-                        child: const Text('Jump in!'),
+                        height: 64,
+                        child: const Center(
+                          child: Text(
+                            'Jump in!',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ),
                     ],
                   ),

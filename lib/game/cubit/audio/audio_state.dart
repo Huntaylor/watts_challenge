@@ -1,6 +1,5 @@
 part of 'audio_cubit.dart';
 
-@autoequal
 @CopyWith()
 class AudioState extends Equatable {
   const AudioState({this.volume = 1});

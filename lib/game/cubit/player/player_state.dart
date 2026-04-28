@@ -16,7 +16,6 @@ class PlayerGameState extends Equatable {
   List<Object?> get props => [];
 }
 
-@autoequal
 @CopyWith()
 class PlayerInteractionState extends PlayerGameState {
   const PlayerInteractionState({

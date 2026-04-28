@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:environment_hackaton/app/view/main_menu.dart';
 import 'package:environment_hackaton/app/view/flame_splash_view.dart';
 import 'package:environment_hackaton/game/cubit/audio/audio_cubit.dart';
 import 'package:environment_hackaton/game/cubit/game/game_cubit.dart';

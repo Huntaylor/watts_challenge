@@ -32,11 +32,11 @@ class JoyStickEntity extends JoystickComponent {
   final Player player;
 
   @override
-  bool onDragEnd(DragEndEvent _) {
+  bool onDragEnd(DragEndEvent event) {
     player.controllerBehavior.setMovementState(
       isMoving: false,
     );
-    return super.onDragEnd(_);
+    return super.onDragEnd(event);
   }
 
   @override

@@ -74,7 +74,6 @@ class _MainMenuState extends State<MainMenu> {
                       BlocBuilder<AudioCubit, AudioState>(
                         builder: (context, state) {
                           return AnimatedButton(
-                            shape: BoxShape.circle,
                             onPressed: () {
                               context.read<AudioCubit>().toggleVolume();
                             },

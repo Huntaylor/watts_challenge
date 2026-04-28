@@ -2,7 +2,6 @@ part of 'preload_cubit.dart';
 
 /// State for [PreloadCubit].
 
-@autoequal
 @CopyWith()
 class PreloadState extends Equatable {
   const PreloadState(

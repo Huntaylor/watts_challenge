@@ -19,7 +19,6 @@ class GameState extends Equatable {
   List<Object?> get props => [];
 }
 
-@autoequal
 @CopyWith()
 class GameMainMenu extends GameState {
   const GameMainMenu({
@@ -38,7 +37,6 @@ class GameMainMenu extends GameState {
   List<Object?> get props => _$props;
 }
 
-@autoequal
 @CopyWith()
 class GameStartState extends GameState {
   const GameStartState({
@@ -71,7 +69,6 @@ class GameStartState extends GameState {
   List<Object?> get props => _$props;
 }
 
-@autoequal
 @CopyWith()
 class GameEndState extends GameState {
   const GameEndState({
